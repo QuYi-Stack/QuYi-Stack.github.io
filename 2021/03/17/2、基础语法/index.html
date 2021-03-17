@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>2、基础语法 | QuYi-Stack</title>
+  <meta name="keywords" content=" java ">
+  <meta name="description" content="2、基础语法 | QuYi-Stack">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="注释平时我们编写代码，在代码量比较少的时候，我们还可以看懂自己写的，但是当项目结构一旦复杂起来，我们就需要用到一个注释了，注释就类似于我们上学时候写的笔记，我们看着笔记就知道自己写的什么东西了！在程序中也是如此。我们来看一下Java中的注释怎么写，看以下代码： &#x2F;*  * @Description HelloWorld类  * @Author Diamond 狂神QQ:24736743  **&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2、基础语法">
+<meta property="og:url" content="https://quyi-stack.github.io/2021/03/17/2%E3%80%81%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="QuYi-Stack">
+<meta property="og:description" content="注释平时我们编写代码，在代码量比较少的时候，我们还可以看懂自己写的，但是当项目结构一旦复杂起来，我们就需要用到一个注释了，注释就类似于我们上学时候写的笔记，我们看着笔记就知道自己写的什么东西了！在程序中也是如此。我们来看一下Java中的注释怎么写，看以下代码： &#x2F;*  * @Description HelloWorld类  * @Author Diamond 狂神QQ:24736743  **&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170751.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170814.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301171823.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301171846.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210303150328.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317113435.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114155.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114448.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114633.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114839.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317120009.png">
+<meta property="article:published_time" content="2021-03-17T04:01:38.000Z">
+<meta property="article:modified_time" content="2021-03-17T04:17:58.290Z">
+<meta property="article:author" content="Qu Yi">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170751.png">
+
+
+<link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="https://avatars.githubusercontent.com/u/80147732?s=460&amp;u=23be5c16d10232c0df046f708c7da6a2c01b2913&amp;v=4"/>
+</a>
+<div class="author">
+    <span>Qu Yi</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/quyi-stack/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:Earon106@gmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=66773056&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(2)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->JavaSE">
+                                        
+                                        JavaSE
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="2">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/17/2%E3%80%81%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="2、基础语法">2、基础语法</span>
+            <span class="post-date" title="2021-03-17 12:01:38">2021/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/16/1%E3%80%81Java%E5%85%A5%E9%97%A8/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="1、Java入门">1、Java入门</span>
+            <span class="post-date" title="2021-03-16 16:08:50">2021/03/16</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-2、基础语法" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">2、基础语法</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;JavaSE">JavaSE</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">java</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-03-17 12:17:58'>2021-03-17 12:01</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-text">标识符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-Java-%E6%A0%87%E8%AF%86%E7%AC%A6%EF%BC%8C%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%82%B9%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">关于 Java 标识符，有以下几点需要注意：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%BC%BA%E5%BC%B1%E7%B1%BB%E5%9E%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">1、强弱类型语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2、数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%95%B4%E5%9E%8B%E6%8B%93%E5%B1%95"><span class="toc-text">3、整型拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%B5%AE%E7%82%B9%E5%9E%8B%E6%8B%93%E5%B1%95"><span class="toc-text">4、浮点型拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%AD%97%E7%AC%A6%E5%9E%8B%E6%8B%93%E5%B1%95"><span class="toc-text">5、字符型拓展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%B8%83%E5%B0%94%E5%9E%8B%E6%8B%93%E5%B1%95"><span class="toc-text">6、布尔型拓展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">1、自动类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">2、强制类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%92%8C%E9%97%AE%E9%A2%98"><span class="toc-text">3、常见错误和问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81JDK7%E6%89%A9%E5%B1%95"><span class="toc-text">4、JDK7扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%EF%BC%8C%E5%B8%B8%E9%87%8F"><span class="toc-text">变量，常量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%8F%98%E9%87%8F%EF%BC%88variable%EF%BC%89"><span class="toc-text">1、变量（variable）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">2、变量作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="toc-text">局部变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="toc-text">实例变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="toc-text">静态变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%B8%B8%E9%87%8F"><span class="toc-text">3、常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">4、变量的命名规范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BA%8C%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">1、二元运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E8%BF%90%E7%AE%97"><span class="toc-text">整数运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E8%BF%90%E7%AE%97"><span class="toc-text">浮点运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">关系运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%8F%96%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="toc-text">2、取模运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%B8%80%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">3、一元运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">4、逻辑运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">5、位运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">6、扩展运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5%E7%AC%A6"><span class="toc-text">7、字符串连接符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E4%B8%89%E7%9B%AE%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">8、三目条件运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">9、运算符优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85%E6%9C%BA%E5%88%B6"><span class="toc-text">包机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E9%97%AE%E9%A2%98%E5%8F%91%E7%8E%B0"><span class="toc-text">1、问题发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%8C%85%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">2、包的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E5%8C%85"><span class="toc-text">3、创建包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81import-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">4、import 关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaDoc"><span class="toc-text">JavaDoc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%94%9F%E6%88%90Doc"><span class="toc-text">2、命令行生成Doc</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-5 i,
+    .toc-level-5 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>平时我们编写代码，在代码量比较少的时候，我们还可以看懂自己写的，但是当项目结构一旦复杂起来，我们就需要用到一个注释了，注释就类似于我们上学时候写的笔记，我们看着笔记就知道自己写的什么东西了！在程序中也是如此。我们来看一下Java中的注释怎么写，看以下代码：</p>
+<pre><code class="java">/*
+ * @Description HelloWorld类
+ * @Author Diamond 狂神QQ:24736743
+ **/
+public class HelloWorld &#123;
+    /*
+    这是我们Java程序的主入口，
+    main方法也是程序的主线程。
+    */
+    public static void main(String[] args) &#123;
+        //输出HelloWorld！
+        System.out.println(&quot;Hello,World!&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>注释并不会被执行，是给我们写代码的人看的，书写注释是一个非常好的习惯，在很多大公司都是强制要求各位去进行编写注释！比如，我们的BAT三大巨头等等。。。</p>
+<p>Java中的注释有三种：</p>
+<p>单行注释：只能注释当前行，以//开始，直到行结束</p>
+<pre><code class="java">//输出HelloWorl
+</code></pre>
+<p>多行注释：注释一段文字，以/开始， /结束！</p>
+<pre><code class="java">/*
+    这是我们Java程序的主入口，
+    main方法也是程序的主线程。
+*/
+</code></pre>
+<p>文档注释：用于生产API文档，配合JavaDoc。</p>
+<p>【注】文档注释我们现在只作为了解，在学习JavaDoc时候我们会详细给大家说,目前知道有这样的注释就好。</p>
+<pre><code class="java">/*
+ * @Description HelloWorld类
+ * @Author Diamond 狂神QQ:24736743
+ **/
+</code></pre>
+<p>【建议】平时写代码一定要注意注释的规范性，一个好的程序员，一定是有非常良好的编码习惯的，我希望大家能够从小事开始锻炼自己的行为习惯！</p>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>每个人从出生开始就有一个名字，咋们生活中的所有事物也都有名字，这名字是谁规定呢？回答是：造物主，谁生产出来的谁规定名字，在我们的程序中也不例外。</p>
+<p>我们作为造物主，需要给所有的东西给上一个名字，比如我们的HelloWorld程序：</p>
+<p>HelloWorld是类名，也是我们的文件名。它前面的 public class是关键字，不过是搞Java那群人已经定义好的有特殊作用的，下面的每一个代码都有自己的意思和名字对吧，就是用来作区分！和我们的名字一样，拿来被叫或者称呼的，程序一切都源自于生活，一定要把学程序和生活中的一切联系起来，你会发现这一切都是息息相关的。<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170751.png"><br>我们来看看有哪些是Java自己定义好的<strong>关键字</strong>呢？<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170814.png"><br>这些看起来非常的多，但是随着我们以后的学习我们都会用到，所以完全不用担心自己 看不懂，这些被Java已经规定的关键字，我们自己就不能拿它当做名字了！</p>
+<p>Java 所有的组成部分都需要名字。类名、变量名以及方法名都被称为标识符。</p>
+<p>我们自己起名字有哪些要求呢？</p>
+<p>表示类名的标识符用大写字母开始。</p>
+<pre><code class="java">如：Man, GoodMan
+</code></pre>
+<p>表示方法和变量的标识符用小写字母开始，后面的描述性词以大写开始。</p>
+<pre><code class="java">如：eat(),eatFood()
+//驼峰命名法
+</code></pre>
+<h3 id="关于-Java-标识符，有以下几点需要注意："><a href="#关于-Java-标识符，有以下几点需要注意：" class="headerlink" title="关于 Java 标识符，有以下几点需要注意："></a>关于 Java 标识符，有以下几点需要注意：</h3><ul>
+<li>所有的标识符都应该以字母（A-Z 或者 a-z）,美元符（$）、或者下划线（_）开始</li>
+<li>首字符之后可以是字母（A-Z 或者 a-z）,美元符（$）、下划线（_）或数字的任何字符组合</li>
+<li>不能使用关键字作为变量名或方法名。</li>
+<li>标识符是大小写敏感的</li>
+<li>合法标识符举例：age、$salary、_value、__1_value</li>
+<li>非法标识符举例：123abc、-salary、#abc</li>
+</ul>
+<p>【 JAVA不采用通常语言使用的ASCII字符集，而是采用unicode这样的标准的国际字符集。因此，这里的字母的含义：可以表示英文、汉字等等。】</p>
+<p>【可以使用中文命名，但是一般不建议这样去使用，也不建议使用拼音，很Low】</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    String 王者荣耀 = &quot;最强王者&quot;;
+    System.out.println(王者荣耀);
+&#125;
+</code></pre>
+<p><strong>课堂扩展：</strong><a target="_blank" rel="noopener" href="https://www.cnblogs.com/happyday56/p/4135845.html">各种字符集和编码详解</a><br><strong>演示：</strong>合法标识符以及不合法标识符</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Java是一种<strong>强类型语言</strong>，每个变量都必须声明其类型。</p>
+<h3 id="1、强弱类型语言"><a href="#1、强弱类型语言" class="headerlink" title="1、强弱类型语言"></a>1、强弱类型语言</h3><p>说到强类型语言，那什么是强类型语言呢？</p>
+<p><strong>强类型语言</strong>也称为强类型定义语言。要求变量的使用要严格符合规定，所有变量都必须先定义后才能使用。</p>
+<p>Java、.NET、C++等都是强制类型定义的。也就是说，一旦一个变量被指定了某个数据类型，如果不经过转换，那么它就永远是这个数据类型了。</p>
+<p>安全性高，运行效率相对较慢，鱼和熊掌不可兼得！强类型定义语言在速度上可能略逊色于弱类型定义语言，但是强类型定义语言带来的严谨性能够有效的避免许多错误。</p>
+<p>与其相对应的是弱类型语言。</p>
+<p><strong>弱类型语言</strong>也称为弱类型定义语言。与强类型定义相反。像vb，php等就属于弱类型语言</p>
+<p>在VBScript中，可以将字符串‘12’和整数3进行连接得到字符串‘123’，也可以把它看成整数123，而不需要显示转换。是不是十分的随便，我们Java就不是这样的。</p>
+<p>​        但其实它们的类型没有改变，VB只是在判断出一个表达式含有不同类型的变量之后，自动在这些变量前加了一个clong（）或（int）（）这样的转换函数而已。能做到这一点其实是归功于VB的编译器的智能化而已，这并非是VB语言本身的长处或短处。</p>
+<p>好了，到这里，我们应该对强弱类型语言有了一定的了解！我们继续回到数据类型这个话题</p>
+<h3 id="2、数据类型"><a href="#2、数据类型" class="headerlink" title="2、数据类型"></a>2、数据类型</h3><p>Java的数据类型分为两大类：基本类型（primitive type）和引用类型 （reference type）<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301171823.png"><br>【注：引用数据类型的大小统一为4个字节，记录的是其引用对象的地址！】<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301171846.png"><br>如果你看到这一堆头疼的话，没关系，不用记，JDK中类型对应的包装类都帮忙写好了，我们需要时候可以直接看到！可以把以下代码拷贝进行查看结果：</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    // byte
+    System.out.println(&quot;基本类型：byte 二进制位数：&quot; + Byte.SIZE);
+    System.out.println(&quot;包装类：java.lang.Byte&quot;);
+    System.out.println(&quot;最小值：Byte.MIN_VALUE=&quot; + Byte.MIN_VALUE);
+    System.out.println(&quot;最大值：Byte.MAX_VALUE=&quot; + Byte.MAX_VALUE);
+    System.out.println();
+    
+    // short
+    System.out.println(&quot;基本类型：short 二进制位数：&quot; + Short.SIZE);
+    System.out.println(&quot;包装类：java.lang.Short&quot;);
+    System.out.println(&quot;最小值：Short.MIN_VALUE=&quot; + Short.MIN_VALUE);
+    System.out.println(&quot;最大值：Short.MAX_VALUE=&quot; + Short.MAX_VALUE);
+    System.out.println();
+    
+    // int
+    System.out.println(&quot;基本类型：int 二进制位数：&quot; + Integer.SIZE);
+    System.out.println(&quot;包装类：java.lang.Integer&quot;);
+    System.out.println(&quot;最小值：Integer.MIN_VALUE=&quot; + Integer.MIN_VALUE);
+    System.out.println(&quot;最大值：Integer.MAX_VALUE=&quot; + Integer.MAX_VALUE);
+    System.out.println();
+    
+    // long
+    System.out.println(&quot;基本类型：long 二进制位数：&quot; + Long.SIZE);
+    System.out.println(&quot;包装类：java.lang.Long&quot;);
+    System.out.println(&quot;最小值：Long.MIN_VALUE=&quot; + Long.MIN_VALUE);
+    System.out.println(&quot;最大值：Long.MAX_VALUE=&quot; + Long.MAX_VALUE);
+    System.out.println();
+    
+    // float
+    System.out.println(&quot;基本类型：float 二进制位数：&quot; + Float.SIZE);
+    System.out.println(&quot;包装类：java.lang.Float&quot;);
+    System.out.println(&quot;最小值：Float.MIN_VALUE=&quot; + Float.MIN_VALUE);
+    System.out.println(&quot;最大值：Float.MAX_VALUE=&quot; + Float.MAX_VALUE);
+    System.out.println();
+    
+    // double
+    System.out.println(&quot;基本类型：double 二进制位数：&quot; + Double.SIZE);
+    System.out.println(&quot;包装类：java.lang.Double&quot;);
+    System.out.println(&quot;最小值：Double.MIN_VALUE=&quot; + Double.MIN_VALUE);
+    System.out.println(&quot;最大值：Double.MAX_VALUE=&quot; + Double.MAX_VALUE);
+    System.out.println();
+    
+    // char
+    System.out.println(&quot;基本类型：char 二进制位数：&quot; + Character.SIZE);
+    System.out.println(&quot;包装类：java.lang.Character&quot;);
+    // 以数值形式而不是字符形式将Character.MIN_VALUE输出到控制台
+    System.out.println(&quot;最小值：Character.MIN_VALUE=&quot;
+    + (int) Character.MIN_VALUE);
+    // 以数值形式而不是字符形式将Character.MAX_VALUE输出到控制台
+    System.out.println(&quot;最大值：Character.MAX_VALUE=&quot;
+    + (int) Character.MAX_VALUE);
+&#125;
+</code></pre>
+<p>如果你是热爱学习的人，你现在应该非常想知道这字节到底是什么东西，所以我给大家科普一下相关知识：</p>
+<pre><code class="java">/*
+    位（bit）：是计算机 内部数据 储存的最小单位，11001100是一个八位二进制数。
+    字节（byte）：是计算机中 数据处理 的基本单位，习惯上用大写 B 来表示,
+        1B（byte,字节）= 8bit（位）
+    字符：是指计算机中使用的字母、数字、字和符号
+    
+    ASCIIS码：
+        1个英文字母（不分大小写）= 1个字节的空间
+        1个中文汉字 = 2个字节的空间
+        1个ASCII码 = 一个字节
+    UTF-8编码：
+        1个英文字符 = 1个字节
+        英文标点 = 1个字节
+        1个中文（含繁体） = 3个字节
+        中文标点 = 3个字节
+    Unicode编码：
+        1个英文字符 = 2个字节
+        英文标点 = 2个字节
+        1个中文（含繁体） = 2个字节
+        中文标点 = 2个字节
+    1bit表示1位，
+    1Byte表示一个字节 1B=8b。
+    1024B=1KB
+    1024KB=1M
+    1024M=1G.
+*/
+</code></pre>
+<p>那有人会问：电脑的32位和64位的区别是什么呢？</p>
+<pre><code class="java">/*
+    32位操作系统只可以使用32位的cpu，而64位的CPU既可以安装32位操作系统也可以安装64位操作系统。
+    寻址能力简单点说就是支持的内存大小能力，64位系统最多可以支达128 GB的内存，而32位系统最多只可以支持4G内存。
+    32位操作系统只可以安装使用32位架构设计的软件，而64位的CPU既可以安装使用32位软件也可以安装使用64位软件。
+    现在的电脑都是64位了！
+*/
+</code></pre>
+<p>【好了，回到正题，我们了解了这些知识后，我们自己定义一些<strong>变量</strong>来看！】</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    //整型
+    int i1=100;
+    //长整型
+    long i2=998877665544332211L;
+    //短整型
+    short i3=235;
+    //浮点型
+    double d1=3.5; //双精度
+    double d2=3;
+    float f1=(float)3.5; //单精度
+    float f2=3.5f; //单精度
+    
+    //布尔类型 boolean true真/false假
+    boolean isPass=true;
+    boolean isOk=false;
+    boolean isBig=5&gt;8;
+    if(isPass)&#123;
+        System.out.println(&quot;通过了&quot;);
+    &#125;else&#123;
+        System.out.println(&quot;未通过&quot;);
+    &#125;
+    //单字符
+    char f=&#39;女&#39;;
+    char m=&#39;男&#39;;
+&#125;
+</code></pre>
+<p>【Java语言的整型常数默认为int型，浮点数默认是Double】</p>
+<h3 id="3、整型拓展"><a href="#3、整型拓展" class="headerlink" title="3、整型拓展"></a>3、整型拓展</h3><p>在我们计算机中存在很多进制问题，十进制，八进制，十六进制等等的问题，他们怎么表示呢？</p>
+<pre><code class="java">十进制整数，如：99, -500, 0。
+
+八进制整数，要求以 0 开头，如：015。
+
+十六进制数，要求 0x 或 0X 开头，如：0x15 。
+</code></pre>
+<p>演示：</p>
+<pre><code class="java">//整型
+int i=10;
+int i2=010;
+int i3=0x10;
+System.out.println(i); //10
+System.out.println(i2); //8
+System.out.println(i3); //16
+</code></pre>
+<h3 id="4、浮点型拓展"><a href="#4、浮点型拓展" class="headerlink" title="4、浮点型拓展"></a>4、浮点型拓展</h3><p>【金融面试问：银行金融业务用什么类型表示？】</p>
+<p>浮点类型float, double的数据不适合在不容许舍入误差的金融计算领域。<br>如果需要进行不产生舍入误差的精确数字计算，需要使用BigDecimal类。</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    float f = 0.1f;
+    double d = 1.0/10;
+    System.out.println(f==d); //false
+    
+    float d1 = 2131231231f;
+    float d2 = d1+1;
+    if(d1==d2)&#123;
+        System.out.println(&quot;d1==d2&quot;);
+    &#125;else&#123;
+        System.out.println(&quot;d1!=d2&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>主要理由：</p>
+<p>由于字长有限，浮点数能够精确表示的数是有限的，因而也是离散的。浮点数一般都存在舍入误差，很多数字无法精确表示，其结果只能是接近，但不等于；二进制浮点数不能精确的表示0.1,0.01,0.001这样10的负次幂。并不是所有的小数都能可以精确的用二进制浮点数表示。</p>
+<p><strong>最好完全避免使用浮点数比较 !</strong></p>
+<p><strong>大数</strong>值：Java.math下面的两个有用的类：BigInteger和BigDecimal，这两个类可以处理任意长度的数值。BigInteger实现了任意精度的整数运算。BigDecimal实现了任意精度的浮点运算。</p>
+<p><strong>浮点数使用总结：</strong><br>    1. 默认是double<br>    2. 浮点数存在舍入误差，很多数字不能精确表示。如果需要进行不产生舍入误差的精确数字计算，需要使用BigDecimal类。<br>    3. 避免比较中使用浮点数</p>
+<h3 id="5、字符型拓展"><a href="#5、字符型拓展" class="headerlink" title="5、字符型拓展"></a>5、字符型拓展</h3><p>单引号用来表示字符常量。例如‘A’是一个字符，它与“A”是不同的，“A”表示一个字符串。</p>
+<p>char 类型用来表示在Unicode编码表中的字符。</p>
+<p>Unicode编码被设计用来处理各种语言的所有文字，它占2个字节，可允许有65536个字符；</p>
+<p>【科普：2字节=16位 2的16次方=65536，我们用的Excel原来就只有这么多行，并不是无限的】</p>
+<p>【代码演示：字符转int看结果】</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    char c1 = &#39;a&#39;;
+    char c2 = &#39;中&#39;;
+    System.out.println(c1);
+    System.out.println((int) c1); //97
+    System.out.println(c2);
+    System.out.println((int) c2); //20013
+&#125;
+</code></pre>
+<p>Unicode具有从0到65535之间的编码，他们通常用从’u0000’到’uFFFF’之间的十六进制值来表示（前缀为u表示Unicode）</p>
+<pre><code class="java">char c3 = &#39;\u0061&#39;;
+System.out.println(c3); //a
+</code></pre>
+<p>Java 语言中还允许使用转义字符 ‘’ 来将其后的字符转变为其它的含义，有如下常用转义字符：<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210303150328.png"><br>【以后我们学的String类，其实是字符序列(char sequence)。在这里给大家一个思考题】</p>
+<pre><code class="java">//代码1
+String sa=new String(&quot;Hello world&quot;);
+String sb=new String(&quot;Hello world&quot;);
+System.out.println(sa==sb); // false
+//代码2
+String sc=&quot;Hello world&quot;;
+String sd=&quot;Hello world&quot;;
+System.out.println(sc==sd); // true
+</code></pre>
+<p>大家可以先思考下为什么，之后我们学到对象的时候，会给大家进行内存级别的分析，那时候你会恍然大悟！</p>
+<h3 id="6、布尔型拓展"><a href="#6、布尔型拓展" class="headerlink" title="6、布尔型拓展"></a>6、布尔型拓展</h3><p>boolean类型（一位，不是一个字节），就是0|1</p>
+<p>boolean类型有两个值，true和false,不可以 0 或非 0 的整数替代 true 和 false ，这点和C语言不同。</p>
+<p>boolean 类型用来判断逻辑条件，一般用于程序流程控制。</p>
+<pre><code class="java">boolean flag = false;
+if(flag)&#123;
+    // true分支
+&#125;else&#123;
+    // false分支
+&#125;
+</code></pre>
+<p>【编码规范：很多新手程序员喜欢这样写】</p>
+<pre><code class="java">if (is == true &amp;&amp; un == false ) &#123;...&#125;
+</code></pre>
+<p>只有新手才那么写。对于一个熟练的人来说，应该用如下方式来表示：</p>
+<pre><code class="java">if ( is &amp;&amp; !un ) &#123;....&#125;
+</code></pre>
+<p>这点都不难理解吧。所以要习惯去掉所有的==fasle 和 ==true。Less is More！！ 代码要精简易读！</p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>由于Java是强类型语言，所以要进行有些运算的时候的，需要用到类型转换。<br>整型、实型（常量）、字符型数据可以混合运算。<br>运算中，不同类型的数据先转化为同一类型，然后进行运算。<br>转换从低级到高级（根据容量来看）。</p>
+<pre><code class="java">低 ------------------------------------&gt; 高
+
+byte,short,char—&gt; int —&gt; long—&gt; float —&gt; double
+</code></pre>
+<p>数据类型转换必须满足如下规则：</p>
+<ul>
+<li>不能对boolean类型进行类型转换。</li>
+<li>不能把对象类型转换成不相关类的对象。</li>
+<li>在把容量大的类型转换为容量小的类型时必须使用强制类型转换。</li>
+<li>转换过程中可能导致溢出或损失精度，例如：<pre><code class="java">int i =128;
+byte b = (byte)i;
+</code></pre>
+因为 byte 类型是 8 位，最大值为127，所以当 int 强制转换为 byte 类型时，值 128 时候就会导致溢出。</li>
+<li>浮点数到整数的转换是通过舍弃小数得到，而不是四舍五入，例如：<pre><code class="java">(int)23.7 == 23;
+(int)-45.89f == -45
+</code></pre>
+<h3 id="1、自动类型转换"><a href="#1、自动类型转换" class="headerlink" title="1、自动类型转换"></a>1、自动类型转换</h3>自动类型转换：容量小的数据类型可以自动转换为容量大的数据类型。</li>
+</ul>
+<p>例如: short数据类型的位数为16位，就可以自动转换位数为32的int类型，同样float数据类型的位数为32，可以自动转换为64位的double类型。</p>
+<p>【演示】</p>
+<pre><code class="java">public class ZiDongLeiZhuan&#123;
+    public static void main(String[] args)&#123;
+        char c1=&#39;a&#39;;//定义一个char类型
+        int i1 = c1;//char自动类型转换为int
+        System.out.println(&quot;char自动类型转换为int后的值等于&quot;+i1);
+        char c2 = &#39;A&#39;;//定义一个char类型
+        int i2 = c2+1;//char 类型和 int 类型计算
+        System.out.println(&quot;char类型和int计算后的值等于&quot;+i2);
+    &#125;
+&#125;
+</code></pre>
+<p>【<strong>解析</strong>：c1 的值为字符 <strong>a</strong> ，查 ASCII 码表可知对应的 int 类型值为 97， A 对应值为 65，所以<strong>i2=65+1=66</strong>。】</p>
+<h3 id="2、强制类型转换"><a href="#2、强制类型转换" class="headerlink" title="2、强制类型转换"></a>2、强制类型转换</h3><p>强制类型转换，又被称为造型，用于显式的转换一个数值的类型.</p>
+<p>在有可能丢失信息的情况下进行的转换是通过造型来完成的，但可能造成精度降低或溢出。</p>
+<p>强制类型转换的语法格式：**(type)var**，运算符“()”中的type表示将值var想要转换成的目标数据类型。 条件是转换的数据类型必须是兼容的。</p>
+<p>【演示】</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    double x = 3.14;
+    int nx = (int)x; //值为3
+    char c = &#39;a&#39;;
+    int d = c+1;
+    System.out.println(d); //98
+    System.out.println((char)d); //b
+&#125;
+</code></pre>
+<p>当将一种类型强制转换成另一种类型，而又超出了目标类型的表示范围，就会被截断成为一个完全不同的值，溢出。</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int x = 300;
+    byte bx = (byte)x; //值为44
+    System.out.println(bx);
+&#125;
+</code></pre>
+<h3 id="3、常见错误和问题"><a href="#3、常见错误和问题" class="headerlink" title="3、常见错误和问题"></a>3、常见错误和问题</h3><ol>
+<li>操作比较大的数时，要留意是否溢出，尤其是整数操作时；<pre><code class="java">public static void main(String[] args) &#123;
+int money = 1000000000; //10亿
+int years = 20;
+int total = money*years; //返回的是负数
+long total1 = money*years; //返回的仍然是负数。默认是int，因此结果会转成int值，再转成long。但是已经发生了数据丢失
+long total2 = money*((long)years); //先将一个因子变成long，整个表达式发生提升。全部用long来计算。
+System.out.println(total);
+System.out.println(total1);
+System.out.println(total2);
+&#125;
+</code></pre>
+</li>
+<li>L和l 的问题：<ul>
+<li>不要命名名字为l的变量</li>
+<li>long类型使用大写L不要用小写。</li>
+</ul>
+</li>
+</ol>
+<pre><code class="java">public static void main(String[] args) &#123;
+int l = 2;
+long a = 23451l;
+System.out.println(l+1); //3
+System.out.println(a); //23451
+&#125;
+</code></pre>
+<h3 id="4、JDK7扩展"><a href="#4、JDK7扩展" class="headerlink" title="4、JDK7扩展"></a>4、JDK7扩展</h3><p><strong>JDK7新特性: 二进制整数</strong><br>由于我们在开发中也经常使用二进制整数，因此JDK7为我们直接提供了二进制整数的类型。我们只要以：0b开头即可。</p>
+<pre><code class="java">int a = 0b0101：
+</code></pre>
+<p><strong>JDK7新特性：下划线分隔符</strong><br>在实际开发和学习中，如果遇到特别长的数字，读懂它令人头疼！JDK7为我们提供了下划线分隔符，可以按照自己的习惯进行分割。</p>
+<pre><code class="java">int b = 1_2234_5678;
+</code></pre>
+<p>我们很容易就知道这是1亿2234万5678啦！ 非常符合国人的习惯！</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int a = 0b0101;
+    int b = 1_2345_7893;
+    System.out.println(a); //5
+    System.out.println(b); //123457893
+&#125;
+</code></pre>
+<h2 id="变量，常量"><a href="#变量，常量" class="headerlink" title="变量，常量"></a>变量，常量</h2><h3 id="1、变量（variable）"><a href="#1、变量（variable）" class="headerlink" title="1、变量（variable）"></a>1、变量（variable）</h3><p>变量是什么：就是可以变化的量！<br>我们通过变量来操纵存储空间中的数据，变量就是指代这个存储空间！空间位置是确定的，但是里面放置什么值不确定！ 打个比方：<br>这就好像我们家里有一个大衣柜，里面有十分多的小格子，我们给格子上贴上标签，放衣服，放鞋子，放手表等等，此时我们知道了哪里该放什么，但是，我们并不知道里面到底放的是什么牌子的鞋子，是衣服还是裤子。那个标签就相当于我们的变量，我们给他起了个名字，但是里面要放什么需要我们自己去放。<br>Java是一种强类型语言，每个变量都必须声明其类型。<br>Java变量是程序中最基本的存储单元，其要素包括变量名，变量类型和作用域。<br>变量在使用前必须对其声明, 只有在变量声明以后，才能为其分配相应长度的存储单元，声明格式为：</p>
+<pre><code class="java">type varName [=value] [&#123;,varName[=value]&#125;] ；
+//数据类型 变量名 = 值；可以使用逗号隔开来声明多个同类型变量。
+</code></pre>
+<p>注意事项：</p>
+<ul>
+<li>每个变量都有类型，类型可以是基本类型，也可以是引用类型。</li>
+<li>变量名必须是合法的标识符。</li>
+<li>变量声明是一条完整的语句，因此每一个声明都必须以分号结束</li>
+</ul>
+<p>【演示】</p>
+<pre><code class="java">int a, b, c; // 声明三个int型整数：a、 b、c
+int d = 3, e = 4, f = 5; // 声明三个整数并赋予初值
+byte z = 22; // 声明并初始化 z
+String s = &quot;runoob&quot;; // 声明并初始化字符串 s
+double pi = 3.14159; // 声明了双精度浮点型变量 pi
+char x = &#39;x&#39;; // 声明变量 x 的值是字符 &#39;x&#39;。
+</code></pre>
+<p>【编码规范】<br>虽然可以在一行声明多个变量，但是不提倡这个风格，逐一声明每一个变量可以提高程序可读性。</p>
+<h3 id="2、变量作用域"><a href="#2、变量作用域" class="headerlink" title="2、变量作用域"></a>2、变量作用域</h3><p>变量根据作用域可划分为三种：</p>
+<ul>
+<li>类变量（静态变量： static variable）：独立于方法之外的变量，用 static 修饰。</li>
+<li>实例变量（成员变量：member variable）：独立于方法之外的变量，不过没有 static 修饰。</li>
+<li>局部变量（lacal variable）：类的方法中的变量。</li>
+</ul>
+<pre><code class="java">public class Variable&#123;
+    static int allClicks=0; // 类变量
+    String str=&quot;hello world&quot;; // 实例变量
+    public void method()&#123;
+        int i =0; // 局部变量
+    &#125;
+&#125;
+</code></pre>
+<h4 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h4><p>方法或语句块内部定义的变量。生命周期是从声明位置开始到”}”为止。</p>
+<p>在使用前必须先声明和初始化(赋初值)。</p>
+<p>局部变量没有默认值，所以局部变量被声明后，必须经过初始化，才可以使用。</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int i;
+    int j = i+5 ; // 编译出错，变量i还未被初始化
+    System.out.println(j);
+&#125;
+</code></pre>
+<p>修改为：</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int i=10;
+    int j = i+5 ;
+    System.out.println(j);
+&#125;
+</code></pre>
+<h4 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h4><p>方法外部、类的内部定义的变量。</p>
+<p>从属于对象，生命周期伴随对象始终。</p>
+<p>如果不自行初始化，他会自动初始化成该类型的默认初始值</p>
+<p>（数值型变量初始化成0或0.0，字符型变量的初始化值是16位的0，布尔型默认是false）</p>
+<pre><code class="java">public class Test &#123;
+    // 这个实例变量对子类可见
+    public String name;
+    // 私有变量，仅在该类可见
+    private double salary;
+    ...
+&#125;
+</code></pre>
+<h4 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h4><p>使用static定义。</p>
+<p>从属于类，生命周期伴随类始终，从类加载到卸载。</p>
+<p>(注：讲完内存分析后我们再深入！先放一放这个概念！)</p>
+<p>如果不自行初始化，他会自动初始化成该类型的默认初始值</p>
+<p>（数值型变量初始化成0或0.0，字符型变量的初始化值是16位的0，布尔型默认是false）</p>
+<pre><code class="java">public class Employee &#123;
+    //salary是静态的私有变量
+    private static double salary;
+    // DEPARTMENT是一个常量
+    public static final String DEPARTMENT = &quot;开发人员&quot;;
+    public static void main(String[] args)&#123;
+        salary = 10000;
+        System.out.println(DEPARTMENT+&quot;平均工资:&quot;+salary);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="3、常量"><a href="#3、常量" class="headerlink" title="3、常量"></a>3、常量</h3><p>常量(Constant)：初始化(initialize)后不能再改变值！不会变动的值。</p>
+<p>所谓常量可以理解成一种特殊的变量，它的值被设定后，在程序运行过程中不允许被改变。</p>
+<pre><code class="java">final 常量名=值;
+final double PI=3.14; final String LOVE=&quot;hello&quot;;
+</code></pre>
+<p>常量名一般使用大写字符。<br>程序中使用常量可以提高代码的可维护性。例如，在项目开发时，我们需要指定用户的性别，此时可以定义一个常量 SEX，赋值为 “男”，在需要指定用户性别的地方直接调用此常量即可，避免了由于用户的不规范赋值导致程序出错的情况。</p>
+<h3 id="4、变量的命名规范"><a href="#4、变量的命名规范" class="headerlink" title="4、变量的命名规范"></a>4、变量的命名规范</h3><ol>
+<li>所有变量、方法、类名：见名知意</li>
+<li>类成员变量：首字母小写和驼峰原则 : monthSalary</li>
+<li>局部变量：首字母小写和驼峰原则</li>
+<li>常量：大写字母和下划线：MAX_VALUE</li>
+<li>类名：首字母大写和驼峰原则: Man, GoodMan</li>
+<li>方法名：首字母小写和驼峰原则: run(), runRun()</li>
+</ol>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p><strong>运算符operator</strong></p>
+<p><strong>Java 语言支持如下运算符：</strong></p>
+<ul>
+<li>算术运算符: +，-，*，/，%，++，–</li>
+<li>赋值运算符 =</li>
+<li>关系运算符: &gt;，&lt;，&gt;=，&lt;=，==，!= instanceof</li>
+<li>逻辑运算符: &amp;&amp;，||，!</li>
+<li>位运算符: &amp;，|，^，~ ， &gt;&gt;，&lt;&lt;，&gt;&gt;&gt; (了解！！！)</li>
+<li>条件运算符 ？：</li>
+<li>扩展赋值运算符:+=，-=，*=，/=</li>
+</ul>
+<h3 id="1、二元运算符"><a href="#1、二元运算符" class="headerlink" title="1、二元运算符"></a>1、二元运算符</h3><p>两个操作数，来看看我们小时候的数学运算；</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int a = 10;
+    int b = 20;
+    int c = 25;
+    int d = 25;
+    System.out.println(&quot;a + b = &quot; + (a + b) );
+    System.out.println(&quot;a - b = &quot; + (a - b) );
+    System.out.println(&quot;a * b = &quot; + (a * b) );
+    System.out.println(&quot;b / a = &quot; + (b / a) );
+&#125;
+</code></pre>
+<h4 id="整数运算"><a href="#整数运算" class="headerlink" title="整数运算"></a>整数运算</h4><p>如果两个操作数有一个为Long, 则结果也为long</p>
+<p>没有long时，结果为int。即使操作数全为shot,byte，结果也是int.</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    long a = 1231321311231231L;
+    int b = 1213;
+    short c = 10;
+    byte d = 8;
+    System.out.println((a+b+c+d)); //Long类型
+    System.out.println((b + c + d));//Int类型
+    System.out.println((c + d));//Int类型
+&#125;
+</code></pre>
+<h4 id="浮点运算"><a href="#浮点运算" class="headerlink" title="浮点运算"></a>浮点运算</h4><p>如果两个操作数有一个为double, 则结果为double.</p>
+<p>只有两个操作数都是float, 则结果才为float.</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    float a = 3.14565F;
+    double b = 3.194546464;
+    float c = 1.3123123F;
+    System.out.println(a+b); //double类型
+    System.out.println(b+c); //double类型
+    System.out.println(a+c); //float类型
+&#125;
+</code></pre>
+<h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><p>返回布尔值！<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317113435.png"></p>
+<h3 id="2、取模运算"><a href="#2、取模运算" class="headerlink" title="2、取模运算"></a>2、取模运算</h3><p>就是我们小学的取余； ==5%3 余 2==</p>
+<p>其操作数可以为浮点数,一般使用整数。如：5.9%3.9=2.000000004</p>
+<p><strong>要点：</strong><br>负数%负数＝负数；<br>负数%正数＝负数；<br>正数%负数＝正数；</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    System.out.println(9 % 4); //1
+    System.out.println(-9 % -4); //-1
+    System.out.println(-10 % 4); //-2
+    System.out.println(9 % -4); //1
+&#125;
+</code></pre>
+<p>【注：一般都是正整数运算，进行结果的判断！】</p>
+<h3 id="3、一元运算符"><a href="#3、一元运算符" class="headerlink" title="3、一元运算符"></a>3、一元运算符</h3><p><strong>自增（++）自减（–）运算符</strong>是一种特殊的算术运算符，在算术运算符中需要两个操作数来进行运算，而自增自减运算符是一个操作数，分为前缀和后缀两种。</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int a = 3;
+    int b = a++; //执行完后,b=3。先给b赋值，再自增。
+    int c = ++a; //执行完后,c=5。先自增,再给b赋值
+&#125;
+</code></pre>
+<p><strong>注意：java中的乘幂处理</strong></p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int a = 3^2; //java中不能这么处理， ^是异或符号。
+    double b = Math.pow(3, 2);
+&#125;
+</code></pre>
+<p>Math类提供了很多科学和工程计算需要的方法和常数。特殊的运算都需要运用到方法!</p>
+<h3 id="4、逻辑运算符"><a href="#4、逻辑运算符" class="headerlink" title="4、逻辑运算符"></a>4、逻辑运算符</h3><p>逻辑与：&amp;&amp;和&amp;，逻辑或：||和|，逻辑非：！。<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114155.png"><br>【演示】</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    boolean a = true;
+    boolean b = false;
+    System.out.println(&quot;a &amp;&amp; b = &quot; + (a&amp;&amp;b));
+    System.out.println(&quot;a || b = &quot; + (a||b) );
+    System.out.println(&quot;!(a &amp;&amp; b) = &quot; + !(a &amp;&amp; b));
+&#125;
+</code></pre>
+<p>逻辑与和逻辑或采用<strong>短路的方式</strong>。从左到右计算，如果确定值则不会再计算下去。在两个操作数都为true时，结果才为true，但是当得到第一个操作为false时，其结果就必定是false，这时候就不会再判断第二个操作了。</p>
+<p>逻辑与只要有一个为false, 则直接返回false;</p>
+<p>逻辑或只要有一个为true, 则直接返回true;</p>
+<p>【演示】</p>
+<pre><code class="java">public static void main(String[] args)&#123;
+    int a = 5;//定义一个变量；
+    boolean b = (a&lt;4)&amp;&amp;(a++&lt;10);
+    System.out.println(&quot;使用短路逻辑运算符的结果为&quot;+b);
+    System.out.println(&quot;a的结果为&quot;+a);
+&#125;
+</code></pre>
+<p><strong>解析：</strong> 该程序使用到了短路逻辑运算符(&amp;&amp;)，首先判断 a&lt;4 的结果为 false，则 b 的结果必定是 false，所以不再执行第二个操作 a++&lt;10 的判断，所以 a 的值为 5。</p>
+<h3 id="5、位运算符"><a href="#5、位运算符" class="headerlink" title="5、位运算符"></a>5、位运算符</h3><p>Java定义了位运算符，应用于整数类型(int)，长整型(long)，短整型(short)，字符型(char)，和字节型(byte)等类型。位运算符作用在所有的位上，并且按位运算。</p>
+<pre><code class="java">A = 0011 1100
+B = 0000 1101
+-----------------
+A&amp;b = 0000 1100
+A | B = 0011 1101
+A ^ B = 0011 0001
+~A= 1100 0011
+</code></pre>
+<p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114448.png"><br>右移一位相当于除2取商。<br>左移一位相当于乘2。</p>
+<p>【常见面试题：int a=2*8怎样运算效率最快？】<br><strong>解析：</strong></p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    System.out.println(2 &lt;&lt; 3);
+&#125;
+</code></pre>
+<p>用移位运算 int a=2&lt;&lt;3;<br>a就是2乘以8 最后结果是16 这是最省内存 最有效率的方法</p>
+<p>这个方法确实高效率的。我来解释一下：<br>2的二进制是10 在32位存储器里面是0000 0000 0000 0010<br>左移三位后变成 0000 0000 0001 0000 也就是16</p>
+<p>解释一下，在系统中运算是以二进制的形式进行的。相比来说俩个二进制数相乘运算比移位运算慢一些。</p>
+<p>位操作是程序设计中对位模式按位或二进制数的一元和二元操作。 在许多古老的微处理器上， 位运算比加减运算略快， 通常位运算比乘除法运算要快很多。 在现代架构中， 情况并非如此:位运算的运算速度通常与加法运算相同(仍然快于乘法运算). <strong>详细的需要了解计算机的组成原理！</strong></p>
+<h3 id="6、扩展运算符"><a href="#6、扩展运算符" class="headerlink" title="6、扩展运算符"></a>6、扩展运算符</h3><p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114633.png"></p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int a=10;
+    int b=20;
+    a+=b; // a = a + b
+    System.out.println(a+&quot;:&quot;+b);
+&#125;
+</code></pre>
+<h3 id="7、字符串连接符"><a href="#7、字符串连接符" class="headerlink" title="7、字符串连接符"></a>7、字符串连接符</h3><p>“+” 运算符两侧的操作数中<strong>只要有一个是字符串</strong>(String)类型，系统会自动将另一个操作数转换为字符串然后再进行连接。</p>
+<pre><code class="java">//字符串
+String s1=&quot;Hello 中文!&quot;;
+String s2=1+&quot;&quot;; //转换成String
+//int
+int c = 12;
+System.out.println(&quot;c=&quot; + c);
+</code></pre>
+<h3 id="8、三目条件运算符"><a href="#8、三目条件运算符" class="headerlink" title="8、三目条件运算符"></a>8、三目条件运算符</h3><p>三目条件运算符，语法格式：</p>
+<pre><code class="java">x ? y : z
+</code></pre>
+<p>其中x为boolean类型表达式，先计算x的值，若为true，则整个三目运算的结果为表达式y的值，否则整个运算结果为表达式z的值。</p>
+<p>【演示】</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int score = 80;
+    String type = score &lt; 60 ? &quot;不及格&quot; : &quot;及格&quot;;
+    System.out.println(&quot;type= &quot; + type);
+&#125;
+</code></pre>
+<p>三元运算符在真实开发中十分的常见，大家可以多练习使用，之后我们会讲解分支语句，可以利用三元运算符做到更加精简代码！便于理解！</p>
+<h3 id="9、运算符优先级"><a href="#9、运算符优先级" class="headerlink" title="9、运算符优先级"></a>9、运算符优先级</h3><p>我们小学都学过：先加减，后乘除，所以优先级我们并不陌生。</p>
+<p>当多个运算符出现在一个表达式中，谁先谁后呢？这就涉及到运算符的优先级别的问题。在一个多运算符的表达式中，运算符优先级不同会导致最后得出的结果差别甚大。</p>
+<p>下表中具有最高优先级的运算符在的表的最上面，最低优先级的在表的底部。<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114839.png"><br>大家不需要去刻意的记住，表达式里面优先使用小括号来组织！！方便理解和使用，不建议写非常冗余的代码运算！</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    boolean flag = 1&lt;4*5&amp;&amp;122&gt;3||&#39;q&#39;+3&lt;5;
+    System.out.println(flag);
+&#125;
+</code></pre>
+<h2 id="包机制"><a href="#包机制" class="headerlink" title="包机制"></a>包机制</h2><h3 id="1、问题发现"><a href="#1、问题发现" class="headerlink" title="1、问题发现"></a>1、问题发现</h3><p>存在这样一个问题：当定义了多个类的时候，可能会发生类名的重复问题。</p>
+<p>解决方式：在java中采用包机制处理开发者定义的类名冲突问题。</p>
+<p>就好比我们平时的用电脑，一个文件夹下不能存在同名的文件，我们要是有这样的需求，但是又不想换名字，我们就可以考虑使用新建一个文件夹来存放！在我们的Java中也是这样的。</p>
+<p>【演示：重名文件】</p>
+<p>还有一个问题：我们平时在IDE中可以跑的文件，用命令行就会报错；</p>
+<p>【演示：HelloWorld！IDE和命令行】</p>
+<p>这是为什么呢？<br>罪魁祸首正是代码第一行：package com.kuang.demo01;</p>
+<p>这就是Java中的包机制，使用package com.kuang.demo01;</p>
+<p>就要求此份.java文件必须保存在这样一个目录下，这样Java解释器才能找到它。 在IDEA中能正确运行，你可以去Windows下的工程中查看，HelloWorld这个文件必是在这样的目录结构下的。</p>
+<h3 id="2、包的作用"><a href="#2、包的作用" class="headerlink" title="2、包的作用"></a>2、包的作用</h3><p>为了更好地组织类，Java 提供了包机制，用于区别类名的命名空间。</p>
+<p><strong>包的作用：</strong></p>
+<p>1、把功能相似或相关的类或接口组织在同一个包中，方便类的查找和使用。</p>
+<p>2、如同文件夹一样，包也采用了树形目录的存储方式。同一个包中的类名字是不同的，不同的包中的类的名字是可以相同的，当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。因此，包可以避免名字冲突。</p>
+<p>3、包也限定了访问权限，拥有包访问权限的类才能访问某个包中的类。</p>
+<p>Java 使用包（package）这种机制是为了防止命名冲突，访问控制，提供搜索和定位类（class）、接口、枚举（enumerations）和注释（annotation）等。</p>
+<p>包语句的语法格式为：</p>
+<pre><code class="java">package pkg1[．pkg2[．pkg3…]];
+</code></pre>
+<p>例如,一个Something.java 文件它的内容:</p>
+<pre><code class="java">package net.java.util;
+public class Something&#123;
+    ...
+&#125;
+</code></pre>
+<p>那么它的路径应该是 net/java/util/Something.java 这样保存的。 package(包) 的作用是把不同的java 程序分类保存，更方便的被其他 java 程序调用。</p>
+<p>一个包（package）可以定义为一组相互联系的类型（类、接口、枚举和注释），为这些类型提供访问保护和命名空间管理的功能。</p>
+<p>以下是一些 Java 中的包：</p>
+<ul>
+<li>java.lang-打包基础的类</li>
+<li>java.io-包含输入输出功能的函数</li>
+</ul>
+<p>开发者可以自己把一组类和接口等打包，并定义自己的包。而且在实际开发中这样做是值得提倡的，当你自己完成类的实现之后，将相关的类分组，可以让其他的编程者更容易地确定哪些类、接口、枚举和注释等是相关的。</p>
+<p>由于包创建了新的命名空间（namespace），所以不会跟其他包中的任何名字产生命名冲突。使用包这种机制，更容易实现访问控制，并且让定位相关类更加简单。</p>
+<h3 id="3、创建包"><a href="#3、创建包" class="headerlink" title="3、创建包"></a>3、创建包</h3><p>创建包的时候，你需要为这个包取一个合适的名字。之后，如果其他的一个源文件包含了这个包提供的类、接口、枚举或者注释类型的时候，都必须将这个包的声明放在这个源文件的开头。</p>
+<p>包声明应该在源文件的第一行，每个源文件只能有一个包声明，这个文件中的每个类型都应用于它。</p>
+<p>如果一个源文件中没有使用包声明，那么其中的类，函数，枚举，注释等将被放在一个无名的包（unnamed package）中。</p>
+<p>一般利用公司域名倒置作为报名；</p>
+<p>例子：</p>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 包名：com.baidu.www</p>
+<p>bbs.baidu.com 包名：com.baidu.bbs</p>
+<p>blog.baidu.com 包名：com.baidu.blog</p>
+<p>我们平时也可以按照自己的公司域名去写，比如：com.kuangstudy.utils</p>
+<h3 id="4、import-关键字"><a href="#4、import-关键字" class="headerlink" title="4、import 关键字"></a>4、import 关键字</h3><p>为了能够使用某一个包的成员，我们需要在 Java 程序中明确导入该包。使用 “import” 语句可完成此功能。</p>
+<p>在 java 源文件中 import 语句应位于 package 语句之后，所有类的定义之前，可以没有，也可以有多条，其语法格式为：</p>
+<pre><code class="java">import package1[.package2…].(classname|*);
+</code></pre>
+<p>如果在一个包中，一个类想要使用本包中的另一个类，那么该包名可以省略。</p>
+<p>要是要用到其他包下的类，就必须要先导包！</p>
+<p>如果两个类重名，需要导入对应的包，否则就需要写出完整地址：</p>
+<pre><code class="java">com.kuang.dao.Hello hello = new com.kuang.dao.Hello()
+</code></pre>
+<p>用 import 关键字引入，使用通配符 “*” , 导入io包下的所有类！</p>
+<pre><code class="java">import java.io.*;
+</code></pre>
+<p>【不建议这样使用，因为会全局扫描，影响速度！】</p>
+<p>使用 import 关键字引入指定类:</p>
+<pre><code class="java">import com.kuang.Hello;
+</code></pre>
+<p>【注意】类文件中可以包含任意数量的 import 声明。import 声明必须在包声明之后，类声明之前。</p>
+<p>【编码规范：推荐参考阿里巴巴开发手册编程规范】</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://files-cdn.cnblogs.com/files/han-1034683568/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%E7%BB%88%E6%9E%81%E7%89%88v1.3.0.pdf">阿里巴巴开发手册</a></p>
+<h2 id="JavaDoc"><a href="#JavaDoc" class="headerlink" title="JavaDoc"></a>JavaDoc</h2><h3 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h3><p>JavaDoc是一种将注释生成HTML文档的技术，生成的HTML文档类似于Java的API，易读且清晰明了。在简略介绍JavaDoc写法之后，再看一下在Intellij Idea 中如何将代码中的注释生成HTML文档。</p>
+<p>javadoc是Sun公司提供的一个技术，它从程序源代码中抽取类、方法、成员等注释形成一个和源代码配套的API帮助文档。也就是说，只要在编写程序时以一套特定的标签作注释，在程序编写完成后，通过Javadoc就可以同时形成程序的开发文档了。javadoc命令是用来生成自己API文档的，使用方式：使用命令行在目标文件所在目录输入javadoc +文件名.java。</p>
+<p><strong>先看一段样例代码：</strong></p>
+<pre><code class="java">/** 这是一个Javadoc测试程序
+* @author Kuangshen
+* @version 1.0
+* @since 1.5
+* */
+public class HelloWorld &#123;
+    public String name;
+    /**
+    * @param name 姓名
+    * @return 返回name姓名
+    * @throws Exception 无异常抛出
+    * */
+    public String function(String name) throws Exception&#123;
+        return name;
+    &#125;
+&#125;
+</code></pre>
+<p>稍微解释一下：<br>以 /* 开始，以 / 结束。</p>
+<p>@author 作者名<br>@version 版本号<br>@since 指明需要最早使用的jdk版本<br>@param 参数名<br>@return 返回值情况<br>@throws 异常抛出情况</p>
+<h3 id="2、命令行生成Doc"><a href="#2、命令行生成Doc" class="headerlink" title="2、命令行生成Doc"></a>2、命令行生成Doc</h3><p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317120009.png"></p>
+<pre><code class="java">-encoding UTF-8 -charset UTF-8
+//解决GBK乱码问题，在中间添加编码设置
+</code></pre>
+<p>【演示：生成并查看文档】</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021 Copyright QuYi-Stack
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>1、Java入门 | QuYi-Stack</title>
+  <meta name="keywords" content=" java ">
+  <meta name="description" content="1、Java入门 | QuYi-Stack">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="注释平时我们编写代码，在代码量比较少的时候，我们还可以看懂自己写的，但是当项目结构一旦复杂起来，我们就需要用到一个注释了，注释就类似于我们上学时候写的笔记，我们看着笔记就知道自己写的什么东西了！在程序中也是如此。我们来看一下Java中的注释怎么写，看以下代码： &#x2F;*  * @Description HelloWorld类  * @Author Diamond 狂神QQ:24736743  **&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2、基础语法">
+<meta property="og:url" content="https://quyi-stack.github.io/2021/03/17/2%E3%80%81%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="QuYi-Stack">
+<meta property="og:description" content="注释平时我们编写代码，在代码量比较少的时候，我们还可以看懂自己写的，但是当项目结构一旦复杂起来，我们就需要用到一个注释了，注释就类似于我们上学时候写的笔记，我们看着笔记就知道自己写的什么东西了！在程序中也是如此。我们来看一下Java中的注释怎么写，看以下代码： &#x2F;*  * @Description HelloWorld类  * @Author Diamond 狂神QQ:24736743  **&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170751.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170814.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301171823.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301171846.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210303150328.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317113435.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114155.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114448.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114633.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317114839.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317120009.png">
+<meta property="article:published_time" content="2021-03-17T04:01:38.000Z">
+<meta property="article:modified_time" content="2021-03-17T04:17:58.290Z">
+<meta property="article:author" content="Qu Yi">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301170751.png">
+
+
+<link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="https://avatars.githubusercontent.com/u/80147732?s=460&amp;u=23be5c16d10232c0df046f708c7da6a2c01b2913&amp;v=4"/>
+</a>
+<div class="author">
+    <span>Qu Yi</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/quyi-stack/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:Earon106@gmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=66773056&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(2)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->JavaSE">
+                                        
+                                        JavaSE
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="2">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/17/2%E3%80%81%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="2、基础语法">2、基础语法</span>
+            <span class="post-date" title="2021-03-17 12:01:38">2021/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/16/1%E3%80%81Java%E5%85%A5%E9%97%A8/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="1、Java入门">1、Java入门</span>
+            <span class="post-date" title="2021-03-16 16:08:50">2021/03/16</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-1、Java入门" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">1、Java入门</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;JavaSE">JavaSE</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">java</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-03-17 11:11:04'>2021-03-16 16:08</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E4%B8%80%E4%B8%AA%E5%B8%9D%E5%9B%BD%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="toc-text">Java : 一个帝国的诞生</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E5%B8%9D%E5%9B%BD%E7%9A%84%E7%BB%9F%E6%B2%BB"><span class="toc-text">C语言帝国的统治</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E6%8A%97"><span class="toc-text">反抗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E9%B8%A3%E6%83%8A%E4%BA%BA"><span class="toc-text">一鸣惊人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E6%8B%93%E7%96%86%E5%9C%9F"><span class="toc-text">开拓疆土</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%9D%E5%9B%BD%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="toc-text">帝国的诞生</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E7%9A%84%E7%89%B9%E6%80%A7%E5%92%8C%E4%BC%98%E5%8A%BF"><span class="toc-text">Java的特性和优势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%80%A7"><span class="toc-text">简单性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-text">面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%80%A7"><span class="toc-text">可移植性(跨平台性)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD"><span class="toc-text">高性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F"><span class="toc-text">分布式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%80%A7"><span class="toc-text">动态性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-text">安全性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%A5%E5%A3%AE%E6%80%A7"><span class="toc-text">健壮性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA%E8%AF%AD%E8%A8%80%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E5%A4%9F%E6%88%90%E5%8A%9F"><span class="toc-text">JAVA语言为什么能够成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E4%B8%89%E5%A4%A7%E7%89%88%E6%9C%AC"><span class="toc-text">Java三大版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA%E6%9C%80%E5%A4%A7%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-text">JAVA最大的特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JAVA%E7%9A%84%E4%B8%89%E5%A4%A7%E7%89%88%E6%9C%AC%EF%BC%9A"><span class="toc-text">JAVA的三大版本：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-SE%EF%BC%9A"><span class="toc-text">Java SE：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDK-%E5%92%8C-JRE"><span class="toc-text">JDK 和 JRE</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JDK"><span class="toc-text">JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JRE"><span class="toc-text">JRE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB%E5%92%8C%E8%81%94%E7%B3%BB%EF%BC%9A"><span class="toc-text">区别和联系：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E8%AF%86JVM"><span class="toc-text">初识JVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">Java开发环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HelloWorld"><span class="toc-text">HelloWorld</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99Java%E7%A8%8B%E5%BA%8F%E6%97%B6%EF%BC%8C%E5%BA%94%E6%B3%A8%E6%84%8F%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%82%B9%EF%BC%9A"><span class="toc-text">编写Java程序时，应注意以下几点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-text">JAVA程序运行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%BC%96%E8%AF%91"><span class="toc-text">第一步：编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E8%BF%90%E8%A1%8C"><span class="toc-text">第二步：运行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85IDEA"><span class="toc-text">安装IDEA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA%EF%BC%9A%E6%B5%8F%E8%A7%88%E5%B9%B6%E4%BB%8B%E7%BB%8Djetbrains%E7%9A%84%E5%AE%98%E7%BD%91"><span class="toc-text">演示：浏览并介绍jetbrains的官网</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-5 i,
+    .toc-level-5 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java-一个帝国的诞生"><a href="#Java-一个帝国的诞生" class="headerlink" title="Java : 一个帝国的诞生"></a>Java : 一个帝国的诞生</h2><h3 id="C语言帝国的统治"><a href="#C语言帝国的统治" class="headerlink" title="C语言帝国的统治"></a>C语言帝国的统治</h3><p>现在是公元1995年， C语言帝国已经统治了我们20多年， 实在是太久了。<br>1972年， 随着C语言的诞生和Unix的问世， 帝国迅速建立统治， 从北美到欧洲， 从欧洲到亚洲， 无数程序员臣服在他的脚下。<br>帝国给我们提供了极好的福利：贴近硬件， 运行极快， 效率极高。<br>使用这些福利， 程序员们用C 开发了很多系统级软件，操作系统， 编译器， 数据库，网络系统…..<br>但是帝国也给我们安上了两个沉重的枷锁： 指针和内存管理<br>虽然指针无比强大， 能直接操作内存， 但是帝国却没有给我们工具去做越界的检查， 导致很多新手程序员轻易犯错。<br>至于内存管理， 帝国更完全是放任的态度： 你自己分配的空间， 自己去释放 ！<br>更要命的是这些问题在编译期发现不了， 在运行时才会突然暴露， 常常让我们手忙脚乱， 昏天黑地去调试。<br>我们的大量时间和宝贵的精力都被浪费在小心翼翼的处理指针和内存分配上。<br>每个程序员都被这两个东西搞的焦头烂额！帝国宣称的可移植性骗了我们，他宣称我们在一个机器上写的程序， 只要在另外一个机器上编译就可以了， 实际上不是这样。<br>他要求我们尽量用标准的C函数库。其次，如果遇到了一些针对特定平台的调用， 需要对每个平台都得写一份 ！ 有一点点小错误，都会导致编译失败。<br>1982年，帝国又推出了一门新的语言C++, 添加了面向对象的功能，兼容C, 有静态类型检查， 性能也很好。<br>但是这门新的语言实在是太复杂了， 复杂到比我聪明的多的人都没有办法完全掌握这门语言，它的很多特性复杂的让人吃惊。<br>C++在图形领域和游戏上取得了一些成功， 但是我一直学不好它。</p>
+<h3 id="反抗"><a href="#反抗" class="headerlink" title="反抗"></a>反抗</h3><p>我决定反抗这个庞大的帝国， 我偷偷的带领着一帮志同道合的兄弟离开了，我们要新建一块清新自由的领地。<br>为了吸引更多的程序员加入我们， 我们要建立一个新的语言，这个语言应该有这样的特性：语法有点像C ， 这样大家容易接受，没有C语言那样的指针，再也不要考虑内存管理了， 实在受不了了，真正的可移植性， 编写一次， 到处运行，面向对象，类型安全<br>还有，我们要提供一套高质量的类库， 随语言发行。<br>我想把这个语言命名为C++– , 即C++减减， 因为我想在C++的基础上改进，把它简化。<br>后来发现不行， 设计理念差别太大。<br>干脆重启炉灶。<br>我看到门口的一棵橡树， 就把这个语言叫做Oak。<br>但是后来发布的时候， 发现Oak已经被别人用了， 我们讨论很久， 最终决定把这门新的语言叫做Java。<br>为了实现跨平台， 我们在操作系统和应用程序之间增加了一个抽象层： Java 虚拟机<br>用Java写的程序都跑在虚拟机上， 除非个别情况， 都不用看到操作系统。</p>
+<h3 id="一鸣惊人"><a href="#一鸣惊人" class="headerlink" title="一鸣惊人"></a>一鸣惊人</h3><p>为了吸引更多的人加入我们的新领地， 我们决定搞一个演示， 向大家展示Java 的能力。<br>出世未久的Java其实还远不完善。 搞点什么好呢？<br>我们把眼光盯上了刚刚兴起的互联网， 1995年的网页简单而粗糙， 缺乏互动性。 于是我们在浏览器上弄了个小插件， 把java 运行环境放了上去。然后在上面开发了一个图形界面的程序(Applet)， 让它看起来美轮美奂， 震撼人心。<br>每一个看到他的程序员都会发出“Wow”的惊叹 ！为之倾倒。<br>Java 活了！<br>通过Applet , 无数的程序员看到了Java这门语言，了解了这门语言特性以后， 很多无法忍受C帝国暴政的程序员， 很快加入了我们， 我们的领地开始迅速扩大。<br>连C语言帝国里的一些商业巨头也纷纷来和我们合作， 其中就包括Oracle , 微软这样的巨头 ，微软的头领Bill Gates还说 ：这是迄今为止设计的最好的语言！<br>但是Bill Gates非常的不地道， 买了我们的Java 许可以后，虽然在自家的浏览器上也支持Applet, 但是他们却偷偷的试图修改Java , 想把Java绑死在自家的操作系统上赚钱， Java会变的不可移植。<br>这是我们难于忍受的， 我们和微软发起了一场旷日持久的游击战争， 逼着微软退出了Java领域， 开发了自己的.NET , 这是后话。</p>
+<h3 id="开拓疆土"><a href="#开拓疆土" class="headerlink" title="开拓疆土"></a>开拓疆土</h3><p>从1995年到1997年，我们依靠 Java 不断的攻城略地， 开拓疆土，我们王国的子民不断增加， 达到了几十万之众， 已经是一个不可忽视的力量了。<br>但是大家发现， Java除了Applet, 以及一些小程序之外， 似乎干不了别的事情。<br>C帝国的人还不断的嘲笑我们慢， 像个玩具。<br>到了1998年， 经过密谋， 我们Java 王国决定派出三只军队向外扩展：<br>    Java 2 标准版(J2SE)： 去占领桌面<br>    Java 2 移动版(J2ME)： 去占领手机<br>    Java 2 企业版(J2EE)： 去占领服务器<br>其中的两只大军很快败下阵来。<br>J2SE 的首领发现， 开发桌面应用的程序员根本接受不了Java， 虽然我们有做的很优雅的Swing 可以开发界面， 但是开发出的界面非常难看， 和原生的桌面差距很大。 尤其是为了运行程序还得安装一个虚拟机， 大家都受不了。<br>J2ME也是， 一直不受待见， 当然更重要的原因是乔布斯还没有重新发明手机， 移动互联网还没有启<br>动。失之东隅，收之桑榆， J2EE赶上了好时候， 互联网大发展， 大家忽然发现， Java简直是为写服务器端程序所发明的！<br>强大， 健壮， 安全， 简单， 跨平台 ！<br>在J2EE规范的指导下， 特别适合团队开发复杂的大型项目。<br>我们授权BEA公司第一个使用J2EE许可证， 推出了Weblogic, 凭借其集群功能， 第一次展示了复杂应用的可扩展性和高可用性。 【三高：高可用，高性能，高并发】<br>这个后来被称为中间件的东西把程序员从事务管理，安全管理，权限管理等方面解放出来， 让他们专注于业务开发。 这立刻捕获了大量程序员的心。<br>很快Java 王国的子民就达到数百万之众。<br>榜样的力量是无穷的， 很快其他商业巨头也纷纷入场， 尤其是IBM，在Java 上疯狂投入，不仅开发了自己的应用服务器 Websphere, 还推出了Eclipse这个极具魅力的开源开发平台。<br>当然IBM利用java 获得了非常可观的效益， 软件+硬件+服务 三驾马车滚滚向前， 把IBM推向了一个新<br>的高峰。</p>
+<h3 id="帝国的诞生"><a href="#帝国的诞生" class="headerlink" title="帝国的诞生"></a>帝国的诞生</h3><p>大家也没有想到，除了商业巨头以外， 程序员们也会对Java王国 这么热爱， 他们基于Java 开发了巨多的平台，系统，工具，例如：<br>    构建工具: Ant，Maven, Jekins<br>    应用服务器： Tomcat，Jetty, Jboss, Websphere, weblogic<br>    Web开发： Struts,Spring,Hibernate, myBatis<br>    开发工具： Eclipse, Netbean,intellij idea, Jbuilder<br>。。。。等等等等。。。。<br>并且绝大部分都是开源的 ！<br>微软眼睁睁的看着服务器端的市场被Java 王国占据， 岂能善罢甘休？ 他们赶紧推出.NET来对抗， 但我们已经不在乎了， 因为他的系统是封闭的，所有的软件都是自家的：<br>开发工具是Visual Studio, 应用服务器是IIS, 数据库是SQL Server，只要你用.NET，基本上就会绑定微<br>软。<br>另外他们的系统只能运行在Windows服务器上， 这个服务器在高端市场的占有率实在是太低了。<br>2005年底， 一个新的王国突然崛起， 他们号称开发效率比java 快5-10倍， 由此吸引了大批程序员前往加盟。<br>这个新的王国叫做Ruby on Rails, 它结合了PHP体系的优点（快速开发）和Java体系的优点（程序规<br>整）， 特别适合快速的开发简单的Web网站。<br>虽然发展很快， 但没有对Java 王国产生实质性的威胁， 使用Ruby on Rails搭建大型商业系统的还很<br>少。<br>除了Ruby on Rails ，还有PHP， Python ， 都适合快速开发不太复杂的Web系统。 但是关键的，复杂<br>的商业系统开发还是Java 王国的统治之下。 所以我们和他们相安无事。<br>2006年， 一只叫Hadoop的军队让Java王国入侵了大数据领域， 由于使用Java 语言， 绝大多数程序员在理解了Map/Reduce , 分布式文件系统在Hadoop中的实现以后， 很快就能编写处理处理海量数据的程序， Java 王国的领地得到了极大的扩展。<br>2008年， 一个名叫Android 的系统横空出世， 并且随着移动互联网的爆发迅速普及， 运行在Android<br>之上的正是Java ！<br>Java 王国在Google的支持下， 以一种意想不到的方式占领了手机端， 完成了当年J2ME 壮志未酬的事业！<br>到今年为止， 全世界估计有1000万程序员加入了Java王国，它领土之广泛， 实力之强大， 是其他语言无法比拟的。<br>Java 占据了大部分的服务器端开发，尤其是关键的复杂的系统， 绝大多数的手机端， 以及大部分的大数据领域。<br>一个伟大的帝国诞生了。</p>
+<h2 id="Java的特性和优势"><a href="#Java的特性和优势" class="headerlink" title="Java的特性和优势"></a>Java的特性和优势</h2><h3 id="简单性"><a href="#简单性" class="headerlink" title="简单性"></a>简单性</h3><p>就是c++语法的纯净版。没有头文件，指针运算，结构，联合，操作符重载，虚基类等等。由于语法基于c，因此学习起来完全不费力。</p>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>面向对象是一种程序设计技术，他将重点放在数据（即对象）和对象之间的接口上。模拟人的思维写程序，万物皆对象！</p>
+<h3 id="可移植性-跨平台性"><a href="#可移植性-跨平台性" class="headerlink" title="可移植性(跨平台性)"></a>可移植性(跨平台性)</h3><p>这是JAVA的一个重要的优势。JAVA代码或者说字节码、二进制码可以跨平台的移植，而不用管具体的操作系统和硬件环境。<br>“一次编写，随处运行”：“write once, run anywhere”<br>JAVA在设计时就很注重移植和跨平台性。比如：JAVA的Int永远都是32位。不像c++可能是16，32，可能是根据编译器厂商规定的变化。这样的话程序的移植就会非常麻烦。</p>
+<h3 id="高性能"><a href="#高性能" class="headerlink" title="高性能"></a>高性能</h3><p>JIT(JUST IN TIME)即时编译。将一些“热点”字节码编译成本地机器码，并将结果缓存起来，在需要的时候重新调用。这样的话，使JAVA程序的执行效率大大提高，某些代码甚至接近c++的效率。随着这种技术的一天天完善，也许有一天会超越编译代码的效率。</p>
+<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><p>JAVA是为internet的分布式环境设计的，因为他能够处理tcp/ip协议。事实上，通过url访问一个网络资源和访问本地文件是一样简单的。Java还支持远程方法调用(RMI,remote method Invocation)，使程序能够通过网络调用方法。</p>
+<h3 id="动态性"><a href="#动态性" class="headerlink" title="动态性"></a>动态性</h3><p>就是在需要时将某些代码添加到正在运行的程序中。反射机制。当需要把某些代码添加到正在运行的程序中时，动态性是一个非常重要的特性。Java的动态特性是其面向对象设计方法的扩展。它允许程序动态地装入运行过程中所需要的类，这是C++语言进行面向对象程序设计所无法实现的</p>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>多线程的使用可以带来更好的交互响应和实时行为。多线程的简单性是Java成为主流服务器端开发语言的主要原因之一。</p>
+<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>Java适合于网络/分布式环境，为了达到这个目标，在安全性方面投入了很大的精力，使Java可以构建防病毒，防篡改的系统。</p>
+<h3 id="健壮性"><a href="#健壮性" class="headerlink" title="健壮性"></a>健壮性</h3><p>Java是一种健壮的语言，吸收了C/C++ 语言的优点，但去掉了其影响程序健壮性的部分（如：指针、内存的申请与释放等）。Java程序不可能造成计算机崩溃。Java系统仔细检测对内存的每次访问，确认它是合法的，而且不致引起任何问题。不过，即使Java程序也可能有错误。如果出现某种出乎意料之事，程序也不会崩溃，而是把该例外抛弃。再通过异常处理机制，程序就会发现这类例外，并加以处理。<br>当然，我们学习他这门语言，最初的目的，是因为使用的人多，我们需要去掌握学习，但是当我们慢慢的越来越深入的时候，你就会爱上他，发现他的无穷魅力并为之沉醉！</p>
+<h2 id="JAVA语言为什么能够成功"><a href="#JAVA语言为什么能够成功" class="headerlink" title="JAVA语言为什么能够成功"></a>JAVA语言为什么能够成功</h2><p>一个产品的成功和一个人的成功是一个道理。除了自身具备过硬的优势外，还需要那么一点点狗屎运，甚至狗屎运非常关键。就是我们所讲的天时地利人和。JAVA的成功除了自己具备跨平台特性外，更重要的是正好踩中了互联网发展的节奏。微软的成功除了windows好用外，也是正好踩中了个人电脑发展的节奏。所以，我们除了自己努力外，也需要出去走走努力才踩一坨狗屎才行！<br>学技术，也需要知道很多事情和历史对吧，我们来聊聊硅谷。<br>斯坦福大学依靠自身庞大的校区，创建了斯坦福科技园(硅谷的前身)，初期采用房租免费等方式，鼓励自己的毕业生在科技园创业、鼓励社会企业入驻。由于免费的方式再加上其他优惠的政策，吸引了大量的创业者加入进来。最终大家添柴加火，造就了今天的硅谷。这才是最高明的房地产商啊！说到房地产，我们现在这个社会是不是就很难受了，年薪20万，买一套房子180万，你算算，是不是大概下来就需要十年了，你说你一个大好青年，因为一个房子，就一下变成中年大叔了！哎，人间不值得啊，所以我们需要通过不断的学习来提高自己，从而进步！让自己的人生更有价值，而不是活着而已。<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%A4%A7%E5%AD%A6/278716?fr">斯坦福大学百科</a><br>看着这么多的牛人，各位，是不是我们也得努努力了，少刷点抖音，少玩点王者，吃鸡（玩得时候带带我~）多跟着我敲敲代码，没准以后咋们的同学也能搞出一个改变世界的东西是吧。<br>好了，不多说话，我们先来认识一下我们即将要学习的最终要的阶段，JavaSE。</p>
+<h2 id="Java三大版本"><a href="#Java三大版本" class="headerlink" title="Java三大版本"></a>Java三大版本</h2><p>首先，新人在刚入行的时候，不论是抱着什么目的（当然最后是因为兴趣，因为兴趣是一个很强的推动力），我们要了解学习什么东西，或者说从什么东西学起—-JAVA。作为一款高级程序设计语言，它的学习难度上面，至少我认为要比C语言简单许多，再加上如今市场对这方面的人才需求非常大，所以很多人将它作为了首选。目前来说JAVA的应用比较偏向于WEB的设计，也是我们很多学习JAVA的同志，日久就业的一个方向。</p>
+<h3 id="JAVA最大的特点："><a href="#JAVA最大的特点：" class="headerlink" title="JAVA最大的特点："></a>JAVA最大的特点：</h3><p>Java的主要优势在于其做出的WORA：即一次编写（Write Once）、随处运行（Run Anywhere）。简单来讲，这意味着开发团队能够利用Java编写一款应用程序，并将其编译为可执行形式，而后将其运行在任何支持Java的平台之上。这显然能够极大提高编程工作的实际效率，这种优势来源于Java VirtualMachine(JAVA虚拟机的缩写)，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。JAVA语言的一个非常重要的特点就是与平台的无关性，而使用Java虚拟机是实现这一特点的关键。</p>
+<h3 id="JAVA的三大版本："><a href="#JAVA的三大版本：" class="headerlink" title="JAVA的三大版本："></a>JAVA的三大版本：</h3><ol>
+<li>JAVA SE：它是JAVA的标准版，是整个JAVA的基础和核心，这是我们主要学习的一个部分，也是JAVAEE和JAVAME技术的基础，主要用于开发桌面应用程序。学会后可以做一些简单的桌面应用如：扫雷，连连看等。</li>
+<li>JAVA ME：它是JAVA的微缩版，主要应用于嵌入式开发，比如手机程序的开发。目前来说就业范围不是很广，在一些城市可能相对的不好找工作。</li>
+<li>JAVA EE：也叫JAVA的企业版，它提供了企业级应用开发的完整解决方案，比如开发网站，还有企业的一些应用系统，是JAVA技术应用最广泛的领域。主要还是偏向于WEB的开发，而JAVA EE的基础就是JAVA SE，所以我们在学习JAVA SE的时候，基础一定要打好，因为这是最基本的，也是最核心的。<h3 id="Java-SE："><a href="#Java-SE：" class="headerlink" title="Java SE："></a>Java SE：</h3><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210227170527.png"><br>经过这么多的介绍，相信大家已经很明白，如果学习JAVA的目的是为了就业，我们应该先学好JAVASE，然后继续学习JAVA EE。精髓在于多思考，多练习，不要怕会出错，没有完美的程序，都是不断的在改进，不断的在完善，出错是好事，这样你可以了解更多的异常情况和突发情况，可以为日后工作中出现问题时及时解决积累足够的经验。<br>最后希望大家在学习程序开发的时候，要有一定勇于探索的精神，搞不懂的问题可以自己先思考（程序开发的核心也是在于不断思考），实在搞不懂可以在网上查询，也可以和大家讨论，但是不要太过于较真，毕竟学海无涯，你永远都学不完所有的东西，要劳逸结合，不要让自己过于疲惫，为了学习更多的东西牺牲健康，那是伟人才会做的事情，得不偿失。</li>
+</ol>
+<h2 id="JDK-和-JRE"><a href="#JDK-和-JRE" class="headerlink" title="JDK 和 JRE"></a>JDK 和 JRE</h2><p>我们回头看看我们JavaSE的图。<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210227170527.png"></p>
+<h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><p>Java 2 SDK (Development Kit)包含：JRE的超集，包含编译器和调试器等用于程序开发的文件</p>
+<h3 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h3><p>Java Runtime Environment (JRE) 包含：Java虚拟机、库函数、运行Java应用程序和Applet所必须文件<br>Java运行环境的三项主要功能：</p>
+<ul>
+<li>加载代码：由class loader 完成；</li>
+<li>校验代码：由bytecode verifier 完成；</li>
+<li>执行代码：由 runtime interpreter完成。<h3 id="区别和联系："><a href="#区别和联系：" class="headerlink" title="区别和联系："></a>区别和联系：</h3>sdk（也就是jdk）是jre的超集，是在jre的基础上增加了编译器及其他一些开发工具。<br>jre就是java运行时环境，包括了jvm和其它一些java核心api，任何一台电脑，只有安装了jre才可以运行java程序。<br>如果只是要运行JAVA程序，只需要JRE就可以。 JRE通常非常小，也包含了JVM<br>如果要开发JAVA程序，就需要安装JDK。</li>
+</ul>
+<h2 id="初识JVM"><a href="#初识JVM" class="headerlink" title="初识JVM"></a>初识JVM</h2><p>（JAVA Virtual Machine）JVM是一种规范，可以使用软件来实现，也可以使用硬件来实现，就是一个虚拟的用于执行bytecodes字节码的计算机。他也定义了指令集、寄存器集、结构栈、垃圾收集堆、内存区域。<br>JVM负责将java字节码解释运行，边解释边运行，这样，速度就会受到一定的影响。JAVA提供了另一种解释运行的方法JIT（just in time），可以一次解释完，再运行特定平台上的机器码，高级的JIT可以只能分析热点代码，并将这些代码转成本地机器码，并将结果缓存起来，下次直接从内存中调用，这样就大大提高了执行JAVA代码的效率。这样就实现了跨平台、可移植的功能。</p>
+<ol>
+<li>JVM是指在一台计算机上由软件或硬件模拟的计算机；它类似一个小巧而高效的CPU。</li>
+<li>byte-code代码是与平台无关的是虚拟机的机器指令。</li>
+<li>java字节代码运行的两种方式:<br> 1)方式interpreter(解释)<br> 2)Just-in-time(即时编译):由代码生成器将字节代码转换成本机的机器代码,然后可以以较高速度执行。</li>
+</ol>
+<p>JAVA的跨平台实现的核心是不同平台使用不同的虚拟机，不同的操作系统有不同的虚拟机。Java 虚拟机机制屏蔽了底层运行平台的差别，实现了“一次编译，随处运行”。<br><strong>欲工善其事必先利其器，我们先把我们的环境搭建好，才能开始咋们的征程！</strong></p>
+<h2 id="Java开发环境搭建"><a href="#Java开发环境搭建" class="headerlink" title="Java开发环境搭建"></a>Java开发环境搭建</h2><p>百度搜索JDK，找到下载地址，浏览Oracle的网站。<br>JDK下载地址：<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html</a></p>
+<ol>
+<li>选择版本（我们采用JDK8）</li>
+<li>同意协议（流氓协议）</li>
+<li>查看电脑的环境（64位，还是32位等等）</li>
+<li>下载安装包</li>
+<li>安装JDK ，JRE （改安装目录，注意规范，作为一个程序人，规范很重要。所以给电脑上环境单独分类最好，）</li>
+<li>配置电脑的环境变量 ：<ol>
+<li>我的电脑–&gt;右键—&gt;属性</li>
+<li>环境变量–&gt;添加 JAVA_HOME （JDK的安装地址：D:Environmentjavajdk1.8.0_201）</li>
+<li>配置path：%JAVA_HOME%bin ；%JAVA_HOME%jrebin</li>
+</ol>
+</li>
+<li>测试是否安装成功：<ol>
+<li>打开cmd（命令行窗口）</li>
+<li>输出 java –version 查看版本信息，是否成功输出！</li>
+</ol>
+</li>
+<li>安装notpad++，或者一个好用的文本编辑器，最好不要用记事本，很不方便！<h2 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h2>环境安装好了，测试代码一定要写HelloWorld！代表你向这个世界的呐喊，仪式感很重要，就像你生活中和家人，朋友，妻子在节日中或者纪念日一定要做一些事情，这就是仪式感，所以各位来跟着我写哈！</li>
+<li>我们先随便建立一个文件夹，放我们的代码</li>
+<li>新建文件 Hello.java</li>
+<li>编写我们的HelloWorld程序！<pre><code class="java">public class Hello&#123;
+ public static void main(String[] args)&#123;
+     System.out.println(&quot;Hello,World!&quot;);
+ &#125;
+&#125;
+</code></pre>
+</li>
+<li>保存文件，打开命令行，利用javac编译！<pre><code class="java">javac Hello.java
+# 如果没有报错，查看文件夹下是否有新的一个文件
+# Hello.class
+# 如果没有出现，恭喜！说明你遇到了你在学Java当中的第一个Bug
+</code></pre>
+</li>
+<li>java 执行！<pre><code class="java">java Hello
+# 成功输出Hello，World！
+</code></pre>
+<img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210227172219.png"><br>如果出现错误，检查字母大小写是否有错误，或者是否标点符号错误，文件名错误等等，一定要确保成功输出，我们之后再来研究，它是怎么输出的！<h3 id="编写Java程序时，应注意以下几点："><a href="#编写Java程序时，应注意以下几点：" class="headerlink" title="编写Java程序时，应注意以下几点："></a>编写Java程序时，应注意以下几点：</h3></li>
+</ol>
+<p><strong>大小写敏感：</strong>Java 是大小写敏感的，这就意味着标识符 Hello 与 hello 是不同的。<br><strong>类名：</strong>对于所有的类来说，类名的首字母应该大写。如果类名由若干单词组成，那么每个单词的首字母应该大写，例如 <strong>MyFirstJavaClass</strong>。<br><strong>方法名：</strong>所有的方法名都应该以小写字母开头。如果方法名含有若干单词，则后面的每个单词首字母大写。<br><strong>源文件名：</strong>源文件名必须和类名相同。当保存文件的时候，你应该使用类名作为文件名保存（切记Java 是大小写敏感的），文件名的后缀为 <strong>.java</strong>。（如果文件名和类名不相同则会导致编译错误）。<br><strong>主方法入口：</strong>所有的 Java 程序由 <strong>public static void main(String []args)</strong> 方法开始执行。</p>
+<h2 id="JAVA程序运行机制"><a href="#JAVA程序运行机制" class="headerlink" title="JAVA程序运行机制"></a>JAVA程序运行机制</h2><p>计算机的高级编程语言类型: 编译型 ，解释型. Java 语言是两种类型的结合；<br>【科普：编译型 ，解释型】</p>
+<pre><code class="java">//从字面上看，“编译”和“解释”的确都有“翻译”的意思，它们的区别则在于翻译的时机安排不大一样。
+
+//我们先看看编译型:有一个负责翻译的程序来对我们的源代码进行转换，生成相对应的可执行代码。这个过程说得专业一点，就称为编译（Compile），而负责编译的程序自然就称为编译器（Compiler）。就类似于把一本中文书直接翻译成英文版进行出售。
+
+//现在再看看解释型：打个比方：假如你打算阅读一本外文书，而你不知道这门外语，那么你可以找一名翻译，给他足够的时间让他从头到尾把整本书翻译好，然后把书的母语版交给你阅读（编译型）；或者，你也立刻让这名翻译辅助你阅读，让他一句一句给你翻译，如果你想往回看某个章节，他也得重新给你翻译。（解释型）
+
+//编译型与解释型，两者各有利弊。前者由于程序执行速度快，同等条件下对系统要求较低，因此像开发操作系统、大型应用程序、数据库系统等时都采用它，像C/C++、Pascal/ObjectPascal（Delphi）、VB等基本都可视为编译语言，而一些网页脚本、服务器脚本及辅助开发接口这样的对速度要求不高、对不同系统平台间的兼容性有一定要求的程序则通常使用解释性语言，如Java、JavaScript、VBScript、Perl、Python等等。
+
+//Java语言虽然比较接近解释型语言的特征，但在执行之前已经预先进行一次预编译，生成的代码是介于机器码和Java源代码之间的中介代码，运行的时候则由JVM（Java的虚拟机平台，可视为解释器）解释执行。它既保留了源代码的高抽象、可移植的特点，又已经完成了对源代码的大部分预编译工作，所以执行起来比“纯解释型”程序要快许多。
+
+//总之，随着设计技术与硬件的不断发展，编译型与解释型两种方式的界限正在不断变得模糊。
+</code></pre>
+<h3 id="第一步：编译"><a href="#第一步：编译" class="headerlink" title="第一步：编译"></a>第一步：编译</h3><p>利用编译器（javac）将源程序编译成字节码à 字节码文件名：源文件名.class</p>
+<h3 id="第二步：运行"><a href="#第二步：运行" class="headerlink" title="第二步：运行"></a>第二步：运行</h3><p>利用虚拟机（解释器，java）解释执行class字节码文件。<br><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301164705.png"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><p>我们了解了计算机的发展史</p>
+</li>
+<li><p>看到了Java帝国的诞生</p>
+</li>
+<li><p>了解了Java这门语言的特性</p>
+</li>
+<li><p>跟着历史看懂了Java的三大版本</p>
+</li>
+<li><p>安装了Java的开发环境</p>
+</li>
+<li><p>写了自己的第一个程序HelloWorld！</p>
+</li>
+<li><p>知道了编译型和解释型语言的区别</p>
+</li>
+</ul>
+<p>当然，我认为这些都不是最重要的，关键是，今天我们踏出了第一步，我看过这样一个故事：</p>
+<p>一个原始人抬头仰望星空，宇宙发出了警告！人类问为什么，宇宙使者说：从他抬头仰望星空开始，整个人类的发展就不过是为了实现他的愿望而已！</p>
+<p>所以，只要确定了方向，只要不停下脚步，我们终会抵达终点，实现自己的梦！</p>
+<h2 id="安装IDEA"><a href="#安装IDEA" class="headerlink" title="安装IDEA"></a>安装IDEA</h2><p>每次都要利用记事本去编写代码的话，那将是十分麻烦的，工程量大，不易于调试，所以我们迫切需要一款智能的开发工具，于是Eclipse，myEclipse，netbeans，Intellij IDEA等智能的IDE诞生了。早时候学习都是利用的Eclipse，不过现在我们学习和工作大部分都利用IDEA了。这也是互联网的残酷性，每个时代都有自己的宠儿。所以我们无论什么时候都需要有危机感，不能忘记学习！<br>我们来看看IDEA，它是 JetBrains 公司下的Java集成开发环境，在业界被公认为是最好的Java开发工具之一；JetBrains是捷克的一家软件公司，该公司总部位于捷克共和国的首都布拉格，开发人员以严谨著称的东欧程序员为主，旗下开发了多款软件开发工具；<br>官方网站：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/">https://www.jetbrains.com/</a></p>
+<h3 id="演示：浏览并介绍jetbrains的官网"><a href="#演示：浏览并介绍jetbrains的官网" class="headerlink" title="演示：浏览并介绍jetbrains的官网"></a>演示：浏览并介绍jetbrains的官网</h3><p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210301165001.png"><br>目前IntelliJ IDEA有免费的社区版（功能相对较少），和收费的旗舰版（功能比较全面）；<br>我们看自己需要和能力下载，有条件的话，用人家的东西还是可以用正版的。<br>官方下载地址:<a target="_blank" rel="noopener" href="http://www.jetbrains.com/idea/download/#section=windows">http://www.jetbrains.com/idea/download/#section=windows</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021 Copyright QuYi-Stack
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>4、方法 | QuYi-Stack</title>
+  <meta name="keywords" content=" java ">
+  <meta name="description" content="4、方法 | QuYi-Stack">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="方法1、何谓方法？在前面几个章节中我们经常使用到 System.out.println()，那么它是什么呢？  println() 是一个方法。 System 是系统类。 out 是标准输出对象。  这句话的用法是调用系统类 System 中的标准输出对象 out 中的方法 println()。 那么什么是方法呢？ Java方法是语句的集合，它们在一起执行一个功能。  方法是解决一类问题的步骤的有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4、方法">
+<meta property="og:url" content="https://quyi-stack.github.io/2021/03/17/4%E3%80%81%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="QuYi-Stack">
+<meta property="og:description" content="方法1、何谓方法？在前面几个章节中我们经常使用到 System.out.println()，那么它是什么呢？  println() 是一个方法。 System 是系统类。 out 是标准输出对象。  这句话的用法是调用系统类 System 中的标准输出对象 out 中的方法 println()。 那么什么是方法呢？ Java方法是语句的集合，它们在一起执行一个功能。  方法是解决一类问题的步骤的有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317142611.png">
+<meta property="article:published_time" content="2021-03-17T06:28:52.000Z">
+<meta property="article:modified_time" content="2021-03-17T06:29:25.296Z">
+<meta property="article:author" content="Qu Yi">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317142611.png">
+
+
+<link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="https://avatars.githubusercontent.com/u/80147732?s=460&amp;u=23be5c16d10232c0df046f708c7da6a2c01b2913&amp;v=4"/>
+</a>
+<div class="author">
+    <span>Qu Yi</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/quyi-stack/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:Earon106@gmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=66773056&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(4)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(4)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->JavaSE">
+                                        
+                                        JavaSE
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="4">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/17/4%E3%80%81%E6%96%B9%E6%B3%95/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="4、方法">4、方法</span>
+            <span class="post-date" title="2021-03-17 14:28:52">2021/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/17/3%E3%80%81%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="3、流程控制">3、流程控制</span>
+            <span class="post-date" title="2021-03-17 14:06:17">2021/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/17/2%E3%80%81%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="2、基础语法">2、基础语法</span>
+            <span class="post-date" title="2021-03-17 12:01:38">2021/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2021/03/16/1%E3%80%81Java%E5%85%A5%E9%97%A8/"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="1、Java入门">1、Java入门</span>
+            <span class="post-date" title="2021-03-16 16:08:50">2021/03/16</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-4、方法" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">4、方法</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;JavaSE">JavaSE</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">java</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-03-17 14:29:25'>2021-03-17 14:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BD%95%E8%B0%93%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-text">1、何谓方法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">2、方法的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-text">3、方法调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="toc-text">4、方法的重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%8B%93%E5%B1%95%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BC%A0%E5%8F%82"><span class="toc-text">5、拓展命令行传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-text">6、可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E9%80%92%E5%BD%92"><span class="toc-text">7、递归</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-5 i,
+    .toc-level-5 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="1、何谓方法？"><a href="#1、何谓方法？" class="headerlink" title="1、何谓方法？"></a>1、何谓方法？</h3><p>在前面几个章节中我们经常使用到 System.out.println()，那么它是什么呢？</p>
+<ul>
+<li>println() 是一个方法。</li>
+<li>System 是系统类。</li>
+<li>out 是标准输出对象。</li>
+</ul>
+<p>这句话的用法是调用系统类 System 中的标准输出对象 out 中的方法 println()。</p>
+<p><strong>那么什么是方法呢？</strong></p>
+<p>Java方法是语句的集合，它们在一起执行一个功能。</p>
+<ul>
+<li>方法是解决一类问题的步骤的有序组合</li>
+<li>方法包含于类或对象中</li>
+<li>方法在程序中被创建，在其他地方被引用</li>
+</ul>
+<p>设计方法的原则：方法的本意是功能块，就是实现某个功能的语句块的集合。我们设计方法的时候，最好保持方法的原子性，就是一个方法只完成1个功能，这样利于我们后期的扩展。</p>
+<p><strong>方法的优点</strong></p>
+<ul>
+<li>使程序变得更简短而清晰。</li>
+<li>有利于程序维护。</li>
+<li>可以提高程序开发的效率。</li>
+<li>提高了代码的重用性。</li>
+</ul>
+<p><strong>回顾：方法的命名规则？</strong></p>
+<h3 id="2、方法的定义"><a href="#2、方法的定义" class="headerlink" title="2、方法的定义"></a>2、方法的定义</h3><p>Java的方法类似于其它语言的函数，是一段用来完成特定功能的代码片段，一般情况下，定义一个方法包含以下语法：</p>
+<pre><code class="java">修饰符 返回值类型 方法名(参数类型 参数名)&#123;
+    ...
+    方法体
+    ...
+    return 返回值;
+&#125;
+</code></pre>
+<p>方法包含一个方法头和一个方法体。下面是一个方法的所有部分：</p>
+<ul>
+<li><p>修饰符：修饰符，这是可选的，告诉编译器如何调用该方法。定义了该方法的访问类型。</p>
+</li>
+<li><p>返回值类型 ：方法可能会返回值。returnValueType 是方法返回值的数据类型。有些方法执行所需的操作，但没有返回值。在这种情况下，returnValueType 是关键字void。</p>
+</li>
+<li><p>方法名：是方法的实际名称。方法名和参数表共同构成方法签名。</p>
+</li>
+<li><p>参数类型：参数像是一个占位符。当方法被调用时，传递值给参数。这个值被称为实参或变量。参数列表是指方法的参数类型、顺序和参数的个数。参数是可选的，方法可以不包含任何参数。</p>
+<ul>
+<li>形式参数：在方法被调用时用于接收外界输入的数据。</li>
+<li>实参：调用方法时实际传给方法的数据。</li>
+</ul>
+</li>
+<li><p>方法体：方法体包含具体的语句，定义该方法的功能。<br>比如我们写一个比大小的方法：</p>
+</li>
+</ul>
+<p>【演示】下面的方法包含 2 个参数 num1 和 num2，它返回这两个参数的最大值。</p>
+<pre><code class="java">/** 返回两个整型变量数据的较大值 */
+public static int max(int num1, int num2) &#123;
+    int result;
+    if (num1 &gt; num2)
+        result = num1;
+    else
+        result = num2;
+
+    return result;
+&#125;
+</code></pre>
+<p>【演示：加法】</p>
+<pre><code class="java">public int add(int num1, int num2) &#123;
+    return num1+num2;
+&#125;
+</code></pre>
+<h3 id="3、方法调用"><a href="#3、方法调用" class="headerlink" title="3、方法调用"></a>3、方法调用</h3><p>Java 支持两种调用方法的方式，根据方法是否返回值来选择。</p>
+<p>当程序调用一个方法时，程序的控制权交给了被调用的方法。当被调用方法的返回语句执行或者到达方法体闭括号时候交还控制权给程序。</p>
+<p>当方法返回一个值的时候，方法调用通常被当做一个值。例如：</p>
+<pre><code class="java">int larger = max(30, 40);
+</code></pre>
+<p>Java语言中使用下述形式调用方法：对象名.方法名(实参列表)</p>
+<p>如果方法返回值是void，方法调用一定是一条语句。例如，方法println返回void。下面的调用是个语句：</p>
+<pre><code class="java">System.out.println(&quot;Hello,kuangshen!&quot;);
+</code></pre>
+<p>【演示：定义方法并且调用它】</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    int i = 5;
+    int j = 2;
+    int k = max(i, j);
+    System.out.println( i + &quot; 和 &quot; + j + &quot; 比较，最大值是：&quot; + k);
+&#125;
+/** 返回两个整数变量较大的值 */
+public static int max(int num1, int num2) &#123;
+    int result;
+    if (num1 &gt; num2)
+        result = num1;
+    else
+        result = num2;
+    return result;
+&#125;
+</code></pre>
+<p>这个程序包含 main 方法和 max 方法。main 方法是被 JVM 调用的，除此之外，main 方法和其它方法没什么区别。<strong>JAVA中只有值传递！</strong></p>
+<p>main 方法的头部是不变的，如例子所示，带修饰符 public 和 static,返回 void 类型值，方法名字是main,此外带个一个 String[] 类型参数。String[] 表明参数是字符串数组。</p>
+<h3 id="4、方法的重载"><a href="#4、方法的重载" class="headerlink" title="4、方法的重载"></a>4、方法的重载</h3><p>上面使用的max方法仅仅适用于int型数据。但如果你想得到两个浮点类型数据的最大值呢？</p>
+<p>解决方法是创建另一个有相同名字但参数不同的方法，如下面代码所示：</p>
+<pre><code class="java">public static double max(double num1, double num2) &#123;
+    if (num1 &gt; num2)
+        return num1;
+    else
+        return num2;
+    &#125;
+    public static int max(int num1, int num2) &#123;
+    int result;
+    if (num1 &gt; num2)
+        result = num1;
+    else
+        result = num2;
+    return result;
+&#125;
+</code></pre>
+<p>如果你调用max方法时传递的是int型参数，则 int型参数的max方法就会被调用；</p>
+<p>如果传递的是double型参数，则double类型的max方法体会被调用，这叫做方法重载；</p>
+<p>就是说一个类的两个方法拥有相同的名字，但是有不同的参数列表。</p>
+<p>Java编译器根据方法签名判断哪个方法应该被调用。</p>
+<p>方法重载可以让程序更清晰易读。执行密切相关任务的方法应该使用相同的名字。</p>
+<p>重载的方法必须拥有不同的参数列表。你不能仅仅依据修饰符或者返回类型的不同来重载方法。</p>
+<h3 id="5、拓展命令行传参"><a href="#5、拓展命令行传参" class="headerlink" title="5、拓展命令行传参"></a>5、拓展命令行传参</h3><p>有时候你希望运行一个程序时候再传递给它消息。这要靠传递命令行参数给main()函数实现。</p>
+<p>命令行参数是在执行程序时候紧跟在程序名字后面的信息。</p>
+<p>【下面的程序打印所有的命令行参数】</p>
+<pre><code class="java">public class CommandLine &#123;
+    public static void main(String args[])&#123;
+        for(int i=0; i&lt;args.length; i++)&#123;
+            System.out.println(&quot;args[&quot; + i + &quot;]: &quot; + args[i]);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>【命令行】</p>
+<pre><code class="java">$ javac CommandLine.java
+$ java CommandLine this is a command line 200 -100
+args[0]: this
+args[1]: is
+args[2]: a
+args[3]: command
+args[4]: line
+args[5]: 200
+args[6]: -100
+</code></pre>
+<p>【错误: 找不到或无法加载主类，解决方法】</p>
+<p>在项目输出的项目目录下执行java命令，写完整路径即可。</p>
+<pre><code class="java">$ java com.kuang.chapter3.Demo03 Hello World
+</code></pre>
+<h3 id="6、可变参数"><a href="#6、可变参数" class="headerlink" title="6、可变参数"></a>6、可变参数</h3><p>JDK 1.5 开始，Java支持传递同类型的可变参数给一个方法。</p>
+<p>方法的可变参数的声明如下所示：</p>
+<pre><code class="java">typeName... parameterName
+</code></pre>
+<p>在方法声明中，在指定参数类型后加一个省略号(…) 。</p>
+<p>一个方法中只能指定一个可变参数，它必须是方法的最后一个参数。任何普通的参数必须在它之前声明。</p>
+<pre><code class="java">public static void main(String args[]) &#123;
+    // 调用可变参数的方法
+    printMax(34, 3, 3, 2, 56.5);
+    printMax(new double[]&#123;1, 2, 3&#125;);
+&#125;
+public static void printMax( double... numbers) &#123;
+    if (numbers.length == 0) &#123;
+        System.out.println(&quot;No argument passed&quot;);
+        return;
+    &#125;
+    double result = numbers[0];
+    //排序！
+    for (int i = 1; i &lt; numbers.length; i++)&#123;
+        if (numbers[i] &gt; result) &#123;
+            result = numbers[i];
+        &#125;
+    &#125;
+    System.out.println(&quot;The max value is &quot; + result);
+&#125;
+</code></pre>
+<h3 id="7、递归"><a href="#7、递归" class="headerlink" title="7、递归"></a>7、递归</h3><p>A方法调用B方法，我们很容易理解！</p>
+<p>递归就是：A方法调用A方法！就是自己调用自己，因此我们在设计递归算法时，一定要指明什么时候自己不调用自己。否则，就是个死循环！</p>
+<p><strong>递归算法重点：</strong></p>
+<p>递归是一种常见的解决问题的方法，即把问题逐渐简单化。递归的基本思想就是“自己调用自己”，一个使用递归技术的方法将会直接或者间接的调用自己。</p>
+<p>利用递归可以用简单的程序来解决一些复杂的问题。它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。递归的能力在于用有限的语句来定义对象的无限集合。</p>
+<p>递归结构包括两个部分：</p>
+<ol>
+<li>递归头。解答：什么时候不调用自身方法。如果没有头，将陷入死循环。</li>
+<li>递归体。解答：什么时候需要调用自身方法。</li>
+</ol>
+<p>【演示：利用代码计算5的乘阶！】</p>
+<pre><code class="java">//5*4*3*2*1
+public static void main(String[] args) &#123;
+    System.out.println(f(5));
+&#125;
+public static int f(int n) &#123;
+    if (1 == n)
+    return 1;
+    else
+    return n*f(n-1);
+&#125;
+</code></pre>
+<p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317142611.png"><br>此题中，按照递归的三个条件来分析：<br>(1)边界条件：阶乘，乘到最后一个数，即1的时候，返回1，程序执行到底；<br>(2)递归前进段：当前的参数不等于1的时候，继续调用自身；<br>(3)递归返回段：从最大的数开始乘，如果当前参数是5，那么就是5 4，即5 (5-1)，即n * (n-1)</p>
+<p>递归其实是方便了程序员难为了机器，递归可以通过数学公式很方便的转换为程序。其优点就是易理解，容易编程。但递归是用栈机制实现的，每深入一层，都要占去一块栈数据区域，对嵌套层数深的一些算法，递归会力不从心，空间上会以内存崩溃而告终，而且递归也带来了大量的函数调用，这也有许多额外的时间开销。所以在深度大时，它的时空性就不好了。（会占用大量的内存空间）</p>
+<p>而迭代虽然效率高，运行时间只因循环次数增加而增加，没什么额外开销，空间上也没有什么增加，但缺点就是不容易理解，编写复杂问题时困难。</p>
+<p><strong>能不用递归就不用递归，递归都可以用迭代来代替。</strong></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021 Copyright QuYi-Stack
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

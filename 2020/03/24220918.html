@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>4、方法 - JavaSE | QuYi-Stack</title>
-  <meta name="keywords" content=" java ">
-  <meta name="description" content="4、方法 - JavaSE | QuYi-Stack">
+  <title>4、事件机制 - JavaScript | QuYi-Stack</title>
+  <meta name="keywords" content=" JavaScript ">
+  <meta name="description" content="4、事件机制 - JavaScript | QuYi-Stack">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="1 什么是事件JavaScript 使我们有能力创建动态页面。事件是可以被 JavaScript 侦测到的行为。 网页中的每个元素都可以产生某些可以触发 JavaScript 函数的事件。比方说，我们可以在用户点击某按钮时产生一个 onClick 事件来触发某个函数。事件在 HTML 页面中定义。 2 把事件绑定给元素事件监听方式(标准方式)addEventListener(Event, fn)">
 <meta property="og:type" content="article">
@@ -454,9 +454,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-4、方法 - JavaSE" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-4、事件机制-JavaScript" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">4、方法 - JavaSE</h1>
+        <h1 class="article-title">4、事件机制 - JavaScript</h1>
     
     <div class="article-meta">
         
@@ -466,9 +466,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="后端">后端</a> > 
+            <a  data-rel="大前端">大前端</a> > 
             
-            <a  data-rel="后端&lt;---&gt;JavaSE">JavaSE</a>
+            <a  data-rel="大前端&lt;---&gt;JavaScript">JavaScript</a>
             
         </span>
         
@@ -476,14 +476,14 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color5">java</a>
+            <a class="color1">JavaScript</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-03-24 20:39:13'>2020-03-17 14:28</time>
+            发布时间 : <time class="date" title='最后更新: 2021-03-24 22:10:15'>2020-03-24 22:09</time>
         
     </div>
     <div class="article-meta">
@@ -505,7 +505,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E4%BD%95%E8%B0%93%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="toc-text">1、何谓方法？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">2、方法的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-text">3、方法调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="toc-text">4、方法的重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E6%8B%93%E5%B1%95%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BC%A0%E5%8F%82"><span class="toc-text">5、拓展命令行传参</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-text">6、可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E9%80%92%E5%BD%92"><span class="toc-text">7、递归</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E4%BB%B6"><span class="toc-text">1 什么是事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%8A%8A%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E7%BB%99%E5%85%83%E7%B4%A0"><span class="toc-text">2 把事件绑定给元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E6%96%B9%E5%BC%8F-%E6%A0%87%E5%87%86%E6%96%B9%E5%BC%8F"><span class="toc-text">事件监听方式(标准方式)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%8A%E4%BA%8B%E4%BB%B6%E4%BD%9C%E4%B8%BA%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">把事件作为元素的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%8A%E4%BA%8B%E4%BB%B6%E4%BD%9C%E4%B8%BA%E6%A0%87%E7%AD%BE%E7%9A%84%E5%86%85%E9%83%A8%E5%B1%9E%E6%80%A7"><span class="toc-text">把事件作为标签的内部属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%99%E5%85%83%E7%B4%A0%E8%A7%A3%E9%99%A4%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A"><span class="toc-text">3 给元素解除事件绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%96%B9%E5%BC%8F%E7%BB%91%E5%AE%9A%E7%9A%84%E4%BA%8B%E4%BB%B6"><span class="toc-text">标准方式绑定的事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%B9%E5%BC%8F%E7%BB%91%E5%AE%9A"><span class="toc-text">其他方式绑定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-this%E5%9C%A8%E4%BA%8B%E4%BB%B6%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">4 this在事件中的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BA%8B%E4%BB%B6%E5%88%97%E8%A1%A8"><span class="toc-text">5 事件列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6"><span class="toc-text">5.1 鼠标事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-text">5.2 键盘事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E6%96%87%E6%A1%A3%E4%BA%8B%E4%BB%B6"><span class="toc-text">5.3 文档事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E8%A1%A8%E5%8D%95%E4%BA%8B%E4%BB%B6"><span class="toc-text">5.4 表单事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E5%9B%BE%E7%89%87%E4%BA%8B%E4%BB%B6"><span class="toc-text">5.5 图片事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E5%85%B6%E4%BB%96%E4%BA%8B%E4%BB%B6"><span class="toc-text">5.6 其他事件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Event%E5%AF%B9%E8%B1%A1"><span class="toc-text">6 Event对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%88%86%E7%B1%BB"><span class="toc-text">6.1 分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%B1%9E%E6%80%A7"><span class="toc-text">6.2 属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%96%B9%E6%B3%95"><span class="toc-text">6.3 方法</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -521,200 +521,95 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="1、何谓方法？"><a href="#1、何谓方法？" class="headerlink" title="1、何谓方法？"></a>1、何谓方法？</h3><p>在前面几个章节中我们经常使用到 System.out.println()，那么它是什么呢？</p>
-<ul>
-<li>println() 是一个方法。</li>
-<li>System 是系统类。</li>
-<li>out 是标准输出对象。</li>
+        <h2 id="1-什么是事件"><a href="#1-什么是事件" class="headerlink" title="1 什么是事件"></a>1 什么是事件</h2><p>JavaScript 使我们有能力创建动态页面。事件是可以被 JavaScript 侦测到的行为。</p>
+<p>网页中的每个元素都可以产生某些可以触发 JavaScript 函数的事件。比方说，我们可以在用户点击某按钮时产生一个 onClick 事件来触发某个函数。事件在 HTML 页面中定义。</p>
+<h2 id="2-把事件绑定给元素"><a href="#2-把事件绑定给元素" class="headerlink" title="2 把事件绑定给元素"></a>2 把事件绑定给元素</h2><h4 id="事件监听方式-标准方式"><a href="#事件监听方式-标准方式" class="headerlink" title="事件监听方式(标准方式)"></a>事件监听方式(标准方式)</h4><pre><code>addEventListener(Event, fn)    (非IE IE9+)  
+attachEvent(Event, fn)  (IE8-)
+</code></pre>
+<h4 id="把事件作为元素的方法"><a href="#把事件作为元素的方法" class="headerlink" title="把事件作为元素的方法"></a>把事件作为元素的方法</h4><pre><code>dom.onclick = fn
+</code></pre>
+<h4 id="把事件作为标签的内部属性"><a href="#把事件作为标签的内部属性" class="headerlink" title="把事件作为标签的内部属性"></a>把事件作为标签的内部属性</h4><pre><code>&lt;button onclick=&quot;code..&quot;&gt;
+</code></pre>
+<h2 id="3-给元素解除事件绑定"><a href="#3-给元素解除事件绑定" class="headerlink" title="3 给元素解除事件绑定"></a>3 给元素解除事件绑定</h2><h4 id="标准方式绑定的事件"><a href="#标准方式绑定的事件" class="headerlink" title="标准方式绑定的事件"></a>标准方式绑定的事件</h4><pre><code>removeEventListener(event, fn)  (IE9+ 非IE)
+detachEvent(Event, fn)   (IE8-)
+</code></pre>
+<h4 id="其他方式绑定"><a href="#其他方式绑定" class="headerlink" title="其他方式绑定"></a>其他方式绑定</h4><pre><code>重新绑定事件,用空的函数 覆盖 前面的
+dom.onclick = function()&#123;&#125;
+</code></pre>
+<h2 id="4-this在事件中的作用"><a href="#4-this在事件中的作用" class="headerlink" title="4 this在事件中的作用"></a>4 this在事件中的作用</h2><ul>
+<li>给一组元素绑定事件</li>
+<li>在元素内部 通过属性形式 <code>&lt;button onclick=&quot;fn(this)&quot;&gt;</code> 此时this表示所在的元素</li>
 </ul>
-<p>这句话的用法是调用系统类 System 中的标准输出对象 out 中的方法 println()。</p>
-<p><strong>那么什么是方法呢？</strong></p>
-<p>Java方法是语句的集合，它们在一起执行一个功能。</p>
-<ul>
-<li>方法是解决一类问题的步骤的有序组合</li>
-<li>方法包含于类或对象中</li>
-<li>方法在程序中被创建，在其他地方被引用</li>
+<h2 id="5-事件列表"><a href="#5-事件列表" class="headerlink" title="5 事件列表"></a>5 事件列表</h2><h3 id="5-1-鼠标事件"><a href="#5-1-鼠标事件" class="headerlink" title="5.1 鼠标事件"></a>5.1 鼠标事件</h3><pre><code>click        单击左键
+dblclick    双击 左键
+contextmenu    右单击
+mouseover    鼠标悬浮
+mouseout    鼠标移出
+mousedown    鼠标按键按下
+mouseup          鼠标按键抬起
+mousemove    鼠标移动
+</code></pre>
+<h3 id="5-2-键盘事件"><a href="#5-2-键盘事件" class="headerlink" title="5.2 键盘事件"></a>5.2 键盘事件</h3><pre><code>keydown        键盘按键 按下
+keyup        键盘按键 抬起
+keypress     键盘按键 按下 (只有字符按键)  (控制按键不可以 Ctrl shift 上下左右都不行)
+</code></pre>
+<h3 id="5-3-文档事件"><a href="#5-3-文档事件" class="headerlink" title="5.3 文档事件"></a>5.3 文档事件</h3><pre><code>load            加载完成
+unload            文档关闭
+beforeunload     文档关闭 (兼容性好)
+</code></pre>
+<h3 id="5-4-表单事件"><a href="#5-4-表单事件" class="headerlink" title="5.4 表单事件"></a>5.4 表单事件</h3><pre><code>submit        表单提交的时候, 绑定给form元素
+reset        表单重置, 绑定给form元素
+blur        失去焦点
+focus        获得焦点
+change        表单控制的内容改变   通常绑定给 radio checkbox select  如果绑定给输入的input, 必须满足 内容改变和失去焦点才能触发
+select        input 或 textarea  内容被选中的时候触发
+</code></pre>
+<h3 id="5-5-图片事件"><a href="#5-5-图片事件" class="headerlink" title="5.5 图片事件"></a>5.5 图片事件</h3><pre><code>abort        图片加载中断
+load        图片加载完成
+error        图片加载错误
+</code></pre>
+<h3 id="5-6-其他事件"><a href="#5-6-其他事件" class="headerlink" title="5.6 其他事件"></a>5.6 其他事件</h3><pre><code>scroll        元素内部的内容滚动  适合于有滚动条的元素
+resize        绑定给window, 窗口尺寸发生变化
+</code></pre>
+<h2 id="6-Event对象"><a href="#6-Event对象" class="headerlink" title="6 Event对象"></a>6 Event对象</h2><h3 id="6-1-分类"><a href="#6-1-分类" class="headerlink" title="6.1 分类"></a>6.1 分类</h3><pre><code>Event        
+MouseEvent    
+KeyboardEvent    
+FocusEvent    
+...................
+</code></pre>
+<h3 id="6-2-属性"><a href="#6-2-属性" class="headerlink" title="6.2 属性"></a>6.2 属性</h3><ul>
+<li><p>clientX 鼠标的x坐标</p>
+</li>
+<li><p>clientY 鼠标的Y坐标</p>
+</li>
+<li><p>button 鼠标按键的标示</p>
+<pre><code>值
+0    按了左键
+1    按了滚轮
+2    按了右键
+</code></pre>
+</li>
+<li><p>keyCode 键盘按键的值</p>
+</li>
+<li><p>cancelBubble 阻止事件冒泡 设置为true</p>
+</li>
+<li><p>target 返回触发此事件的元素</p>
+</li>
+<li><p>tyep 返回事件类型</p>
+</li>
+<li><p>timeStamp 返回触发事件的那一刻的时间戳(从页面打开的那一刻开始</p>
+</li>
+<li><p>altKey 返回当事件被触发时，”ALT” 是否被按下。</p>
+</li>
+<li><p>ctrlKey 返回当事件被触发时，”CTRL” 键是否被按下。</p>
+</li>
+<li><p>shiftKey 返回当事件被触发时，”SHIFT” 键是否被按下。</p>
+</li>
 </ul>
-<p>设计方法的原则：方法的本意是功能块，就是实现某个功能的语句块的集合。我们设计方法的时候，最好保持方法的原子性，就是一个方法只完成1个功能，这样利于我们后期的扩展。</p>
-<p><strong>方法的优点</strong></p>
-<ul>
-<li>使程序变得更简短而清晰。</li>
-<li>有利于程序维护。</li>
-<li>可以提高程序开发的效率。</li>
-<li>提高了代码的重用性。</li>
+<h3 id="6-3-方法"><a href="#6-3-方法" class="headerlink" title="6.3 方法"></a>6.3 方法</h3><ul>
+<li>stopPropagation() 阻止事件冒泡</li>
+<li>preventDefault() 阻止元素默认的事件</li>
 </ul>
-<p><strong>回顾：方法的命名规则？</strong></p>
-<h3 id="2、方法的定义"><a href="#2、方法的定义" class="headerlink" title="2、方法的定义"></a>2、方法的定义</h3><p>Java的方法类似于其它语言的函数，是一段用来完成特定功能的代码片段，一般情况下，定义一个方法包含以下语法：</p>
-<pre><code class="java">修饰符 返回值类型 方法名(参数类型 参数名)&#123;
-    ...
-    方法体
-    ...
-    return 返回值;
-&#125;
-</code></pre>
-<p>方法包含一个方法头和一个方法体。下面是一个方法的所有部分：</p>
-<ul>
-<li><p>修饰符：修饰符，这是可选的，告诉编译器如何调用该方法。定义了该方法的访问类型。</p>
-</li>
-<li><p>返回值类型 ：方法可能会返回值。returnValueType 是方法返回值的数据类型。有些方法执行所需的操作，但没有返回值。在这种情况下，returnValueType 是关键字void。</p>
-</li>
-<li><p>方法名：是方法的实际名称。方法名和参数表共同构成方法签名。</p>
-</li>
-<li><p>参数类型：参数像是一个占位符。当方法被调用时，传递值给参数。这个值被称为实参或变量。参数列表是指方法的参数类型、顺序和参数的个数。参数是可选的，方法可以不包含任何参数。</p>
-<ul>
-<li>形式参数：在方法被调用时用于接收外界输入的数据。</li>
-<li>实参：调用方法时实际传给方法的数据。</li>
-</ul>
-</li>
-<li><p>方法体：方法体包含具体的语句，定义该方法的功能。<br>比如我们写一个比大小的方法：</p>
-</li>
-</ul>
-<p>【演示】下面的方法包含 2 个参数 num1 和 num2，它返回这两个参数的最大值。</p>
-<pre><code class="java">/** 返回两个整型变量数据的较大值 */
-public static int max(int num1, int num2) &#123;
-    int result;
-    if (num1 &gt; num2)
-        result = num1;
-    else
-        result = num2;
-
-    return result;
-&#125;
-</code></pre>
-<p>【演示：加法】</p>
-<pre><code class="java">public int add(int num1, int num2) &#123;
-    return num1+num2;
-&#125;
-</code></pre>
-<h3 id="3、方法调用"><a href="#3、方法调用" class="headerlink" title="3、方法调用"></a>3、方法调用</h3><p>Java 支持两种调用方法的方式，根据方法是否返回值来选择。</p>
-<p>当程序调用一个方法时，程序的控制权交给了被调用的方法。当被调用方法的返回语句执行或者到达方法体闭括号时候交还控制权给程序。</p>
-<p>当方法返回一个值的时候，方法调用通常被当做一个值。例如：</p>
-<pre><code class="java">int larger = max(30, 40);
-</code></pre>
-<p>Java语言中使用下述形式调用方法：对象名.方法名(实参列表)</p>
-<p>如果方法返回值是void，方法调用一定是一条语句。例如，方法println返回void。下面的调用是个语句：</p>
-<pre><code class="java">System.out.println(&quot;Hello,kuangshen!&quot;);
-</code></pre>
-<p>【演示：定义方法并且调用它】</p>
-<pre><code class="java">public static void main(String[] args) &#123;
-    int i = 5;
-    int j = 2;
-    int k = max(i, j);
-    System.out.println( i + &quot; 和 &quot; + j + &quot; 比较，最大值是：&quot; + k);
-&#125;
-/** 返回两个整数变量较大的值 */
-public static int max(int num1, int num2) &#123;
-    int result;
-    if (num1 &gt; num2)
-        result = num1;
-    else
-        result = num2;
-    return result;
-&#125;
-</code></pre>
-<p>这个程序包含 main 方法和 max 方法。main 方法是被 JVM 调用的，除此之外，main 方法和其它方法没什么区别。<strong>JAVA中只有值传递！</strong></p>
-<p>main 方法的头部是不变的，如例子所示，带修饰符 public 和 static,返回 void 类型值，方法名字是main,此外带个一个 String[] 类型参数。String[] 表明参数是字符串数组。</p>
-<h3 id="4、方法的重载"><a href="#4、方法的重载" class="headerlink" title="4、方法的重载"></a>4、方法的重载</h3><p>上面使用的max方法仅仅适用于int型数据。但如果你想得到两个浮点类型数据的最大值呢？</p>
-<p>解决方法是创建另一个有相同名字但参数不同的方法，如下面代码所示：</p>
-<pre><code class="java">public static double max(double num1, double num2) &#123;
-    if (num1 &gt; num2)
-        return num1;
-    else
-        return num2;
-    &#125;
-    public static int max(int num1, int num2) &#123;
-    int result;
-    if (num1 &gt; num2)
-        result = num1;
-    else
-        result = num2;
-    return result;
-&#125;
-</code></pre>
-<p>如果你调用max方法时传递的是int型参数，则 int型参数的max方法就会被调用；</p>
-<p>如果传递的是double型参数，则double类型的max方法体会被调用，这叫做方法重载；</p>
-<p>就是说一个类的两个方法拥有相同的名字，但是有不同的参数列表。</p>
-<p>Java编译器根据方法签名判断哪个方法应该被调用。</p>
-<p>方法重载可以让程序更清晰易读。执行密切相关任务的方法应该使用相同的名字。</p>
-<p>重载的方法必须拥有不同的参数列表。你不能仅仅依据修饰符或者返回类型的不同来重载方法。</p>
-<h3 id="5、拓展命令行传参"><a href="#5、拓展命令行传参" class="headerlink" title="5、拓展命令行传参"></a>5、拓展命令行传参</h3><p>有时候你希望运行一个程序时候再传递给它消息。这要靠传递命令行参数给main()函数实现。</p>
-<p>命令行参数是在执行程序时候紧跟在程序名字后面的信息。</p>
-<p>【下面的程序打印所有的命令行参数】</p>
-<pre><code class="java">public class CommandLine &#123;
-    public static void main(String args[])&#123;
-        for(int i=0; i&lt;args.length; i++)&#123;
-            System.out.println(&quot;args[&quot; + i + &quot;]: &quot; + args[i]);
-        &#125;
-    &#125;
-&#125;
-</code></pre>
-<p>【命令行】</p>
-<pre><code class="java">$ javac CommandLine.java
-$ java CommandLine this is a command line 200 -100
-args[0]: this
-args[1]: is
-args[2]: a
-args[3]: command
-args[4]: line
-args[5]: 200
-args[6]: -100
-</code></pre>
-<p>【错误: 找不到或无法加载主类，解决方法】</p>
-<p>在项目输出的项目目录下执行java命令，写完整路径即可。</p>
-<pre><code class="java">$ java com.kuang.chapter3.Demo03 Hello World
-</code></pre>
-<h3 id="6、可变参数"><a href="#6、可变参数" class="headerlink" title="6、可变参数"></a>6、可变参数</h3><p>JDK 1.5 开始，Java支持传递同类型的可变参数给一个方法。</p>
-<p>方法的可变参数的声明如下所示：</p>
-<pre><code class="java">typeName... parameterName
-</code></pre>
-<p>在方法声明中，在指定参数类型后加一个省略号(…) 。</p>
-<p>一个方法中只能指定一个可变参数，它必须是方法的最后一个参数。任何普通的参数必须在它之前声明。</p>
-<pre><code class="java">public static void main(String args[]) &#123;
-    // 调用可变参数的方法
-    printMax(34, 3, 3, 2, 56.5);
-    printMax(new double[]&#123;1, 2, 3&#125;);
-&#125;
-public static void printMax( double... numbers) &#123;
-    if (numbers.length == 0) &#123;
-        System.out.println(&quot;No argument passed&quot;);
-        return;
-    &#125;
-    double result = numbers[0];
-    //排序！
-    for (int i = 1; i &lt; numbers.length; i++)&#123;
-        if (numbers[i] &gt; result) &#123;
-            result = numbers[i];
-        &#125;
-    &#125;
-    System.out.println(&quot;The max value is &quot; + result);
-&#125;
-</code></pre>
-<h3 id="7、递归"><a href="#7、递归" class="headerlink" title="7、递归"></a>7、递归</h3><p>A方法调用B方法，我们很容易理解！</p>
-<p>递归就是：A方法调用A方法！就是自己调用自己，因此我们在设计递归算法时，一定要指明什么时候自己不调用自己。否则，就是个死循环！</p>
-<p><strong>递归算法重点：</strong></p>
-<p>递归是一种常见的解决问题的方法，即把问题逐渐简单化。递归的基本思想就是“自己调用自己”，一个使用递归技术的方法将会直接或者间接的调用自己。</p>
-<p>利用递归可以用简单的程序来解决一些复杂的问题。它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。递归的能力在于用有限的语句来定义对象的无限集合。</p>
-<p>递归结构包括两个部分：</p>
-<ol>
-<li>递归头。解答：什么时候不调用自身方法。如果没有头，将陷入死循环。</li>
-<li>递归体。解答：什么时候需要调用自身方法。</li>
-</ol>
-<p>【演示：利用代码计算5的乘阶！】</p>
-<pre><code class="java">//5*4*3*2*1
-public static void main(String[] args) &#123;
-    System.out.println(f(5));
-&#125;
-public static int f(int n) &#123;
-    if (1 == n)
-    return 1;
-    else
-    return n*f(n-1);
-&#125;
-</code></pre>
-<p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210317142611.png"><br>此题中，按照递归的三个条件来分析：<br>(1)边界条件：阶乘，乘到最后一个数，即1的时候，返回1，程序执行到底；<br>(2)递归前进段：当前的参数不等于1的时候，继续调用自身；<br>(3)递归返回段：从最大的数开始乘，如果当前参数是5，那么就是5 4，即5 (5-1)，即n * (n-1)</p>
-<p>递归其实是方便了程序员难为了机器，递归可以通过数学公式很方便的转换为程序。其优点就是易理解，容易编程。但递归是用栈机制实现的，每深入一层，都要占去一块栈数据区域，对嵌套层数深的一些算法，递归会力不从心，空间上会以内存崩溃而告终，而且递归也带来了大量的函数调用，这也有许多额外的时间开销。所以在深度大时，它的时空性就不好了。（会占用大量的内存空间）</p>
-<p>而迭代虽然效率高，运行时间只因循环次数增加而增加，没什么额外开销，空间上也没有什么增加，但缺点就是不容易理解，编写复杂问题时困难。</p>
-<p><strong>能不用递归就不用递归，递归都可以用迭代来代替。</strong></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>

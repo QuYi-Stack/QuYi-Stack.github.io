@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>8、文件处理 - Python | QuYi-Stack</title>
+  <meta name="keywords" content=" Python ">
+  <meta name="description" content="8、文件处理 - Python | QuYi-Stack">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="1 过渡基础1.1 过渡的方式Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。 包括以下工具：  在 CSS 过渡和动画中自动应用 class 可以配合使用第三方 CSS 动画库，如 Animate.css 在过渡钩子函数中使用 JavaScript 直接操作 DOM 可以配合使用第三方 JavaScript 动画库，如 Velocity.js  1.2 过渡的情形 条件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5、Vue过渡动画效果">
+<meta property="og:url" content="https://quyi.io/2020/04/12113031.html">
+<meta property="og:site_name" content="QuYi-Stack">
+<meta property="og:description" content="1 过渡基础1.1 过渡的方式Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。 包括以下工具：  在 CSS 过渡和动画中自动应用 class 可以配合使用第三方 CSS 动画库，如 Animate.css 在过渡钩子函数中使用 JavaScript 直接操作 DOM 可以配合使用第三方 JavaScript 动画库，如 Velocity.js  1.2 过渡的情形 条件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210325112926.png">
+<meta property="article:published_time" content="2020-04-12T03:30:31.000Z">
+<meta property="article:modified_time" content="2021-03-25T07:18:57.996Z">
+<meta property="article:author" content="Qu Yi">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210325112926.png">
+
+
+<link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="https://avatars.githubusercontent.com/u/80147732?s=460&amp;u=23be5c16d10232c0df046f708c7da6a2c01b2913&amp;v=4"/>
+</a>
+<div class="author">
+    <span>Qu Yi</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/quyi-stack/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:Earon106@gmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=66773056&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(55)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="大前端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        大前端
+                        <small>(30)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BOM/DOM">
+                                        
+                                        BOM/DOM
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BootStrap">
+                                        
+                                        BootStrap
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->HTML5/CSS3">
+                                        
+                                        HTML5/CSS3
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->JavaScript">
+                                        
+                                        JavaScript
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->jQuery">
+                                        
+                                        jQuery
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->Vue">
+                                        
+                                        Vue
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(25)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->JavaSE">
+                                        
+                                        JavaSE
+                                        
+                                            <small>(7
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Python基础">
+                                        
+                                        Python基础
+                                        
+                                            <small>(18
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="55">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BootStrap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSS3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JavaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jQuery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Vue</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/12113031.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="5、Vue过渡动画效果">5、Vue过渡动画效果</span>
+            <span class="post-date" title="2020-04-12 11:30:31">2020/04/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/11113026.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="4、Vue组件">4、Vue组件</span>
+            <span class="post-date" title="2020-04-11 11:30:26">2020/04/11</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/10113020.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="3、Vue视图">3、Vue视图</span>
+            <span class="post-date" title="2020-04-10 11:30:20">2020/04/10</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/09113015.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="2、Vue实例">2、Vue实例</span>
+            <span class="post-date" title="2020-04-09 11:30:15">2020/04/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/08113005.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="1、Vue介绍">1、Vue介绍</span>
+            <span class="post-date" title="2020-04-08 11:30:05">2020/04/08</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/07111644.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="4、Bootstrap插件">4、Bootstrap插件</span>
+            <span class="post-date" title="2020-04-07 11:16:44">2020/04/07</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/06111639.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="3、Bootstrap组件">3、Bootstrap组件</span>
+            <span class="post-date" title="2020-04-06 11:16:39">2020/04/06</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/05111633.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="2、Bootstrap布局">2、Bootstrap布局</span>
+            <span class="post-date" title="2020-04-05 11:16:33">2020/04/05</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/04111627.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="1、BootStrap基础">1、BootStrap基础</span>
+            <span class="post-date" title="2020-04-04 11:16:27">2020/04/04</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/03095755.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="9、jQuery 插件 - jQuery">9、jQuery 插件 - jQuery</span>
+            <span class="post-date" title="2020-04-03 09:57:55">2020/04/03</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/02095746.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="8、工具和其他操作 - jQuery">8、工具和其他操作 - jQuery</span>
+            <span class="post-date" title="2020-04-02 09:57:46">2020/04/02</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/01095739.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="7、动画效果 - jQuery">7、动画效果 - jQuery</span>
+            <span class="post-date" title="2020-04-01 09:57:39">2020/04/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/28095730.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="6、jQuery事件机制 - jQuery">6、jQuery事件机制 - jQuery</span>
+            <span class="post-date" title="2020-03-28 09:57:30">2020/03/28</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/27095723.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="5、属性和样式操作 - jQuery">5、属性和样式操作 - jQuery</span>
+            <span class="post-date" title="2020-03-27 09:57:23">2020/03/27</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/26095715.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="4、DOM操作 - jQuery">4、DOM操作 - jQuery</span>
+            <span class="post-date" title="2020-03-26 09:57:15">2020/03/26</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/25095706.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="3、使用筛选器获取元素 - jQuery">3、使用筛选器获取元素 - jQuery</span>
+            <span class="post-date" title="2020-03-25 09:57:06">2020/03/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/24150557.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="7、异常机制 - JavaSE">7、异常机制 - JavaSE</span>
+            <span class="post-date" title="2020-03-24 15:05:57">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/24095659.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="2、选择器 - jQuery">2、选择器 - jQuery</span>
+            <span class="post-date" title="2020-03-24 09:56:59">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/23170011.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="6、面向对象 - JavaSE">6、面向对象 - JavaSE</span>
+            <span class="post-date" title="2020-03-23 17:00:11">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/23095635.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="1、jQuery基础 - jQuery">1、jQuery基础 - jQuery</span>
+            <span class="post-date" title="2020-03-23 09:56:35">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/22094526.html"
+           data-tag="DOM"
+           data-author="" >
+            <span class="post-title" title="2、文档对象模型DOM">2、文档对象模型DOM</span>
+            <span class="post-date" title="2020-03-22 09:45:26">2020/03/22</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/21094314.html"
+           data-tag="BOM"
+           data-author="" >
+            <span class="post-title" title="1、浏览器对象模型BOM">1、浏览器对象模型BOM</span>
+            <span class="post-date" title="2020-03-21 09:43:14">2020/03/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/20220918.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="4、事件机制 - JavaScript">4、事件机制 - JavaScript</span>
+            <span class="post-date" title="2020-03-20 22:09:18">2020/03/20</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/19220904.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="3、内置对象 - JavaScript">3、内置对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-19 22:09:04">2020/03/19</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/18220846.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="2、函数和对象 - JavaScript">2、函数和对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-18 22:08:46">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/18143447.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="18、异常处理 - Python">18、异常处理 - Python</span>
+            <span class="post-date" title="2020-03-18 14:34:47">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/17220714.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="1、基础语法 - JavaScript">1、基础语法 - JavaScript</span>
+            <span class="post-date" title="2020-03-17 22:07:14">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17165118.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="5、数组 - JavaSE">5、数组 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 16:51:18">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/17143428.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="17、常用模块_其他 - Python">17、常用模块_其他 - Python</span>
+            <span class="post-date" title="2020-03-17 14:34:28">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17142852.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="4、方法 - JavaSE">4、方法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:28:52">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17140617.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="3、流程控制 - JavaSE">3、流程控制 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:06:17">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17120138.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="2、基础语法 - JavaSE">2、基础语法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 12:01:38">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/16220004.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="6、响应式网页设计 - HTML5_CSS3">6、响应式网页设计 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-16 22:00:04">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/16160850.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="1、Java入门 - JavaSE">1、Java入门 - JavaSE</span>
+            <span class="post-date" title="2020-03-16 16:08:50">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/16143414.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="16、常用模块_正则表达式 - Python">16、常用模块_正则表达式 - Python</span>
+            <span class="post-date" title="2020-03-16 14:34:14">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/15215802.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="5、新的页面布局方式 - HTML5_CSS3">5、新的页面布局方式 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-15 21:58:02">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/15143405.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="15、常用模块_序列化处理 - Python">15、常用模块_序列化处理 - Python</span>
+            <span class="post-date" title="2020-03-15 14:34:05">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/14215340.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="4、CSS3新增功能 - HTML5_CSS3">4、CSS3新增功能 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-14 21:53:40">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/14143354.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="14、常用模块_系统交互 - Python">14、常用模块_系统交互 - Python</span>
+            <span class="post-date" title="2020-03-14 14:33:54">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/13143343.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="13、常用模块_随机和哈希 - Python">13、常用模块_随机和哈希 - Python</span>
+            <span class="post-date" title="2020-03-13 14:33:43">2020/03/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/12143326.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="12、常用模块 - Python">12、常用模块 - Python</span>
+            <span class="post-date" title="2020-03-12 14:33:26">2020/03/12</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/11143316.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="11、模块 - Python">11、模块 - Python</span>
+            <span class="post-date" title="2020-03-11 14:33:16">2020/03/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/10143304.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="10、高级特性 - Python">10、高级特性 - Python</span>
+            <span class="post-date" title="2020-03-10 14:33:04">2020/03/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/09143256.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="9、函数编程 - Python">9、函数编程 - Python</span>
+            <span class="post-date" title="2020-03-09 14:32:56">2020/03/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/08143250.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="8、文件处理 - Python">8、文件处理 - Python</span>
+            <span class="post-date" title="2020-03-08 14:32:50">2020/03/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/07143125.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="7、字符编码 - Python">7、字符编码 - Python</span>
+            <span class="post-date" title="2020-03-07 14:31:25">2020/03/07</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/06143116.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="6、数据操作 - Python">6、数据操作 - Python</span>
+            <span class="post-date" title="2020-03-06 14:31:16">2020/03/06</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/05143105.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="5、流程控制 - Python">5、流程控制 - Python</span>
+            <span class="post-date" title="2020-03-05 14:31:05">2020/03/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/04143058.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="4、数据类型 - Python">4、数据类型 - Python</span>
+            <span class="post-date" title="2020-03-04 14:30:58">2020/03/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/03143005.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="3、表达式和运算符 - Python">3、表达式和运算符 - Python</span>
+            <span class="post-date" title="2020-03-03 14:30:05">2020/03/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/02142955.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="2、基础语法、变量 - Python">2、基础语法、变量 - Python</span>
+            <span class="post-date" title="2020-03-02 14:29:55">2020/03/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/01142946.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="1、概述 - Python">1、概述 - Python</span>
+            <span class="post-date" title="2020-03-01 14:29:46">2020/03/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/13214947.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="3、页面布局 - HTML5_CSS3">3、页面布局 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-13 21:49:47">2019/03/13</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/12172510.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="2、页面组件 - HTML5_CSS3">2、页面组件 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-12 17:25:10">2019/03/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/11170116.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="1、基础 - HTML5_CSS3">1、基础 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-11 17:01:16">2019/03/11</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-8、文件处理-Python" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">8、文件处理 - Python</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;Python基础">Python基础</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Python</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-03-25 14:43:17'>2020-03-08 14:32</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">1 文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">1.1 文件操作步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E7%9A%84%E5%85%B3%E9%97%AD"><span class="toc-text">1.2 关于文件的关闭</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A0%81"><span class="toc-text">1.3 关于编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-text">2 文件打开方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">3 操作文件的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E8%AF%BB%E5%8F%96%E6%93%8D%E4%BD%9C"><span class="toc-text">3.1 读取操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%8C%89%E8%A1%8C%E8%AF%BB%E5%8F%96"><span class="toc-text">3.2 按行读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%86%99%E5%85%A5%E6%93%8D%E4%BD%9C"><span class="toc-text">3.3 写入操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="toc-text">3.4 其他操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0"><span class="toc-text">练习</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%96%87%E4%BB%B6%E5%86%85-%E5%85%89%E6%A0%87%E4%BD%8D%E7%BD%AE%E7%A7%BB%E5%8A%A8"><span class="toc-text">4 文件内 光标位置移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="toc-text">5 目录操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%AF%BC%E5%85%A5OS%E6%A8%A1%E5%9D%97"><span class="toc-text">5.1 导入OS模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95"><span class="toc-text">5.2 目录操作方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%9B%AE%E5%BD%95%E6%88%96%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-text">获取目录或文件信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95"><span class="toc-text">创建目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95%E6%88%96%E6%96%87%E4%BB%B6"><span class="toc-text">删除目录或文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-text">修改文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%88%96%E6%96%87%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-text">目录或文件判断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%A4%84%E7%90%86"><span class="toc-text">路径处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BD%9C%E4%B8%9A"><span class="toc-text">6 作业</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-5 i,
+    .toc-level-5 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-文件操作"><a href="#1-文件操作" class="headerlink" title="1 文件操作"></a>1 文件操作</h2><h3 id="1-1-文件操作步骤"><a href="#1-1-文件操作步骤" class="headerlink" title="1.1 文件操作步骤"></a>1.1 文件操作步骤</h3><pre><code class="python">#1. 打开文件，得到文件句柄并赋值给一个变量
+f=open(&#39;a.txt&#39;,&#39;r&#39;) #默认打开模式就为r
+
+#2. 通过句柄对文件进行操作
+data=f.read()
+
+#3. 关闭文件
+f.close()
+</code></pre>
+<h3 id="1-2-关于文件的关闭"><a href="#1-2-关于文件的关闭" class="headerlink" title="1.2 关于文件的关闭"></a>1.2 关于文件的关闭</h3><pre><code class="python"># 打开一个文件包含两部分资源：操作系统级打开的文件+应用程序的变量。在操作完毕一个文件时，必须把与该文件的这两部分资源一个不落地回收，回收方法为：
+f.close() 
+
+
+# 虽然我这么说，但是很多同学还是会很不要脸地忘记f.close(),对于这些不长脑子的同学，我们推荐傻瓜式操作方式：使用with关键字来帮我们管理上下文
+with open(&#39;a.txt&#39;,&#39;w&#39;) as f:
+    pass
+
+with open(&#39;a.txt&#39;,&#39;r&#39;) as read_f,open(&#39;b.txt&#39;,&#39;w&#39;) as write_f:
+    data=read_f.read()
+    write_f.write(data)
+</code></pre>
+<h3 id="1-3-关于编码"><a href="#1-3-关于编码" class="headerlink" title="1.3 关于编码"></a>1.3 关于编码</h3><pre><code class="python"># f=open(...)是由操作系统打开文件，那么如果我们没有为open指定编码，那么打开文件的默认编码很明显是操作系统说了算了，操作系统会用自己的默认编码去打开文件，在windows下是gbk，在linux下是utf-8。
+这就用到了上节课讲的字符编码的知识：若要保证不乱码，文件以什么方式存的，就要以什么方式打开。
+
+f=open(&#39;a.txt&#39;,&#39;r&#39;,encoding=&#39;utf-8&#39;)
+</code></pre>
+<h2 id="2-文件打开方式"><a href="#2-文件打开方式" class="headerlink" title="2 文件打开方式"></a>2 文件打开方式</h2><table>
+<thead>
+<tr>
+<th><strong>访问模式</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>r</strong></td>
+<td>以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td><strong>w</strong></td>
+<td>打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td><strong>a</strong></td>
+<td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td><strong>rb</strong></td>
+<td>以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td><strong>wb</strong></td>
+<td>以二进制格式打开一个文件只用于写入。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td><strong>ab</strong></td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td><strong>r+</strong></td>
+<td>打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td><strong>w+</strong></td>
+<td>打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td><strong>a+</strong></td>
+<td>打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr>
+<td><strong>rb+</strong></td>
+<td>以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td><strong>wb+</strong></td>
+<td>以二进制格式打开一个文件用于读写。如果该文件已存在则将其覆盖。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td><strong>ab+</strong></td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody></table>
+<pre><code class="python">#1. 打开文件的模式有(默认为文本模式)：
+r ，只读模式【默认模式，文件必须存在，不存在则抛出异常】
+w，只写模式【不可读；不存在则创建；存在则清空内容】
+a， 之追加写模式【不可读；不存在则创建；存在则只追加内容】
+
+#2. 对于非文本文件，我们只能使用b模式，&quot;b&quot;表示以字节的方式操作（而所有文件也都是以字节的形式存储的，使用这种模式无需考虑文本文件的字符编码、图片文件的jgp格式、视频文件的avi格式）
+rb 
+wb
+ab
+注：以b方式打开时，读取到的内容是字节类型，写入时也需要提供字节类型，不能指定编码
+
+#3. 了解部分
+&quot;+&quot; 表示可以同时读写某个文件
+r+， 读写【可读，可写】
+w+，写读【可读，可写】
+a+， 写读【可读，可写】
+</code></pre>
+<h2 id="3-操作文件的方法"><a href="#3-操作文件的方法" class="headerlink" title="3 操作文件的方法"></a>3 操作文件的方法</h2><h3 id="3-1-读取操作"><a href="#3-1-读取操作" class="headerlink" title="3.1 读取操作"></a>3.1 读取操作</h3><ul>
+<li>f.read() #读取所有内容,光标移动到文件末尾</li>
+<li>f.readline() #读取一行内容,光标移动到第二行首部</li>
+<li>f.readlines() #读取每一行内容,存放于列表中</li>
+</ul>
+<h3 id="3-2-按行读取"><a href="#3-2-按行读取" class="headerlink" title="3.2 按行读取"></a>3.2 按行读取</h3><pre><code class="python">read_f = open(&#39;data.txt&#39;, &#39;r&#39;)
+for line in read_f:
+    pass
+</code></pre>
+<h3 id="3-3-写入操作"><a href="#3-3-写入操作" class="headerlink" title="3.3 写入操作"></a>3.3 写入操作</h3><ul>
+<li>f.write(‘1111\n222\n’) #针对文本模式的写,需要自己写换行符</li>
+<li>f.writelines([‘333\n’,’444\n’]) #文件模式</li>
+</ul>
+<h3 id="3-4-其他操作"><a href="#3-4-其他操作" class="headerlink" title="3.4 其他操作"></a>3.4 其他操作</h3><ul>
+<li>f.readable() #文件是否可读</li>
+<li>f.writable() #文件是否可读</li>
+<li>f.closed #文件是否关闭</li>
+<li>f.encoding #如果文件打开模式为b,则没有该属性</li>
+<li>f.name 文件名</li>
+</ul>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><p>利用b模式，编写一个cp工具，要求如下：</p>
+<ol>
+<li>既可以拷贝文本又可以拷贝视频，图片等文件</li>
+<li>用户一旦参数错误， 打印命令的正确使用方法，如 <code>cp source_file target_file</code></li>
+</ol>
+<p>提示：可以用import sys，然后用sys.argv获取脚本后面跟的参数</p>
+<pre><code class="python">import sys
+if len(sys.argv) != 3:
+    print(&#39;usage: cp source_file target_file&#39;)
+    sys.exit()
+
+source_file,target_file=sys.argv[1],sys.argv[2]
+with open(source_file,&#39;rb&#39;) as read_f,open(target_file,&#39;wb&#39;) as write_f:
+    for line in read_f:
+        write_f.write(line)
+</code></pre>
+<h2 id="4-文件内-光标位置移动"><a href="#4-文件内-光标位置移动" class="headerlink" title="4 文件内 光标位置移动"></a>4 文件内 光标位置移动</h2><ul>
+<li><p>f.read(3)</p>
+<ol>
+<li>文件打开方式为文本模式时，代表读取3个字符</li>
+<li>文件打开方式为b模式时，代表读取3个字节</li>
+</ol>
+</li>
+<li><p>file.seek(offset[, whence]) 设置文件当前位置</p>
+<p>  offset: – 开始的偏移量，也就是代表需要移动偏移的字节数</p>
+<p>  whence：可选，默认值为 0。给offset参数一个定义，表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。其中1和2必须在b模式下进行</p>
+</li>
+<li><p>f.truncate( [ size ])</p>
+<p>  文件的打开方式必须可写，但是不能用w或w+等方式打开，因为那样直接清空文件了，所以truncate要在r+或a或a+等模式下测试效果</p>
+</li>
+</ul>
+<h2 id="5-目录操作"><a href="#5-目录操作" class="headerlink" title="5 目录操作"></a>5 目录操作</h2><h3 id="5-1-导入OS模块"><a href="#5-1-导入OS模块" class="headerlink" title="5.1 导入OS模块"></a>5.1 导入OS模块</h3><pre><code class="python">import os
+</code></pre>
+<h3 id="5-2-目录操作方法"><a href="#5-2-目录操作方法" class="headerlink" title="5.2 目录操作方法"></a>5.2 目录操作方法</h3><h4 id="获取目录或文件信息"><a href="#获取目录或文件信息" class="headerlink" title="获取目录或文件信息"></a>获取目录或文件信息</h4><ul>
+<li>os.stat(‘path/filename’) 获取文件/目录信息</li>
+<li>os.listdir(‘dirname’) 列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印</li>
+<li>os.path.getsize(path) 返回文件/目录的大小</li>
+<li>os.path.getatime(path) 返回path所指向的文件或者目录的最后存取时间</li>
+<li>os.path.getmtime(path) 返回path所指向的文件或者目录的最后修改时间</li>
+</ul>
+<h4 id="创建目录"><a href="#创建目录" class="headerlink" title="创建目录"></a>创建目录</h4><ul>
+<li>os.mkdir(‘dirname’) 生成单级目录；相当于shell中mkdir dirname</li>
+<li>os.makedirs(‘dirname1/dirname2’) 可生成多层递归目录</li>
+</ul>
+<h4 id="删除目录或文件"><a href="#删除目录或文件" class="headerlink" title="删除目录或文件"></a>删除目录或文件</h4><ul>
+<li>os.rmdir(‘dirname’) 删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname</li>
+<li>os.removedirs(‘dirname1’) 若目录为空，则删除，并递归到上一级目录，如若也为空，则删除，依此类推</li>
+<li>os.remove() 删除一个文件</li>
+</ul>
+<h4 id="修改文件或目录"><a href="#修改文件或目录" class="headerlink" title="修改文件或目录"></a>修改文件或目录</h4><ul>
+<li>os.rename(“oldname”,”newname”) 重命名文件/目录</li>
+</ul>
+<h4 id="目录或文件判断"><a href="#目录或文件判断" class="headerlink" title="目录或文件判断"></a>目录或文件判断</h4><ul>
+<li>os.path.exists(path) 如果path存在，返回True；如果path不存在，返回False</li>
+<li>os.path.isfile(path) 如果path是一个存在的文件，返回True。否则返回False</li>
+<li>os.path.isdir(path) 如果path是一个存在的目录，则返回True。否则返回False</li>
+</ul>
+<h4 id="路径处理"><a href="#路径处理" class="headerlink" title="路径处理"></a>路径处理</h4><ul>
+<li>os.path.join(path1[, path2[, …]]) 将多个路径组合后返回，第一个绝对路径之前的参数将被忽略</li>
+<li>os.path.abspath(path) 返回path规范化的绝对路径</li>
+<li>os.path.isabs(path) 如果path是绝对路径，返回True</li>
+<li>os.path.split(path) 将path分割成目录和文件名二元组返回</li>
+<li>os.path.dirname(path) 返回path的目录。其实就是os.path.split(path)的第一个元</li>
+<li>os.path.basename(path) 返回path最后的文件名。如何path以／或\结尾，那么就会返回空值。os.path.split(path)的第二个元素</li>
+<li>os.path.normcase(path) 返回规范化路径 在Linux和Mac平台上，该函数会原样返回path，在windows平台上会将路径中所有字符转换为小写，并将所有斜杠转换为饭斜杠。</li>
+</ul>
+<h2 id="6-作业"><a href="#6-作业" class="headerlink" title="6 作业"></a>6 作业</h2><pre><code>#购物车升级
+#需求:
+用户名和密码存放于文件中，格式为：admin|123456
+启动程序后，先登录，登录成功则让用户输入工资,然后打印商品列表，失败则重新登录，超过三次则退出程序
+允许用户根据商品编号购买商品
+用户选择商品后，检测余额是否够，够就直接扣款，不够就提醒
+可随时退出，退出时，打印已购买商品和余额
+import os
+
+product_list = [[&#39;Iphone7&#39;,5800],
+                [&#39;Coffee&#39;,30],
+                [&#39;疙瘩汤&#39;,10],
+                [&#39;Python Book&#39;,99],
+                [&#39;Bike&#39;,199],
+                [&#39;ViVo X9&#39;,2499],
+
+                ]
+
+shopping_cart=&#123;&#125;
+current_userinfo=[]
+
+db_file=r&#39;db.txt&#39;
+
+while True:
+    print(&#39;&#39;&#39;
+登陆
+注册
+购物
+    &#39;&#39;&#39;)
+
+    choice=input(&#39;&gt;&gt;: &#39;).strip()
+
+    if choice == &#39;1&#39;:
+        #1、登陆
+        tag=True
+        count=0
+        while tag:
+            if count == 3:
+                print(&#39;\033[45m尝试次数过多，退出。。。\033[0m&#39;)
+                break
+            uname = input(&#39;用户名：&#39;).strip()
+            pwd = input(&#39;密码：&#39;).strip()
+
+            with open(db_file,&#39;r&#39;,encoding=&#39;utf-8&#39;) as f:
+                for line in f:
+                    line=line.strip(&#39;\n&#39;)
+                    user_info=line.split(&#39;,&#39;)
+
+                    uname_of_db=user_info[0]
+                    pwd_of_db=user_info[1]
+                    balance_of_db=int(user_info[2])
+
+                    if uname == uname_of_db and pwd == pwd_of_db:
+                        print(&#39;\033[48m登陆成功\033[0m&#39;)
+
+                        # 登陆成功则将用户名和余额添加到列表
+                        current_userinfo=[uname_of_db,balance_of_db]
+                        print(&#39;用户信息为：&#39;,current_userinfo)
+                        tag=False
+                        break
+                else:
+                    print(&#39;\033[47m用户名或密码错误\033[0m&#39;)
+                    count+=1
+
+    elif choice == &#39;2&#39;:
+        uname=input(&#39;请输入用户名：&#39;).strip()
+        while True:
+            pwd1=input(&#39;请输入密码：&#39;).strip()
+            pwd2=input(&#39;再次确认密码：&#39;).strip()
+            if pwd2 == pwd1:
+                break
+            else:
+                print(&#39;\033[39m两次输入密码不一致，请重新输入！！!\033[0m&#39;)
+
+        balance=input(&#39;请输入充值金额：&#39;).strip()
+
+        with open(db_file,&#39;a&#39;,encoding=&#39;utf-8&#39;) as f:
+            f.write(&#39;%s,%s,%s\n&#39; %(uname,pwd1,balance))
+
+    elif choice == &#39;3&#39;:
+        if len(current_userinfo) == 0:
+            print(&#39;\033[49m请先登陆...\033[0m&#39;)
+        else:
+            #登陆成功后，开始购物
+            uname_of_db=current_userinfo[0]
+            balance_of_db=current_userinfo[1]
+
+            print(&#39;尊敬的用户[%s] 您的余额为[%s],祝您购物愉快&#39; %(
+                uname_of_db,
+                balance_of_db
+            ))
+
+            tag=True
+            while tag:
+                for index,product in enumerate(product_list):
+                    print(index,product)
+                choice=input(&#39;输入商品编号购物，输入q退出&gt;&gt;: &#39;).strip()
+                if choice.isdigit():
+                    choice=int(choice)
+                    if choice &lt; 0 or choice &gt;= len(product_list):continue
+
+                    pname=product_list[choice][0]
+                    pprice=product_list[choice][1]
+                    if balance_of_db &gt; pprice:
+                        if pname in shopping_cart: # 原来已经购买过
+                            shopping_cart[pname][&#39;count&#39;]+=1
+                        else:
+                            shopping_cart[pname]=&#123;&#39;pprice&#39;:pprice,&#39;count&#39;:1&#125;
+
+                        balance_of_db-=pprice # 扣钱
+                        current_userinfo[1]=balance_of_db # 更新用户余额
+                        print(&quot;Added product &quot; + pname + &quot; into shopping cart,\033[42;1myour current\033[0m balance &quot; + str(balance_of_db))
+
+                    else:
+                        print(&quot;买不起，穷逼! 产品价格是&#123;price&#125;,你还差&#123;lack_price&#125;&quot;.format(
+                            price=pprice,
+                            lack_price=(pprice - balance_of_db)
+                        ))
+                    print(shopping_cart)
+                elif choice == &#39;q&#39;:
+                    print(&quot;&quot;&quot;
+                    ---------------------------------已购买商品列表---------------------------------
+                    id          商品                   数量             单价               总价
+                    &quot;&quot;&quot;)
+
+                    total_cost=0
+                    for i,key in enumerate(shopping_cart):
+                        print(&#39;%22s%18s%18s%18s%18s&#39; %(
+                            i,
+                            key,
+                            shopping_cart[key][&#39;count&#39;],
+                            shopping_cart[key][&#39;pprice&#39;],
+                            shopping_cart[key][&#39;pprice&#39;] * shopping_cart[key][&#39;count&#39;]
+                        ))
+                        total_cost+=shopping_cart[key][&#39;pprice&#39;] * shopping_cart[key][&#39;count&#39;]
+
+                    print(&quot;&quot;&quot;
+                    您的总花费为: %s
+                    您的余额为: %s
+                    ---------------------------------end---------------------------------
+                    &quot;&quot;&quot; %(total_cost,balance_of_db))
+
+                    while tag:
+                        inp=input(&#39;确认购买(yes/no?)&gt;&gt;: &#39;).strip()
+                        if inp not in [&#39;Y&#39;,&#39;N&#39;,&#39;y&#39;,&#39;n&#39;,&#39;yes&#39;,&#39;no&#39;]:continue
+                        if inp in [&#39;Y&#39;,&#39;y&#39;,&#39;yes&#39;]:
+                            # 将余额写入文件
+
+                            src_file=db_file
+                            dst_file=r&#39;%s.swap&#39; %db_file
+                            with open(src_file,&#39;r&#39;,encoding=&#39;utf-8&#39;) as read_f,\
+                                open(dst_file,&#39;w&#39;,encoding=&#39;utf-8&#39;) as write_f:
+                                for line in read_f:
+                                    if line.startswith(uname_of_db):
+                                        l=line.strip(&#39;\n&#39;).split(&#39;,&#39;)
+                                        l[-1]=str(balance_of_db)
+                                        line=&#39;,&#39;.join(l)+&#39;\n&#39;
+
+                                    write_f.write(line)
+                            os.remove(src_file)
+                            os.rename(dst_file,src_file)
+
+                            print(&#39;购买成功，请耐心等待发货&#39;)
+
+                        shopping_cart=&#123;&#125;
+                        current_userinfo=[]
+                        tag=False
+
+
+                else:
+                    print(&#39;输入非法&#39;)
+
+
+    else:
+        print(&#39;\033[33m非法操作\033[0m&#39;)
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021 Copyright QuYi-Stack
+</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

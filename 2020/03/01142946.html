@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>1、概述 - Python | QuYi-Stack</title>
+  <meta name="keywords" content=" Python ">
+  <meta name="description" content="1、概述 - Python | QuYi-Stack">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="1 过渡基础1.1 过渡的方式Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。 包括以下工具：  在 CSS 过渡和动画中自动应用 class 可以配合使用第三方 CSS 动画库，如 Animate.css 在过渡钩子函数中使用 JavaScript 直接操作 DOM 可以配合使用第三方 JavaScript 动画库，如 Velocity.js  1.2 过渡的情形 条件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5、Vue过渡动画效果">
+<meta property="og:url" content="https://quyi.io/2020/04/12113031.html">
+<meta property="og:site_name" content="QuYi-Stack">
+<meta property="og:description" content="1 过渡基础1.1 过渡的方式Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。 包括以下工具：  在 CSS 过渡和动画中自动应用 class 可以配合使用第三方 CSS 动画库，如 Animate.css 在过渡钩子函数中使用 JavaScript 直接操作 DOM 可以配合使用第三方 JavaScript 动画库，如 Velocity.js  1.2 过渡的情形 条件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210325112926.png">
+<meta property="article:published_time" content="2020-04-12T03:30:31.000Z">
+<meta property="article:modified_time" content="2021-03-25T07:18:57.996Z">
+<meta property="article:author" content="Qu Yi">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210325112926.png">
+
+
+<link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="https://avatars.githubusercontent.com/u/80147732?s=460&amp;u=23be5c16d10232c0df046f708c7da6a2c01b2913&amp;v=4"/>
+</a>
+<div class="author">
+    <span>Qu Yi</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/quyi-stack/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:Earon106@gmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=66773056&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(55)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="大前端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        大前端
+                        <small>(30)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BOM/DOM">
+                                        
+                                        BOM/DOM
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BootStrap">
+                                        
+                                        BootStrap
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->HTML5/CSS3">
+                                        
+                                        HTML5/CSS3
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->JavaScript">
+                                        
+                                        JavaScript
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->jQuery">
+                                        
+                                        jQuery
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->Vue">
+                                        
+                                        Vue
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(25)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->JavaSE">
+                                        
+                                        JavaSE
+                                        
+                                            <small>(7
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Python基础">
+                                        
+                                        Python基础
+                                        
+                                            <small>(18
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="55">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BootStrap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSS3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JavaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jQuery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Vue</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/12113031.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="5、Vue过渡动画效果">5、Vue过渡动画效果</span>
+            <span class="post-date" title="2020-04-12 11:30:31">2020/04/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/11113026.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="4、Vue组件">4、Vue组件</span>
+            <span class="post-date" title="2020-04-11 11:30:26">2020/04/11</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/10113020.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="3、Vue视图">3、Vue视图</span>
+            <span class="post-date" title="2020-04-10 11:30:20">2020/04/10</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/09113015.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="2、Vue实例">2、Vue实例</span>
+            <span class="post-date" title="2020-04-09 11:30:15">2020/04/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/08113005.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="1、Vue介绍">1、Vue介绍</span>
+            <span class="post-date" title="2020-04-08 11:30:05">2020/04/08</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/07111644.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="4、Bootstrap插件">4、Bootstrap插件</span>
+            <span class="post-date" title="2020-04-07 11:16:44">2020/04/07</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/06111639.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="3、Bootstrap组件">3、Bootstrap组件</span>
+            <span class="post-date" title="2020-04-06 11:16:39">2020/04/06</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/05111633.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="2、Bootstrap布局">2、Bootstrap布局</span>
+            <span class="post-date" title="2020-04-05 11:16:33">2020/04/05</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/04111627.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="1、BootStrap基础">1、BootStrap基础</span>
+            <span class="post-date" title="2020-04-04 11:16:27">2020/04/04</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/03095755.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="9、jQuery 插件 - jQuery">9、jQuery 插件 - jQuery</span>
+            <span class="post-date" title="2020-04-03 09:57:55">2020/04/03</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/02095746.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="8、工具和其他操作 - jQuery">8、工具和其他操作 - jQuery</span>
+            <span class="post-date" title="2020-04-02 09:57:46">2020/04/02</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/01095739.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="7、动画效果 - jQuery">7、动画效果 - jQuery</span>
+            <span class="post-date" title="2020-04-01 09:57:39">2020/04/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/28095730.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="6、jQuery事件机制 - jQuery">6、jQuery事件机制 - jQuery</span>
+            <span class="post-date" title="2020-03-28 09:57:30">2020/03/28</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/27095723.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="5、属性和样式操作 - jQuery">5、属性和样式操作 - jQuery</span>
+            <span class="post-date" title="2020-03-27 09:57:23">2020/03/27</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/26095715.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="4、DOM操作 - jQuery">4、DOM操作 - jQuery</span>
+            <span class="post-date" title="2020-03-26 09:57:15">2020/03/26</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/25095706.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="3、使用筛选器获取元素 - jQuery">3、使用筛选器获取元素 - jQuery</span>
+            <span class="post-date" title="2020-03-25 09:57:06">2020/03/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/24150557.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="7、异常机制 - JavaSE">7、异常机制 - JavaSE</span>
+            <span class="post-date" title="2020-03-24 15:05:57">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/24095659.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="2、选择器 - jQuery">2、选择器 - jQuery</span>
+            <span class="post-date" title="2020-03-24 09:56:59">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/23170011.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="6、面向对象 - JavaSE">6、面向对象 - JavaSE</span>
+            <span class="post-date" title="2020-03-23 17:00:11">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/23095635.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="1、jQuery基础 - jQuery">1、jQuery基础 - jQuery</span>
+            <span class="post-date" title="2020-03-23 09:56:35">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/22094526.html"
+           data-tag="DOM"
+           data-author="" >
+            <span class="post-title" title="2、文档对象模型DOM">2、文档对象模型DOM</span>
+            <span class="post-date" title="2020-03-22 09:45:26">2020/03/22</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/21094314.html"
+           data-tag="BOM"
+           data-author="" >
+            <span class="post-title" title="1、浏览器对象模型BOM">1、浏览器对象模型BOM</span>
+            <span class="post-date" title="2020-03-21 09:43:14">2020/03/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/20220918.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="4、事件机制 - JavaScript">4、事件机制 - JavaScript</span>
+            <span class="post-date" title="2020-03-20 22:09:18">2020/03/20</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/19220904.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="3、内置对象 - JavaScript">3、内置对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-19 22:09:04">2020/03/19</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/18220846.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="2、函数和对象 - JavaScript">2、函数和对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-18 22:08:46">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/18143447.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="18、异常处理 - Python">18、异常处理 - Python</span>
+            <span class="post-date" title="2020-03-18 14:34:47">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/17220714.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="1、基础语法 - JavaScript">1、基础语法 - JavaScript</span>
+            <span class="post-date" title="2020-03-17 22:07:14">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17165118.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="5、数组 - JavaSE">5、数组 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 16:51:18">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/17143428.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="17、常用模块_其他 - Python">17、常用模块_其他 - Python</span>
+            <span class="post-date" title="2020-03-17 14:34:28">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17142852.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="4、方法 - JavaSE">4、方法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:28:52">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17140617.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="3、流程控制 - JavaSE">3、流程控制 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:06:17">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17120138.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="2、基础语法 - JavaSE">2、基础语法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 12:01:38">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/16220004.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="6、响应式网页设计 - HTML5_CSS3">6、响应式网页设计 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-16 22:00:04">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/16160850.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="1、Java入门 - JavaSE">1、Java入门 - JavaSE</span>
+            <span class="post-date" title="2020-03-16 16:08:50">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/16143414.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="16、常用模块_正则表达式 - Python">16、常用模块_正则表达式 - Python</span>
+            <span class="post-date" title="2020-03-16 14:34:14">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/15215802.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="5、新的页面布局方式 - HTML5_CSS3">5、新的页面布局方式 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-15 21:58:02">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/15143405.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="15、常用模块_序列化处理 - Python">15、常用模块_序列化处理 - Python</span>
+            <span class="post-date" title="2020-03-15 14:34:05">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/14215340.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="4、CSS3新增功能 - HTML5_CSS3">4、CSS3新增功能 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-14 21:53:40">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/14143354.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="14、常用模块_系统交互 - Python">14、常用模块_系统交互 - Python</span>
+            <span class="post-date" title="2020-03-14 14:33:54">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/13143343.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="13、常用模块_随机和哈希 - Python">13、常用模块_随机和哈希 - Python</span>
+            <span class="post-date" title="2020-03-13 14:33:43">2020/03/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/12143326.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="12、常用模块 - Python">12、常用模块 - Python</span>
+            <span class="post-date" title="2020-03-12 14:33:26">2020/03/12</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/11143316.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="11、模块 - Python">11、模块 - Python</span>
+            <span class="post-date" title="2020-03-11 14:33:16">2020/03/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/10143304.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="10、高级特性 - Python">10、高级特性 - Python</span>
+            <span class="post-date" title="2020-03-10 14:33:04">2020/03/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/09143256.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="9、函数编程 - Python">9、函数编程 - Python</span>
+            <span class="post-date" title="2020-03-09 14:32:56">2020/03/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/08143250.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="8、文件处理 - Python">8、文件处理 - Python</span>
+            <span class="post-date" title="2020-03-08 14:32:50">2020/03/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/07143125.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="7、字符编码 - Python">7、字符编码 - Python</span>
+            <span class="post-date" title="2020-03-07 14:31:25">2020/03/07</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/06143116.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="6、数据操作 - Python">6、数据操作 - Python</span>
+            <span class="post-date" title="2020-03-06 14:31:16">2020/03/06</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/05143105.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="5、流程控制 - Python">5、流程控制 - Python</span>
+            <span class="post-date" title="2020-03-05 14:31:05">2020/03/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/04143058.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="4、数据类型 - Python">4、数据类型 - Python</span>
+            <span class="post-date" title="2020-03-04 14:30:58">2020/03/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/03143005.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="3、表达式和运算符 - Python">3、表达式和运算符 - Python</span>
+            <span class="post-date" title="2020-03-03 14:30:05">2020/03/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/02142955.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="2、基础语法、变量 - Python">2、基础语法、变量 - Python</span>
+            <span class="post-date" title="2020-03-02 14:29:55">2020/03/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/01142946.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="1、概述 - Python">1、概述 - Python</span>
+            <span class="post-date" title="2020-03-01 14:29:46">2020/03/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/13214947.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="3、页面布局 - HTML5_CSS3">3、页面布局 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-13 21:49:47">2019/03/13</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/12172510.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="2、页面组件 - HTML5_CSS3">2、页面组件 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-12 17:25:10">2019/03/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/11170116.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="1、基础 - HTML5_CSS3">1、基础 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-11 17:01:16">2019/03/11</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-1、概述-Python" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">1、概述 - Python</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;Python基础">Python基础</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Python</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-03-25 14:42:14'>2020-03-01 14:29</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">1 编程语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1 编程语言的定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-text">编程的目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">什么是编程语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BC%96%E7%A8%8B"><span class="toc-text">什么是编程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%88%86%E7%B1%BB"><span class="toc-text">1.2 编程语言分类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E8%AF%AD%E8%A8%80"><span class="toc-text">机器语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80"><span class="toc-text">汇编语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80"><span class="toc-text">高级语言</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">1.3 主流编程语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">常见编程语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E6%8E%92%E5%90%8D"><span class="toc-text">编程语言排名</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Python%E4%BB%8B%E7%BB%8D"><span class="toc-text">2 Python介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Python%E7%9A%84%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F"><span class="toc-text">3 Python的应用领域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Python-%E5%9C%A8%E4%B8%80%E4%BA%9B%E5%85%AC%E5%8F%B8%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-text">4 Python 在一些公司中的应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Python%E7%9A%84%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-text">5 Python的发展历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Python%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">6 Python解释器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Python3-%E5%92%8C-Python2"><span class="toc-text">7 Python3 和 Python2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85Python%E7%8E%AF%E5%A2%83-%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="toc-text">8 安装Python环境(解释器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%BC%80%E5%8F%91%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text">9 开发前准备</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-5 i,
+    .toc-level-5 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-编程语言"><a href="#1-编程语言" class="headerlink" title="1 编程语言"></a>1 编程语言</h2><h3 id="1-1-编程语言的定义"><a href="#1-1-编程语言的定义" class="headerlink" title="1.1 编程语言的定义"></a>1.1 编程语言的定义</h3><h4 id="编程的目的"><a href="#编程的目的" class="headerlink" title="编程的目的"></a>编程的目的</h4><p>计算机的发明，是为了用机器取代/解放人力，而编程的目的则是将人类的思想流程按照某种能够被计算机识别的表达方式传递给计算机，从而达到让计算机能够像人脑/电脑一样自动执行的效果。</p>
+<h4 id="什么是编程语言"><a href="#什么是编程语言" class="headerlink" title="什么是编程语言"></a>什么是编程语言</h4><p>上面提及的能够被计算机所识别的表达方式即编程语言，语言是沟通的介质，而编程语言是程序员与计算机沟通的介质。在编程的世界里，计算机更像是人的奴隶，人类编程的目的就命令奴隶去工作。</p>
+<h4 id="什么是编程"><a href="#什么是编程" class="headerlink" title="什么是编程"></a>什么是编程</h4><p>编程即程序员根据需求把自己的思想流程按照某种编程语言的语法风格编写下来，产出的结果就是包含一堆字符的文件。</p>
+<p>强调：程序在未运行前跟普通文件无异，只有程序在运行时，文件内所写的字符才有特定的语法意义</p>
+<h3 id="1-2-编程语言分类"><a href="#1-2-编程语言分类" class="headerlink" title="1.2 编程语言分类"></a>1.2 编程语言分类</h3><h4 id="机器语言"><a href="#机器语言" class="headerlink" title="机器语言"></a>机器语言</h4><pre><code>01000100001000001010101000001000010000010000
+00001000011101111011110001110000111000100000
+01011100001000101010101000111000010000101010
+01010101010101010111100000011101111000101010
+</code></pre>
+<h4 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h4><pre><code>section .data            ; 数据段声明
+    msg db &quot;Hello, world!&quot;, 0xA     ; 要输出的字符串
+    len equ $ - msg                 ; 字串长度
+section .text            ; 代码段声明
+global _start            ; 指定入口函数
+_start:                  ; 在屏幕上显示一个字符串
+        mov edx, len     ; 参数三：字符串长度
+        mov ecx, msg     ; 参数二：要显示的字符串
+        mov ebx, 1       ; 参数一：文件描述符(stdout) 
+        mov eax, 4       ; 系统调用号(sys_write) 
+        int 0x80         ; 调用内核功能
+                         ; 退出程序
+        mov ebx, 0       ; 参数一：退出代码
+        mov eax, 1       ; 系统调用号(sys_exit) 
+        int 0x80         ; 调用内核功能
+</code></pre>
+<h4 id="高级语言"><a href="#高级语言" class="headerlink" title="高级语言"></a>高级语言</h4><p><strong>编译型</strong> ： 需要编译器</p>
+<p><strong>解释型</strong> : 需要解释器</p>
+<h3 id="1-3-主流编程语言"><a href="#1-3-主流编程语言" class="headerlink" title="1.3 主流编程语言"></a>1.3 主流编程语言</h3><p>世界上的编程语言有600多种，但真正大家主流在使用的最多二三十种，不同的语言有自己的特点和擅长领域，随着计算机的不断发展，新语言在不断诞生，也同时有很多老旧的语言慢慢无人用了</p>
+<h4 id="常见编程语言"><a href="#常见编程语言" class="headerlink" title="常见编程语言"></a>常见编程语言</h4><ul>
+<li>Python</li>
+<li>C</li>
+<li>C++</li>
+<li>C#</li>
+<li>Java</li>
+<li>JavaScript</li>
+<li>SQL</li>
+<li>R</li>
+<li>Ruby</li>
+<li>Objective-C</li>
+<li>Swift</li>
+<li>Go</li>
+<li>Perl</li>
+<li>VB</li>
+</ul>
+<h4 id="编程语言排名"><a href="#编程语言排名" class="headerlink" title="编程语言排名"></a>编程语言排名</h4><p><a target="_blank" rel="noopener" href="https://www.tiobe.com/tiobe-index/">https://www.tiobe.com/tiobe-index/</a></p>
+<h2 id="2-Python介绍"><a href="#2-Python介绍" class="headerlink" title="2 Python介绍"></a>2 Python介绍</h2><p>python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，Guido开始写能够解释Python语言语法的解释器。Python这个名字，来自Guido所挚爱的电视剧Monty Python’s Flying Circus。他希望这个新的叫做Python的语言，能符合他的理想：创造一种C和shell之间，功能全面，易学易用，可拓展的语言。</p>
+<p>Python崇尚优美、清晰、简单，是一个优秀并广泛使用的语言。</p>
+<p>Python可以应用于众多领域，如：数据分析、组件集成、网络服务、图像处理、数值计算和科学计算等众多领域。目前业内几乎所有大中型互联网企业都在使用Python，如：Youtube、Dropbox、BT、Quora（中国知乎）、豆瓣、知乎、Google、Yahoo!、Facebook、NASA、百度、腾讯、汽车之家、美团等。</p>
+<h2 id="3-Python的应用领域"><a href="#3-Python的应用领域" class="headerlink" title="3 Python的应用领域"></a>3 Python的应用领域</h2><ol>
+<li>WEB开发——最火的Python web框架Django, 支持异步高并发的Tornado框架，短小精悍的flask,bottle, Django官方的标语把Django定义为the framework for perfectionist with deadlines(大意是一个为完全主义者开发的高效率web框架)</li>
+<li>网络编程——支持高并发的Twisted网络框架， py3引入的asyncio使异步编程变的非常简单</li>
+<li>爬虫——爬虫领域，Python几乎是霸主地位，Scrapy\Request\BeautifuSoap\urllib等，想爬啥就爬啥</li>
+<li>云计算——目前最火最知名的云计算框架就是OpenStack,Python现在的火，很大一部分就是因为云计算</li>
+<li>人工智能——谁会成为AI 和大数据时代的第一开发语言？这本已是一个不需要争论的问题。如果说三年前，Matlab、Scala、R、Java 和 Python还各有机会，局面尚且不清楚，那么三年之后，趋势已经非常明确了，特别是前两天 Facebook 开源了 PyTorch 之后，Python 作为 AI 时代头牌语言的位置基本确立，未来的悬念仅仅是谁能坐稳第二把交椅。</li>
+<li>自动化运维——问问中国的每个运维人员，运维人员必须会的语言是什么？10个人相信会给你一个相同的答案，它的名字叫Python</li>
+<li>金融分析——到目前,Python是金融分析、量化交易领域里用的最多的语言</li>
+<li>科学运算—— 你知道么,97年开始，NASA就在大量使用Python在进行各种复杂的科学运算，随着NumPy, SciPy, Matplotlib, Enthought librarys等众多程序库的开发，使的Python越来越适合于做科学计算、绘制高质量的2D和3D图像。和科学计算领域最流行的商业软件Matlab相比，Python是一门通用的程序设计语言，比Matlab所采用的脚本语言的应用范围更广泛</li>
+<li>游戏开发——在网络游戏开发中Python也有很多应用。相比Lua or C++,Python 比 Lua 有更高阶的抽象能力，可以用更少的代码描述游戏业务逻辑，与 Lua 相比，Python 更适合作为一种 Host 语言，即程序的入口点是在 Python 那一端会比较好，然后用 C/C++ 在非常必要的时候写一些扩展。Python 非常适合编写 1 万行以上的项目，而且能够很好地把网游项目的规模控制在 10 万行代码以内。另外据我所知，知名的游戏&lt;文明&gt; 就是用Python写的</li>
+</ol>
+<h2 id="4-Python-在一些公司中的应用"><a href="#4-Python-在一些公司中的应用" class="headerlink" title="4 Python 在一些公司中的应用"></a>4 Python 在一些公司中的应用</h2><ul>
+<li>谷歌：Google App Engine 、code.google.com 、Google earth 、谷歌爬虫、Google广告等项目都在大量使用Python开发</li>
+<li>CIA: 美国中情局网站就是用Python开发的</li>
+<li>NASA: 美国航天局(NASA)大量使用Python进行数据分析和运算</li>
+<li>YouTube:世界上最大的视频网站YouTube就是用Python开发的</li>
+<li>Dropbox:美国最大的在线云存储网站，全部用Python实现，每天网站处理10亿个文件的上传和下载</li>
+<li>Instagram:美国最大的图片分享社交网站，每天超过3千万张照片被分享，全部用python开发</li>
+<li>Facebook:大量的基础库均通过Python实现的</li>
+<li>Redhat: 世界上最流行的Linux发行版本中的yum包管理工具就是用python开发的</li>
+<li>豆瓣: 公司几乎所有的业务均是通过Python开发的</li>
+<li>知乎: 国内最大的问答社区，通过Python开发(国外Quora)</li>
+<li>春雨医生：国内知名的在线医疗网站是用Python开发的</li>
+<li>除上面之外，还有搜狐、金山、腾讯、盛大、网易、百度、阿里、淘宝 、土豆、新浪、果壳等公司都在使用Python完成各种各样的任务。</li>
+<li>几乎所有的大中型互联网公司以及非常多的创业公司 都有大量Python的应用</li>
+</ul>
+<h2 id="5-Python的发展历史"><a href="#5-Python的发展历史" class="headerlink" title="5 Python的发展历史"></a>5 Python的发展历史</h2><ul>
+<li>1989年，Guido开始写Python语言的编译器。</li>
+<li>1991年，第一个Python编译器诞生。它是用C语言实现的，并能够调用C语言的库文件。从一出生，Python已经具有了：类，函数，异常处理，包含表和词典在内的核心数据类型，以及模块为基础的拓展系统。</li>
+<li>Granddaddy of Python web frameworks, Zope 1 was released in 1999</li>
+<li>Python 1.0 - January 1994 增加了 lambda, map, filter and reduce.</li>
+<li>Python 2.0 - October 16, 2000，加入了内存回收机制，构成了现在Python语言框架的基础</li>
+<li>Python 2.4 - November 30, 2004, 同年目前最流行的WEB框架Django 诞生</li>
+<li>Python 2.5 - September 19, 2006</li>
+<li>Python 2.6 - October 1, 2008</li>
+<li>Python 2.7 - July 3, 2010</li>
+<li>In November 2014, it was announced that Python 2.7 would be supported until 2020, and reaffirmed that there would be no 2.8 release as users were expected to move to Python 3.4+ as soon as possible</li>
+<li>Python 3.0 - December 3, 2008 (这里要解释清楚 为什么08年就出3.0，2010年反而又推出了2.7？是因为3.0不向下兼容2.0，导致大家都拒绝升级3.0，无奈官方只能推出2.7过渡版本)</li>
+<li>Python 3.1 - June 27, 2009</li>
+<li>Python 3.2 - February 20, 2011</li>
+<li>Python 3.3 - September 29, 2012</li>
+<li>Python 3.4 - March 16, 2014</li>
+<li>Python 3.5 - September 13, 2015</li>
+<li>Python 3.6 - 2016-12-23 发布python3.6.0版</li>
+<li>Python 3.7 - 2018-06-27</li>
+</ul>
+<h2 id="6-Python解释器"><a href="#6-Python解释器" class="headerlink" title="6 Python解释器"></a>6 Python解释器</h2><pre><code>    Python是一门解释型语言，代码想运行，必须通过解释器执行，Python的解释器本身也可以看作是个程序，这个程序是什么语言开发的呢？ 答案是好几种语言？ what? 因为Python有好几种解释器，分别基于不同语言开发，每个解释器特点不同，但都能正常运行我们的Python代码，下面分别来看下：
+</code></pre>
+<ul>
+<li><p>CPython：CPython是使用最广且被的Python解释器。本教程以CPython为准。</p>
+<p>  当我们从Python官方网站下载并安装好Python 2.7后，我们就直接获得了一个官方版本的解释器：CPython。这个解释器是用C语言开发的，所以叫CPython。在命令行下运行python就是启动CPython解释器。</p>
+</li>
+<li><p>IPython</p>
+<p>  IPython是基于CPython之上的一个交互式解释器，也就是说，IPython只是在交互方式上有所增强，但是执行Python代码的功能和CPython是完全一样的。好比很多国产浏览器虽然外观不同，但内核其实都是调用了IE。 CPython用&gt;&gt;&gt;作为提示符，而IPython用In [序号]:作为提示符。</p>
+</li>
+<li><p>PyPy</p>
+<p>  PyPy是另一个Python解释器，它的目标是执行速度。PyPy采用JIT技术，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。 绝大部分Python代码都可以在PyPy下运行，但是PyPy和CPython有一些是不同的，这就导致相同的Python代码在两种解释器下执行可能会有不同的结果。如果你的代码要放到PyPy下执行，就需要了解PyPy和CPython的不同点。</p>
+</li>
+<li><p>Jython</p>
+<p>  Jython是运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行。</p>
+</li>
+<li><p>IronPython</p>
+<p>  IronPython和Jython类似，只不过IronPython是运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。</p>
+</li>
+</ul>
+<h2 id="7-Python3-和-Python2"><a href="#7-Python3-和-Python2" class="headerlink" title="7 Python3 和 Python2"></a>7 Python3 和 Python2</h2><p>python的3.0版本，相对于Python的早期版本，这是一个较大的升级。为了不带入过多的累赘，Python 3.0在设计的时候没有考虑向下相容。许多针对早期Python版本设计的程式都无法在Python 3.0上正常执行。</p>
+<p>为了照顾现有程序，Python 2.6作为一个过渡版本，基本使用了Python 2.x的语法和库，同时考虑了向Python 3.0的迁移，允许使用部分Python 3.0的语法与函数。</p>
+<p>新的Python程序建议使用Python 3.0版本的语法。</p>
+<h2 id="8-安装Python环境-解释器"><a href="#8-安装Python环境-解释器" class="headerlink" title="8 安装Python环境(解释器)"></a>8 安装Python环境(解释器)</h2><p>Python目前已支持所有主流操作系统，在Linux,Unix,Mac系统上自带Python环境，在Windows系统上需要安装一下，超简单</p>
+<p>打开官网 <a target="_blank" rel="noopener" href="https://www.python.org/downloads">https://www.python.org/downloads</a></p>
+<h2 id="9-开发前准备"><a href="#9-开发前准备" class="headerlink" title="9 开发前准备"></a>9 开发前准备</h2><p>编辑器： notepad++ sublime</p>
+<p>IDE： pycharm</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021 Copyright QuYi-Stack
+</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

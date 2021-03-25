@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>12、常用模块 - Python | QuYi-Stack</title>
+  <meta name="keywords" content=" Python ">
+  <meta name="description" content="12、常用模块 - Python | QuYi-Stack">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="1 过渡基础1.1 过渡的方式Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。 包括以下工具：  在 CSS 过渡和动画中自动应用 class 可以配合使用第三方 CSS 动画库，如 Animate.css 在过渡钩子函数中使用 JavaScript 直接操作 DOM 可以配合使用第三方 JavaScript 动画库，如 Velocity.js  1.2 过渡的情形 条件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5、Vue过渡动画效果">
+<meta property="og:url" content="https://quyi.io/2020/04/12113031.html">
+<meta property="og:site_name" content="QuYi-Stack">
+<meta property="og:description" content="1 过渡基础1.1 过渡的方式Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。 包括以下工具：  在 CSS 过渡和动画中自动应用 class 可以配合使用第三方 CSS 动画库，如 Animate.css 在过渡钩子函数中使用 JavaScript 直接操作 DOM 可以配合使用第三方 JavaScript 动画库，如 Velocity.js  1.2 过渡的情形 条件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210325112926.png">
+<meta property="article:published_time" content="2020-04-12T03:30:31.000Z">
+<meta property="article:modified_time" content="2021-03-25T07:18:57.996Z">
+<meta property="article:author" content="Qu Yi">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210325112926.png">
+
+
+<link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="https://avatars.githubusercontent.com/u/80147732?s=460&amp;u=23be5c16d10232c0df046f708c7da6a2c01b2913&amp;v=4"/>
+</a>
+<div class="author">
+    <span>Qu Yi</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/quyi-stack/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:Earon106@gmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=66773056&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(55)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="大前端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        大前端
+                        <small>(30)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BOM/DOM">
+                                        
+                                        BOM/DOM
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BootStrap">
+                                        
+                                        BootStrap
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->HTML5/CSS3">
+                                        
+                                        HTML5/CSS3
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->JavaScript">
+                                        
+                                        JavaScript
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->jQuery">
+                                        
+                                        jQuery
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->Vue">
+                                        
+                                        Vue
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(25)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->JavaSE">
+                                        
+                                        JavaSE
+                                        
+                                            <small>(7
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Python基础">
+                                        
+                                        Python基础
+                                        
+                                            <small>(18
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="55">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BootStrap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSS3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JavaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jQuery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Vue</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/12113031.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="5、Vue过渡动画效果">5、Vue过渡动画效果</span>
+            <span class="post-date" title="2020-04-12 11:30:31">2020/04/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/11113026.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="4、Vue组件">4、Vue组件</span>
+            <span class="post-date" title="2020-04-11 11:30:26">2020/04/11</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/10113020.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="3、Vue视图">3、Vue视图</span>
+            <span class="post-date" title="2020-04-10 11:30:20">2020/04/10</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/09113015.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="2、Vue实例">2、Vue实例</span>
+            <span class="post-date" title="2020-04-09 11:30:15">2020/04/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/08113005.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="1、Vue介绍">1、Vue介绍</span>
+            <span class="post-date" title="2020-04-08 11:30:05">2020/04/08</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/07111644.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="4、Bootstrap插件">4、Bootstrap插件</span>
+            <span class="post-date" title="2020-04-07 11:16:44">2020/04/07</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/06111639.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="3、Bootstrap组件">3、Bootstrap组件</span>
+            <span class="post-date" title="2020-04-06 11:16:39">2020/04/06</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/05111633.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="2、Bootstrap布局">2、Bootstrap布局</span>
+            <span class="post-date" title="2020-04-05 11:16:33">2020/04/05</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/04111627.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="1、BootStrap基础">1、BootStrap基础</span>
+            <span class="post-date" title="2020-04-04 11:16:27">2020/04/04</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/03095755.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="9、jQuery 插件 - jQuery">9、jQuery 插件 - jQuery</span>
+            <span class="post-date" title="2020-04-03 09:57:55">2020/04/03</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/02095746.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="8、工具和其他操作 - jQuery">8、工具和其他操作 - jQuery</span>
+            <span class="post-date" title="2020-04-02 09:57:46">2020/04/02</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/01095739.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="7、动画效果 - jQuery">7、动画效果 - jQuery</span>
+            <span class="post-date" title="2020-04-01 09:57:39">2020/04/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/28095730.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="6、jQuery事件机制 - jQuery">6、jQuery事件机制 - jQuery</span>
+            <span class="post-date" title="2020-03-28 09:57:30">2020/03/28</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/27095723.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="5、属性和样式操作 - jQuery">5、属性和样式操作 - jQuery</span>
+            <span class="post-date" title="2020-03-27 09:57:23">2020/03/27</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/26095715.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="4、DOM操作 - jQuery">4、DOM操作 - jQuery</span>
+            <span class="post-date" title="2020-03-26 09:57:15">2020/03/26</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/25095706.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="3、使用筛选器获取元素 - jQuery">3、使用筛选器获取元素 - jQuery</span>
+            <span class="post-date" title="2020-03-25 09:57:06">2020/03/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/24150557.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="7、异常机制 - JavaSE">7、异常机制 - JavaSE</span>
+            <span class="post-date" title="2020-03-24 15:05:57">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/24095659.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="2、选择器 - jQuery">2、选择器 - jQuery</span>
+            <span class="post-date" title="2020-03-24 09:56:59">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/23170011.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="6、面向对象 - JavaSE">6、面向对象 - JavaSE</span>
+            <span class="post-date" title="2020-03-23 17:00:11">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/23095635.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="1、jQuery基础 - jQuery">1、jQuery基础 - jQuery</span>
+            <span class="post-date" title="2020-03-23 09:56:35">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/22094526.html"
+           data-tag="DOM"
+           data-author="" >
+            <span class="post-title" title="2、文档对象模型DOM">2、文档对象模型DOM</span>
+            <span class="post-date" title="2020-03-22 09:45:26">2020/03/22</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/21094314.html"
+           data-tag="BOM"
+           data-author="" >
+            <span class="post-title" title="1、浏览器对象模型BOM">1、浏览器对象模型BOM</span>
+            <span class="post-date" title="2020-03-21 09:43:14">2020/03/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/20220918.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="4、事件机制 - JavaScript">4、事件机制 - JavaScript</span>
+            <span class="post-date" title="2020-03-20 22:09:18">2020/03/20</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/19220904.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="3、内置对象 - JavaScript">3、内置对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-19 22:09:04">2020/03/19</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/18220846.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="2、函数和对象 - JavaScript">2、函数和对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-18 22:08:46">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/18143447.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="18、异常处理 - Python">18、异常处理 - Python</span>
+            <span class="post-date" title="2020-03-18 14:34:47">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/17220714.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="1、基础语法 - JavaScript">1、基础语法 - JavaScript</span>
+            <span class="post-date" title="2020-03-17 22:07:14">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17165118.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="5、数组 - JavaSE">5、数组 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 16:51:18">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/17143428.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="17、常用模块_其他 - Python">17、常用模块_其他 - Python</span>
+            <span class="post-date" title="2020-03-17 14:34:28">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17142852.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="4、方法 - JavaSE">4、方法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:28:52">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17140617.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="3、流程控制 - JavaSE">3、流程控制 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:06:17">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17120138.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="2、基础语法 - JavaSE">2、基础语法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 12:01:38">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/16220004.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="6、响应式网页设计 - HTML5_CSS3">6、响应式网页设计 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-16 22:00:04">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/16160850.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="1、Java入门 - JavaSE">1、Java入门 - JavaSE</span>
+            <span class="post-date" title="2020-03-16 16:08:50">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/16143414.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="16、常用模块_正则表达式 - Python">16、常用模块_正则表达式 - Python</span>
+            <span class="post-date" title="2020-03-16 14:34:14">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/15215802.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="5、新的页面布局方式 - HTML5_CSS3">5、新的页面布局方式 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-15 21:58:02">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/15143405.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="15、常用模块_序列化处理 - Python">15、常用模块_序列化处理 - Python</span>
+            <span class="post-date" title="2020-03-15 14:34:05">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/14215340.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="4、CSS3新增功能 - HTML5_CSS3">4、CSS3新增功能 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-14 21:53:40">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/14143354.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="14、常用模块_系统交互 - Python">14、常用模块_系统交互 - Python</span>
+            <span class="post-date" title="2020-03-14 14:33:54">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/13143343.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="13、常用模块_随机和哈希 - Python">13、常用模块_随机和哈希 - Python</span>
+            <span class="post-date" title="2020-03-13 14:33:43">2020/03/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/12143326.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="12、常用模块 - Python">12、常用模块 - Python</span>
+            <span class="post-date" title="2020-03-12 14:33:26">2020/03/12</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/11143316.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="11、模块 - Python">11、模块 - Python</span>
+            <span class="post-date" title="2020-03-11 14:33:16">2020/03/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/10143304.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="10、高级特性 - Python">10、高级特性 - Python</span>
+            <span class="post-date" title="2020-03-10 14:33:04">2020/03/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/09143256.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="9、函数编程 - Python">9、函数编程 - Python</span>
+            <span class="post-date" title="2020-03-09 14:32:56">2020/03/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/08143250.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="8、文件处理 - Python">8、文件处理 - Python</span>
+            <span class="post-date" title="2020-03-08 14:32:50">2020/03/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/07143125.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="7、字符编码 - Python">7、字符编码 - Python</span>
+            <span class="post-date" title="2020-03-07 14:31:25">2020/03/07</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/06143116.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="6、数据操作 - Python">6、数据操作 - Python</span>
+            <span class="post-date" title="2020-03-06 14:31:16">2020/03/06</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/05143105.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="5、流程控制 - Python">5、流程控制 - Python</span>
+            <span class="post-date" title="2020-03-05 14:31:05">2020/03/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/04143058.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="4、数据类型 - Python">4、数据类型 - Python</span>
+            <span class="post-date" title="2020-03-04 14:30:58">2020/03/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/03143005.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="3、表达式和运算符 - Python">3、表达式和运算符 - Python</span>
+            <span class="post-date" title="2020-03-03 14:30:05">2020/03/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/02142955.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="2、基础语法、变量 - Python">2、基础语法、变量 - Python</span>
+            <span class="post-date" title="2020-03-02 14:29:55">2020/03/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/01142946.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="1、概述 - Python">1、概述 - Python</span>
+            <span class="post-date" title="2020-03-01 14:29:46">2020/03/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/13214947.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="3、页面布局 - HTML5_CSS3">3、页面布局 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-13 21:49:47">2019/03/13</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/12172510.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="2、页面组件 - HTML5_CSS3">2、页面组件 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-12 17:25:10">2019/03/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/11170116.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="1、基础 - HTML5_CSS3">1、基础 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-11 17:01:16">2019/03/11</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-12、常用模块-Python" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">12、常用模块 - Python</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="后端">后端</a> > 
+            
+            <a  data-rel="后端&lt;---&gt;Python基础">Python基础</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">Python</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-03-25 14:43:51'>2020-03-12 14:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-time-%E6%A8%A1%E5%9D%97"><span class="toc-text">1 time 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Python%E4%B8%AD%E6%97%B6%E9%97%B4%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E5%BC%8F"><span class="toc-text">1.1 Python中时间的表示方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E8%8E%B7%E5%8F%96%E5%90%84%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%97%B6%E9%97%B4"><span class="toc-text">1.2 获取各种形式的时间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#time%E6%A8%A1%E5%9D%97%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">time模块的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%AC%A6%E5%8F%B7"><span class="toc-text">时间日期格式化符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#struct-time-%E7%BB%93%E6%9E%84"><span class="toc-text">struct_time 结构</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%90%84%E7%A7%8D%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%97%B6%E9%97%B4-%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">1.3 各种形式的时间 之间的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3-%E8%BD%AC%E4%B8%BA-%E7%BB%93%E6%9E%84%E5%8C%96%E6%97%B6%E9%97%B4"><span class="toc-text">时间戳 转为 结构化时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3-%E8%BD%AC%E4%B8%BA-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%B6%E9%97%B4-%E6%B3%A8%E6%84%8F"><span class="toc-text">时间戳 转为 格式化时间(注意)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E6%97%B6%E9%97%B4-%E8%BD%AC%E4%B8%BA-%E6%97%B6%E9%97%B4%E6%88%B3"><span class="toc-text">结构化时间 转为 时间戳</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E6%97%B6%E9%97%B4-%E8%BD%AC%E4%B8%BA-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%B6%E9%97%B4"><span class="toc-text">结构化时间 转为 格式化时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%B6%E9%97%B4-%E8%BD%AC%E4%B8%BA-%E7%BB%93%E6%9E%84%E5%8C%96%E6%97%B6%E9%97%B4"><span class="toc-text">格式化时间 转为 结构化时间</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="toc-text">1.4 其他操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-datetime-%E6%A8%A1%E5%9D%97"><span class="toc-text">2 datetime 模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%85%B3%E4%BA%8Edatetime-%E6%A8%A1%E5%9D%97"><span class="toc-text">2.1 关于datetime 模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%9A%84%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="toc-text">2.2 获取当前的日期时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E8%8E%B7%E5%8F%96%E6%8C%87%E5%AE%9A%E7%9A%84%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="toc-text">2.3 获取指定的日期时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-datetime-%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%97%B6%E9%97%B4%E7%94%A8%E4%BA%8E%E5%85%B6%E4%BB%96-%E5%BD%A2%E5%BC%8F%E7%9A%84%E6%97%B6%E9%97%B4-%E8%BD%AC%E6%8D%A2"><span class="toc-text">2.4 datetime 类型的时间用于其他 形式的时间 转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#datetime%E7%B1%BB%E5%9E%8B-%E8%BD%AC-%E6%97%B6%E9%97%B4%E6%88%B3"><span class="toc-text">datetime类型 转 时间戳</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E6%88%B3-%E8%BD%AC-datetime%E7%B1%BB%E5%9E%8B"><span class="toc-text">时间戳 转 datetime类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#datetime%E7%B1%BB%E5%9E%8B-%E8%BD%AC-%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">datetime类型 转 格式化字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2-%E8%BD%AC-datetime-%E7%B1%BB%E5%9E%8B"><span class="toc-text">格式化字符串 转 datetime 类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-datetime-%E6%97%B6%E9%97%B4-%E5%8A%A0%E5%87%8F"><span class="toc-text">2.5 datetime 时间 加减</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-calendar-%E6%A8%A1%E5%9D%97-%E4%BA%86%E8%A7%A3"><span class="toc-text">3 calendar 模块 (了解)</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-5 i,
+    .toc-level-5 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-time-模块"><a href="#1-time-模块" class="headerlink" title="1 time 模块"></a>1 time 模块</h2><h3 id="1-1-Python中时间的表示方式"><a href="#1-1-Python中时间的表示方式" class="headerlink" title="1.1 Python中时间的表示方式"></a>1.1 Python中时间的表示方式</h3><p>在Python中，通常有这几种方式来表示时间：</p>
+<ul>
+<li>时间戳(timestamp)：通常来说，时间戳表示的是从1970年1月1日00:00:00开始按秒计算的偏移量。我们运行“type(time.time())”，返回的是float类型。</li>
+<li>格式化的时间字符串(Format String)</li>
+<li>结构化的时间(struct_time)：也被称作 <strong>时间元祖</strong> struct_time元组共有9个元素共九个元素:(年，月，日，时，分，秒，一年中第几周，一年中第几天，夏令时)</li>
+</ul>
+<h3 id="1-2-获取各种形式的时间"><a href="#1-2-获取各种形式的时间" class="headerlink" title="1.2 获取各种形式的时间"></a>1.2 获取各种形式的时间</h3><h4 id="time模块的方法"><a href="#time模块的方法" class="headerlink" title="time模块的方法"></a>time模块的方法</h4><pre><code class="python">import time
+# 我们先以当前时间为准,让大家快速认识三种形式的时间
+print(time.time())                     # 时间戳:1487130156.419527
+print(time.strftime(&quot;%Y-%m-%d %X&quot;)) #格式化的时间字符串:&#39;2017-02-15 11:40:53&#39;
+
+print(time.localtime())             #本地时区的struct_time
+print(time.gmtime())                #UTC时区的struct_time
+</code></pre>
+<h4 id="时间日期格式化符号"><a href="#时间日期格式化符号" class="headerlink" title="时间日期格式化符号"></a>时间日期格式化符号</h4><pre><code>%y 两位数的年份表示（00-99）
+%Y 四位数的年份表示（000-9999）
+%m 月份（01-12）
+%d 月内中的一天（0-31）
+%H 24小时制小时数（0-23）
+%I 12小时制小时数（01-12）
+%M 分钟数（00=59）
+%S 秒（00-59）
+%a 本地简化星期名称
+%A 本地完整星期名称
+%b 本地简化的月份名称
+%B 本地完整的月份名称
+%c 本地相应的日期表示和时间表示
+%j 年内的一天（001-366）
+%p 本地A.M.或P.M.的等价符
+%U 一年中的星期数（00-53）星期天为星期的开始
+%w 星期（0-6），星期天为星期的开始
+%W 一年中的星期数（00-53）星期一为星期的开始
+%x 本地相应的日期表示
+%X 本地相应的时间表示
+%Z 当前时区的名称
+%% %号本身
+</code></pre>
+<h4 id="struct-time-结构"><a href="#struct-time-结构" class="headerlink" title="struct_time 结构"></a>struct_time 结构</h4><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>属性</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>tm_year</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>1</td>
+<td>tm_mon</td>
+<td>1 到 12</td>
+</tr>
+<tr>
+<td>2</td>
+<td>tm_mday</td>
+<td>1 到 31</td>
+</tr>
+<tr>
+<td>3</td>
+<td>tm_hour</td>
+<td>0 到 23</td>
+</tr>
+<tr>
+<td>4</td>
+<td>tm_min</td>
+<td>0 到 59</td>
+</tr>
+<tr>
+<td>5</td>
+<td>tm_sec</td>
+<td>0 到 61 (60或61 是闰秒)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>tm_wday</td>
+<td>0到6 (0是周一)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>tm_yday</td>
+<td>1 到 366(儒略历)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>tm_isdst</td>
+<td>-1, 0, 1, -1是决定是否为夏令时的旗帜</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-各种形式的时间-之间的转换"><a href="#1-3-各种形式的时间-之间的转换" class="headerlink" title="1.3 各种形式的时间 之间的转换"></a>1.3 各种形式的时间 之间的转换</h3><p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210325140537.png"></p>
+<h4 id="时间戳-转为-结构化时间"><a href="#时间戳-转为-结构化时间" class="headerlink" title="时间戳 转为 结构化时间"></a>时间戳 转为 结构化时间</h4><ul>
+<li>time.localtime()</li>
+<li>time.gmtime()</li>
+</ul>
+<pre><code class="python"># time.localtime([secs])
+# 将一个时间戳转换为当前时区的struct_time。secs参数未提供，则以当前时间为准。
+time.localtime()
+time.localtime(1473525444.037215) 
+
+# time.gmtime([secs])
+# gmtime()方法是将一个时间戳转换为UTC时区（0时区）的struct_time。secs参数未提供，则以当前时间为准。
+time.gmtime()
+time.gmtime(1473525444.037215)
+</code></pre>
+<h4 id="时间戳-转为-格式化时间-注意"><a href="#时间戳-转为-格式化时间-注意" class="headerlink" title="时间戳 转为 格式化时间(注意)"></a>时间戳 转为 格式化时间(注意)</h4><ul>
+<li>time.ctime()</li>
+</ul>
+<pre><code class="python"># ctime([secs]) : 把一个时间戳（按秒计算的浮点数）转化为time.asctime()的形式。如果参数未给或者为
+# None的时候，将会默认time.time()为参数。它的作用相当于time.asctime(time.localtime(secs))。
+time.ctime()                      # Sun Sep 11 00:46:38 2016
+time.ctime(time.time())            # Sun Sep 11 00:46:38 2016
+</code></pre>
+<h4 id="结构化时间-转为-时间戳"><a href="#结构化时间-转为-时间戳" class="headerlink" title="结构化时间 转为 时间戳"></a>结构化时间 转为 时间戳</h4><ul>
+<li>time.mktime()</li>
+</ul>
+<pre><code class="python"># time.mktime(t) : 将一个struct_time转化为时间戳。
+time.mktime(time.localtime())    #1473525749.0
+</code></pre>
+<h4 id="结构化时间-转为-格式化时间"><a href="#结构化时间-转为-格式化时间" class="headerlink" title="结构化时间 转为 格式化时间"></a>结构化时间 转为 格式化时间</h4><ul>
+<li>time.strftime()</li>
+<li>time.asctime()</li>
+</ul>
+<pre><code class="python"># time.strftime(format[, t]) : 把一个代表时间的元组或者struct_time（如由time.localtime()和
+# time.gmtime()返回）转化为格式化的时间字符串。如果t未指定，将传入time.localtime()。如果元组中任何一个元素越界，ValueError的错误将会被抛出。
+time.strftime(&quot;%Y-%m-%d %X&quot;, time.localtime())    #2016-09-11 00:49:56
+
+
+# time.asctime([t]) : 把一个表示时间的元组或者struct_time表示为这种形式：&#39;Sun Jun 20 23:21:05 1993&#39;。
+# 如果没有参数，将会将time.localtime()作为参数传入。
+time.asctime()    #Sun Sep 11 00:43:43 2016
+</code></pre>
+<h4 id="格式化时间-转为-结构化时间"><a href="#格式化时间-转为-结构化时间" class="headerlink" title="格式化时间 转为 结构化时间"></a>格式化时间 转为 结构化时间</h4><ul>
+<li>time.strptime</li>
+</ul>
+<pre><code class="python"># time.strptime(string[, format])
+# 把一个格式化时间字符串转化为struct_time。实际上它和strftime()是逆操作。
+time.strptime(&#39;2011-05-05 16:37:06&#39;, &#39;%Y-%m-%d %X&#39;)        #time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=16, tm_min=37, tm_sec=6,tm_wday=3, tm_yday=125, tm_isdst=-1)
+# 在这个函数中，format默认为：&quot;%a %b %d %H:%M:%S %Y&quot;。
+</code></pre>
+<h3 id="1-4-其他操作"><a href="#1-4-其他操作" class="headerlink" title="1.4 其他操作"></a>1.4 其他操作</h3><pre><code class="python"># 线程推迟指定的时间运行，单位为秒。
+time. sleep(100)
+
+# 用以浮点数计算的秒数返回当前的CPU时间。用来衡量不同程序的耗时，比time.time()更有用。
+time.clock( )
+
+# 返回格林威治西部的夏令时地区的偏移秒数。如果该地区在格林威治东部会返回负值（如西欧，包括英国）。对夏令时启用地区才能使用。
+time.altzone  属性
+</code></pre>
+<h2 id="2-datetime-模块"><a href="#2-datetime-模块" class="headerlink" title="2 datetime 模块"></a>2 datetime 模块</h2><h3 id="2-1-关于datetime-模块"><a href="#2-1-关于datetime-模块" class="headerlink" title="2.1 关于datetime 模块"></a>2.1 关于datetime 模块</h3><pre><code class="python"># 导入模块
+import datetime
+# 使用
+datetime.datetime.now()  #获取当前的时间
+# 注意：  datetime是模块，但是该模块下还有一个类也也叫datetime，所以相关操作 我们必须 datetime.datetime
+
+
+# 更好的导入模块的方式
+from datetime import datetime
+# 我们直接使用datetime
+datetime.now()   # 获取当前时间
+</code></pre>
+<h3 id="2-2-获取当前的日期时间"><a href="#2-2-获取当前的日期时间" class="headerlink" title="2.2 获取当前的日期时间"></a>2.2 获取当前的日期时间</h3><pre><code class="python">from datetime import datetime
+now = datetime.now() # 获取当前datetime
+print(now)            # 2015-05-18 16:28:07.198690
+print(type(now))    # &lt;class &#39;datetime.datetime&#39;&gt;
+
+datetime.utcnow()   # 获取标准时区的时间
+</code></pre>
+<p>我们注意到，<code>datetime.now()</code> 返回的是一个datetime对象，并不是字符串或者时间元祖，有别于 <code>time</code>模块</p>
+<h3 id="2-3-获取指定的日期时间"><a href="#2-3-获取指定的日期时间" class="headerlink" title="2.3 获取指定的日期时间"></a>2.3 获取指定的日期时间</h3><pre><code class="python">from datetime import datetime
+
+dt = datetime(2019, 12, 1)
+print(dt)    # 2019-12-01 00:00:00
+
+dt = datetime(2019, 12, 7, 10)
+print(dt)    # 2019-12-07 10:00:00
+
+dt = datetime(2019, 12, 7, 10, 3)
+print(dt)    # 2019-12-07 10:03:00
+
+dt = datetime(2019, 12, 7, 10, 3, 56)
+print(dt)    # 2019-12-07 10:03:56
+
+dt = datetime(2019, 12, 7, 10, 3, 56, 10000)
+print(dt)    # 2019-12-07 10:03:56.010000
+最少指定三个参数， year、month、day
+最多指定七个参数   year、month、day、hour、minute、second、microsecond
+最后一个可指定的单位是微秒  1秒 = 1000000微秒
+</code></pre>
+<h3 id="2-4-datetime-类型的时间用于其他-形式的时间-转换"><a href="#2-4-datetime-类型的时间用于其他-形式的时间-转换" class="headerlink" title="2.4 datetime 类型的时间用于其他 形式的时间 转换"></a>2.4 datetime 类型的时间用于其他 形式的时间 转换</h3><h4 id="datetime类型-转-时间戳"><a href="#datetime类型-转-时间戳" class="headerlink" title="datetime类型 转 时间戳"></a>datetime类型 转 时间戳</h4><p>使用<code>.timstamp()</code> 即可返回 时间戳形式</p>
+<pre><code class="python">from datetime import datetime
+
+dt = datetime(2000, 12, 1, 12, 23, 45)
+print(dt.timestamp())
+
+now = datetime.now()
+print(now.timestamp())
+</code></pre>
+<h4 id="时间戳-转-datetime类型"><a href="#时间戳-转-datetime类型" class="headerlink" title="时间戳 转 datetime类型"></a>时间戳 转 datetime类型</h4><p><code>datetime.fromtimestamp(时间戳)</code>返回datetime对象，通过时间戳指定时间</p>
+<pre><code class="python">from datetime import datetime
+t = 1429417200.0
+print(datetime.fromtimestamp(t))  # 本地时间 2015-04-19 12:20:00
+print(datetime.utcfromtimestamp(t)) # UTC时间    2015-04-19 04:20:00
+</code></pre>
+<h4 id="datetime类型-转-格式化字符串"><a href="#datetime类型-转-格式化字符串" class="headerlink" title="datetime类型 转 格式化字符串"></a>datetime类型 转 格式化字符串</h4><p>使用datetime对象的 <code>.strftime()</code>即可</p>
+<pre><code class="python">from datetime import datetime
+now = datetime.now()
+print(now.strftime(&#39;%Y-%m-%d %X&#39;))  # 2017-09-28 17:18:33
+</code></pre>
+<h4 id="格式化字符串-转-datetime-类型"><a href="#格式化字符串-转-datetime-类型" class="headerlink" title="格式化字符串 转 datetime 类型"></a>格式化字符串 转 datetime 类型</h4><p>通过<code>datetime.strptime()</code>实现，需要一个日期和时间的格式化字符串</p>
+<pre><code class="python">from datetime import datetime
+cday = datetime.strptime(&#39;2018-08-01 18:19:59&#39;, &#39;%Y-%m-%d %H:%M:%S&#39;)
+print(cday)    # 2015-08-01 18:19:59
+</code></pre>
+<h3 id="2-5-datetime-时间-加减"><a href="#2-5-datetime-时间-加减" class="headerlink" title="2.5 datetime 时间 加减"></a>2.5 datetime 时间 加减</h3><pre><code class="python">from datetime import datetime, timedelta
+now = datetime.now()
+now + timedelta(hours=10)        # 当前时间+10小时
+now - timedelta(days=1)            # 当前时间-1天
+now + timedelta(days=2, hours=12)  # 当前时间+2天12个小时
+
+# 替换时间
+now.replace(year=1127, day=1, hour=1, minute=0, second=0, microsecond=0)
+</code></pre>
+<h2 id="3-calendar-模块-了解"><a href="#3-calendar-模块-了解" class="headerlink" title="3 calendar 模块 (了解)"></a>3 calendar 模块 (了解)</h2><p>该模块用来生成日历形式的字符串</p>
+<pre><code class="python">import calendar
+
+# 设置每月从星期几开始  0表示星期一，1表示星期二，6表示星期天 默认0
+calendar.setfirstweekday(0)
+
+# 显示某一年的日历
+print(calendar.calendar(2015))
+print(calendar.calendar(2008, w=2, l=1, c=6))  # w是日期行间距，l是垂直间距，c是月间距
+
+# 显示某月日历
+print(calendar.month(2019, 10))
+print(calendar.month(2018, 9, w=2, l=1))
+
+# 显示 每月从星期几开始 默认0
+print(calendar.firstweekday())
+
+# 返回 指定日期 是星期几 0是星期一，1是星期二， 一直到 6表示星期天
+print(calendar.weekday(2018, 9, 2))
+                                   2015
+
+      January                   February                   March
+Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+             1  2  3       1  2  3  4  5  6  7       1  2  3  4  5  6  7
+ 4  5  6  7  8  9 10       8  9 10 11 12 13 14       8  9 10 11 12 13 14
+11 12 13 14 15 16 17      15 16 17 18 19 20 21      15 16 17 18 19 20 21
+18 19 20 21 22 23 24      22 23 24 25 26 27 28      22 23 24 25 26 27 28
+25 26 27 28 29 30 31                                29 30 31
+
+       April                      May                       June
+Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+          1  2  3  4                      1  2          1  2  3  4  5  6
+ 5  6  7  8  9 10 11       3  4  5  6  7  8  9       7  8  9 10 11 12 13
+12 13 14 15 16 17 18      10 11 12 13 14 15 16      14 15 16 17 18 19 20
+19 20 21 22 23 24 25      17 18 19 20 21 22 23      21 22 23 24 25 26 27
+26 27 28 29 30            24 25 26 27 28 29 30      28 29 30
+                          31
+
+        July                     August                  September
+Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+          1  2  3  4                         1             1  2  3  4  5
+ 5  6  7  8  9 10 11       2  3  4  5  6  7  8       6  7  8  9 10 11 12
+12 13 14 15 16 17 18       9 10 11 12 13 14 15      13 14 15 16 17 18 19
+19 20 21 22 23 24 25      16 17 18 19 20 21 22      20 21 22 23 24 25 26
+26 27 28 29 30 31         23 24 25 26 27 28 29      27 28 29 30
+                          30 31
+
+      October                   November                  December
+Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa      Su Mo Tu We Th Fr Sa
+             1  2  3       1  2  3  4  5  6  7             1  2  3  4  5
+ 4  5  6  7  8  9 10       8  9 10 11 12 13 14       6  7  8  9 10 11 12
+11 12 13 14 15 16 17      15 16 17 18 19 20 21      13 14 15 16 17 18 19
+18 19 20 21 22 23 24      22 23 24 25 26 27 28      20 21 22 23 24 25 26
+25 26 27 28 29 30 31      29 30                     27 28 29 30 31
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021 Copyright QuYi-Stack
+</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

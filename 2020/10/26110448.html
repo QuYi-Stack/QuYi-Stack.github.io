@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>6、响应式网页设计 - HTML5_CSS3 | QuYi-Stack</title>
-  <meta name="keywords" content=" HTML5 , CSS3 ">
-  <meta name="description" content="6、响应式网页设计 - HTML5_CSS3 | QuYi-Stack">
+  <title>Ceph分布式存储日常运维管理 | QuYi-Stack</title>
+  <meta name="keywords" content=" Ceph ">
+  <meta name="description" content="Ceph分布式存储日常运维管理 | QuYi-Stack">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="常见问题nearfull osd(s) or pool(s) nearfull 此时说明部分osd的存储已经超过阈值，mon会监控ceph集群中OSD空间使用情况。如果要消除WARN,可以修改这两个参数，提高阈值，但是通过实践发现并不能解决问题，可以通过观察osd的数据分布情况来分析原因。 配置文件设置阈值 &quot;mon_osd_full_ratio&quot;:&quot;0.95&amp;qu">
 <meta property="og:type" content="article">
@@ -1005,9 +1005,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-6、响应式网页设计-HTML5-CSS3" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Ceph分布式存储日常运维管理" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">6、响应式网页设计 - HTML5_CSS3</h1>
+        <h1 class="article-title">Ceph分布式存储日常运维管理</h1>
     
     <div class="article-meta">
         
@@ -1017,9 +1017,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="大前端">大前端</a> > 
+            <a  data-rel="运维">运维</a> > 
             
-            <a  data-rel="大前端&lt;---&gt;HTML5/CSS3">HTML5/CSS3</a>
+            <a  data-rel="运维&lt;---&gt;存储">存储</a>
             
         </span>
         
@@ -1027,16 +1027,14 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color1">HTML5</a>
-            
-            <a class="color5">CSS3</a>
+            <a class="color5">Ceph</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-03-25 14:46:13'>2020-03-16 22:00</time>
+            发布时间 : <time class="date" title='最后更新: 2021-03-26 11:05:15'>2020-10-26 11:04</time>
         
     </div>
     <div class="article-meta">
@@ -1058,7 +1056,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1"><span class="toc-text">1 什么是响应式设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-text">1.2 响应式设计的优势</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B1%8F%E5%B9%95%E7%9A%84%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">2 屏幕的相关概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-viewport-%E8%A7%86%E5%8F%A3"><span class="toc-text">3 viewport 视口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%BB%80%E4%B9%88%E6%98%AFviewport"><span class="toc-text">3.1 什么是viewport</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%AE%BE%E7%BD%AEviewport"><span class="toc-text">3.2 设置viewport</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2-media"><span class="toc-text">4 媒体查询 @media</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-text">4.1 媒体类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AA%92%E4%BD%93%E7%89%B9%E6%80%A7"><span class="toc-text">4.2 媒体特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E7%94%A8%E6%B3%95"><span class="toc-text">4.3 媒体查询用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95%E4%B8%80"><span class="toc-text">用法一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95%E4%BA%8C"><span class="toc-text">用法二</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95%E4%B8%89"><span class="toc-text">用法三</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E8%AF%AD%E6%B3%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">4.4 媒体查询语法运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%96%AD%E7%82%B9%E8%AE%BE%E7%BD%AE"><span class="toc-text">5 断点设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%B8%80"><span class="toc-text">5.1 常用设置一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%BA%8C"><span class="toc-text">5.2 常用设置二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E6%8E%A8%E8%8D%90%E8%AE%BE%E7%BD%AE%E4%B8%89"><span class="toc-text">5.3 推荐设置三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87"><span class="toc-text">6 响应式图片</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PG-%E6%95%85%E9%9A%9C%E7%8A%B6%E6%80%81"><span class="toc-text">PG 故障状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OSD%E7%8A%B6%E6%80%81"><span class="toc-text">OSD状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86"><span class="toc-text">集群监控管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86-%E4%B8%B4%E6%97%B6%E5%92%8C%E5%85%A8%E5%B1%80%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%B9%B3%E6%BB%91%E9%87%8D%E5%90%AF"><span class="toc-text">集群配置管理(临时和全局，服务平滑重启)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tell%E5%AD%90%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-text">tell子命令格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#daemon%E5%AD%90%E5%91%BD%E4%BB%A4"><span class="toc-text">daemon子命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E6%93%8D%E4%BD%9C"><span class="toc-text">集群操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4osd"><span class="toc-text">添加和删除osd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%AE%B9PG"><span class="toc-text">扩容PG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pool%E6%93%8D%E4%BD%9C"><span class="toc-text">Pool操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-osd-pool-create-pool-name-pg-num-pgp-num"><span class="toc-text">ceph osd pool create {pool-name} {pg-num} [{pgp-num}]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-osd-pool-create-rbd-32-32"><span class="toc-text">ceph osd pool create rbd  32 32</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-osd-pool-set-quota-pool-name-max-objects-obj-count-max-bytes-bytes"><span class="toc-text">ceph osd pool set-quota {pool-name} [max_objects {obj-count}] [max_bytes {bytes}]</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-osd-pool-set-quota-rbd-max-objects-10000"><span class="toc-text">ceph osd pool set-quota rbd max_objects 10000</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-list"><span class="toc-text">ceph auth list</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-get-client-admin"><span class="toc-text">ceph auth get client.admin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-print-key-client-admin"><span class="toc-text">ceph auth print-key client.admin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-add-client-john-mon-%E2%80%98allow-r%E2%80%99-osd-%E2%80%98allow-rw-pool-liverpool%E2%80%99"><span class="toc-text">ceph auth add client.john mon ‘allow r’ osd ‘allow rw pool&#x3D;liverpool’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-get-or-create-client-paul-mon-%E2%80%98allow-r%E2%80%99-osd-%E2%80%98allow-rw-pool-liverpool%E2%80%99"><span class="toc-text">ceph auth get-or-create client.paul mon ‘allow r’ osd ‘allow rw pool&#x3D;liverpool’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-get-or-create-client-george-mon-%E2%80%98allow-r%E2%80%99-osd-%E2%80%98allow-rw-pool-liverpool%E2%80%99-o-george-keyring"><span class="toc-text">ceph auth get-or-create client.george mon ‘allow r’ osd ‘allow rw pool&#x3D;liverpool’ -o george.keyring</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-get-or-create-key-client-ringo-mon-%E2%80%98allow-r%E2%80%99-osd-%E2%80%98allow-rw-pool-liverpool%E2%80%99-o-ringo-key"><span class="toc-text">ceph auth get-or-create-key client.ringo mon ‘allow r’ osd ‘allow rw pool&#x3D;liverpool’ -o ringo.key</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-caps-client-john-mon-%E2%80%98allow-r%E2%80%99-osd-%E2%80%98allow-rw-pool-liverpool%E2%80%99"><span class="toc-text">ceph auth caps client.john mon ‘allow r’ osd ‘allow rw pool&#x3D;liverpool’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-caps-client-paul-mon-%E2%80%98allow-rw%E2%80%99-osd-%E2%80%98allow-rwx-pool-liverpool%E2%80%99"><span class="toc-text">ceph auth caps client.paul mon ‘allow rw’ osd ‘allow rwx pool&#x3D;liverpool’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-caps-client-brian-manager-mon-%E2%80%98allow-%E2%80%99-osd-%E2%80%98allow-%E2%80%99"><span class="toc-text">ceph auth caps client.brian-manager mon ‘allow *’ osd ‘allow *’</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-caps-client-ringo-mon-%E2%80%98-%E2%80%98-osd-%E2%80%98-%E2%80%98"><span class="toc-text">ceph auth caps client.ringo mon ‘ ‘ osd ‘ ‘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-auth-del-TYPE-ID"><span class="toc-text">ceph auth del {TYPE}.{ID}</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-deploy-mon-create-hostname"><span class="toc-text">ceph-deploy mon create $hostname</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ceph-deploy-mon-destroy-hostname"><span class="toc-text">ceph-deploy mon destroy $hostname</span></a>
     
 <style>
     .left-col .switch-btn,
@@ -1074,333 +1072,207 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210324215911.png"></p>
-<h2 id="1-什么是响应式设计"><a href="#1-什么是响应式设计" class="headerlink" title="1 什么是响应式设计"></a>1 什么是响应式设计</h2><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>伊桑·马科特（Ethan Marcotte）在2010年首先提出了响应式网页设计（RWD,Responsive Web Design）这个术语。在他的一篇文章《Responsive Web Design · An A List Apart Article》中他将已有的三种发开技巧（弹性图片，弹性网格布局，媒体与媒体查询） 进行了整合，命名为响应式网页设计。</p>
-<p>那什么才是真正的响应式设计？马科特说，真正的响应式设计方法不仅仅是根据可视区域大小而改变网页布局，而是要从整体上颠覆当前网页的设计方法，是针对任意设备的网页内容进行完美布局的一种显示机制。</p>
-<h3 id="1-2-响应式设计的优势"><a href="#1-2-响应式设计的优势" class="headerlink" title="1.2 响应式设计的优势"></a>1.2 响应式设计的优势</h3><ul>
-<li>开发、维护、运营成本优势：页面只有一个，只是针对不同的分辨率、 不同的设备环境进行了一些不同的设计，所以在开发、维护和运营上， 相对多个版本，能节约成本。</li>
-<li>兼容性优势：移动设备新的尺寸层出不穷，定制的版本通常只适用于某些规格的设备，如果新的设备分辨率变化较大，则往往不能兼容，而开发新的版本需要时间，这段时间内的访问就是个问题， 但是响应式Web设计可以提前预防这个问题。</li>
-<li>操作灵活：响应式设计是针对页面的，可以只对必要的页面进行改动，其他页面不受影响。</li>
-</ul>
-<h2 id="2-屏幕的相关概念"><a href="#2-屏幕的相关概念" class="headerlink" title="2 屏幕的相关概念"></a>2 屏幕的相关概念</h2><ul>
-<li><p>分辨率 resolutio 是指显示器所能显示的像素的多少</p>
-<p>  像素密度 单位： dpi（dots per inch） ppi</p>
-<blockquote>
-<p>像素密度（pixels per inch），也称PPi，即每英寸屏幕所拥有的像素数，像素密度越大，显示画面细节就越丰富。 像素密度=√{（长度像素数^2+宽度像素数^2）}/ 屏幕尺寸</p>
-<p>iphone3G 165dpi 320px <em>480px; iphone4 326 dpi 640px</em> 960px iphone6s 326dpi 1334px * 750px</p>
-</blockquote>
-</li>
-<li><p>每像素包含点的数量(dppx)</p>
-<blockquote>
-<p>用 iPhone4 举个例子，它有 326 DPI 显示屏，根据上表，智能手机的典型观看距离大概16.8英寸，基准像素为 160 DPI。所以要显示一个 CSS 像素，苹果选择将像素比设置为2，所以看起来就和 163 DPI 手机中显示的一样了。</p>
-</blockquote>
-<p>  设备像素比(dip或dpr) 同 dppx</p>
-</li>
-<li><p>视网膜屏幕</p>
-<blockquote>
-<p> 视网膜（Retina）屏幕是苹果公司在部分移动产品使用的一种屏幕。第一次被人们熟知，是苹果将其用在iphone 4手机上，它将960×640的分辨率压缩到一个3.5英寸的显示屏内。也就是说，该屏幕的像素密度达到326像素/英寸（ppi），称之为“视网膜屏幕”。通常电脑显示屏幕的分辨率为72ppi，iPhone 4的分辨率为电脑的4倍多。由于其具备超高像素密度的液晶屏，因此屏幕显示异常清晰、锐利。</p>
-</blockquote>
-</li>
-<li><p>常见设备屏幕信息 <a target="_blank" rel="noopener" href="https://github.com/h5bp/mobile-boilerplate/wiki/Mobile-Matrices">https://github.com/h5bp/mobile-boilerplate/wiki/Mobile-Matrices</a></p>
-</li>
-</ul>
-<h2 id="3-viewport-视口"><a href="#3-viewport-视口" class="headerlink" title="3 viewport 视口"></a>3 viewport 视口</h2><h3 id="3-1-什么是viewport"><a href="#3-1-什么是viewport" class="headerlink" title="3.1 什么是viewport"></a>3.1 什么是viewport</h3><ul>
-<li>viewport 是用户网页的可视区域。</li>
-<li>viewport 翻译为中文可以叫做”视区”。</li>
-<li>手机浏览器是把页面放在一个虚拟的”窗口”（viewport）中，通常这个虚拟的”窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分。</li>
-</ul>
-<h3 id="3-2-设置viewport"><a href="#3-2-设置viewport" class="headerlink" title="3.2 设置viewport"></a>3.2 设置viewport</h3><pre><code class="html">&lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&gt;
+        <p><img src="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326105607.png"></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>nearfull osd(s) or pool(s) nearfull 此时说明部分osd的存储已经超过阈值，mon会监控ceph集群中OSD空间使用情况。如果要消除WARN,可以修改这两个参数，提高阈值，但是通过实践发现并不能解决问题，可以通过观察osd的数据分布情况来分析原因。</p>
+<p><strong>配置文件设置阈值</strong></p>
+<pre><code>&quot;mon_osd_full_ratio&quot;:&quot;0.95&quot;,
+&quot;mon_osd_nearfull_ratio&quot;:&quot;0.85&quot;
 </code></pre>
-<ul>
-<li>width：控制 viewport 的大小，可以指定的一个值，如果 600，或者特殊的值，如 device-width 为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。</li>
-<li>height：和 width 相对应，指定高度。</li>
-<li>initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。</li>
-<li>maximum-scale：允许用户缩放到的最大比例。</li>
-<li>minimum-scale：允许用户缩放到的最小比例。</li>
-<li>user-scalable：用户是否可以手动缩放。</li>
-</ul>
-<h2 id="4-媒体查询-media"><a href="#4-媒体查询-media" class="headerlink" title="4 媒体查询 @media"></a>4 媒体查询 @media</h2><h3 id="4-1-媒体类型"><a href="#4-1-媒体类型" class="headerlink" title="4.1 媒体类型"></a>4.1 媒体类型</h3><table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>all</td>
-<td>用于所有设备</td>
-</tr>
-<tr>
-<td>aural</td>
-<td>已废弃。用于语音和声音合成器</td>
-</tr>
-<tr>
-<td>braille</td>
-<td>已废弃。 应用于盲文触摸式反馈设备</td>
-</tr>
-<tr>
-<td>embossed</td>
-<td>已废弃。 用于打印的盲人印刷设备</td>
-</tr>
-<tr>
-<td>handheld</td>
-<td>已废弃。 用于掌上设备或更小的装置，如PDA和小型电话</td>
-</tr>
-<tr>
-<td>print</td>
-<td>用于打印机和打印预览</td>
-</tr>
-<tr>
-<td>projection</td>
-<td>已废弃。 用于投影设备</td>
-</tr>
-<tr>
-<td>screen</td>
-<td>用于电脑屏幕，平板电脑，智能手机等。</td>
-</tr>
-<tr>
-<td>speech</td>
-<td>应用于屏幕阅读器等发声设备</td>
-</tr>
-<tr>
-<td>tty</td>
-<td>已废弃。 用于固定的字符网格，如电报、终端设备和对字符有限制的便携设备</td>
-</tr>
-<tr>
-<td>tv</td>
-<td>已废弃。 用于电视和网络电视</td>
-</tr>
-</tbody></table>
-<h3 id="4-2-媒体特性"><a href="#4-2-媒体特性" class="headerlink" title="4.2 媒体特性"></a>4.2 媒体特性</h3><ul>
-<li><p>aspect-ratio 可视窗口宽高比 min/max</p>
-</li>
-<li><p>device-aspect-ratio 设备的宽高比 min/max</p>
-</li>
-<li><p>orientation 设备的使用方向</p>
-<blockquote>
-<p>landscape (水平方向)</p>
-<p>portrait（垂直方向 ）</p>
-</blockquote>
-</li>
-<li><p>width 可视窗口的宽度 max/min</p>
-</li>
-<li><p>device-width 设备的宽度 max/min height 可视窗口的高度 max/min</p>
-</li>
-<li><p>device-height 设备的高度 max/min</p>
-</li>
-<li><p>resolution 屏幕密度 单位dppx max/min</p>
-<blockquote>
-<p>webkit内核请使使用 -webkit-min-device-pixel-ratio</p>
-</blockquote>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>aspect-ratio</td>
-<td>定义输出设备中的页面可见区域宽度与高度的比率</td>
-</tr>
-<tr>
-<td>color</td>
-<td>定义输出设备每一组彩色原件的个数。如果不是彩色设备，则值等于0</td>
-</tr>
-<tr>
-<td>color-index</td>
-<td>定义在输出设备的彩色查询表中的条目数。如果没有使用彩色查询表，则值等于0</td>
-</tr>
-<tr>
-<td>device-aspect-ratio</td>
-<td>定义输出设备的屏幕可见宽度与高度的比率。</td>
-</tr>
-<tr>
-<td>device-height</td>
-<td>定义输出设备的屏幕可见高度。</td>
-</tr>
-<tr>
-<td>device-width</td>
-<td>定义输出设备的屏幕可见宽度。</td>
-</tr>
-<tr>
-<td>grid</td>
-<td>用来查询输出设备是否使用栅格或点阵。</td>
-</tr>
-<tr>
-<td>height</td>
-<td>定义输出设备中的页面可见区域高度。</td>
-</tr>
-<tr>
-<td>max-aspect-ratio</td>
-<td>定义输出设备的屏幕可见宽度与高度的最大比率。</td>
-</tr>
-<tr>
-<td>max-color</td>
-<td>定义输出设备每一组彩色原件的最大个数。</td>
-</tr>
-<tr>
-<td>max-color-index</td>
-<td>定义在输出设备的彩色查询表中的最大条目数。</td>
-</tr>
-<tr>
-<td>max-device-aspect-ratio</td>
-<td>定义输出设备的屏幕可见宽度与高度的最大比率。</td>
-</tr>
-<tr>
-<td>max-device-height</td>
-<td>定义输出设备的屏幕可见的最大高度。</td>
-</tr>
-<tr>
-<td>max-device-width</td>
-<td>定义输出设备的屏幕最大可见宽度。</td>
-</tr>
-<tr>
-<td>max-height</td>
-<td>定义输出设备中的页面最大可见区域高度。</td>
-</tr>
-<tr>
-<td>max-monochrome</td>
-<td>定义在一个单色框架缓冲区中每像素包含的最大单色原件个数。</td>
-</tr>
-<tr>
-<td>max-resolution</td>
-<td>定义设备的最大分辨率。</td>
-</tr>
-<tr>
-<td>max-width</td>
-<td>定义输出设备中的页面最大可见区域宽度。</td>
-</tr>
-<tr>
-<td>min-aspect-ratio</td>
-<td>定义输出设备中的页面可见区域宽度与高度的最小比率。</td>
-</tr>
-<tr>
-<td>min-color</td>
-<td>定义输出设备每一组彩色原件的最小个数。</td>
-</tr>
-<tr>
-<td>min-color-index</td>
-<td>定义在输出设备的彩色查询表中的最小条目数。</td>
-</tr>
-<tr>
-<td>min-device-aspect-ratio</td>
-<td>定义输出设备的屏幕可见宽度与高度的最小比率。</td>
-</tr>
-<tr>
-<td>min-device-width</td>
-<td>定义输出设备的屏幕最小可见宽度。</td>
-</tr>
-<tr>
-<td>min-device-height</td>
-<td>定义输出设备的屏幕的最小可见高度。</td>
-</tr>
-<tr>
-<td>min-height</td>
-<td>定义输出设备中的页面最小可见区域高度。</td>
-</tr>
-<tr>
-<td>min-monochrome</td>
-<td>定义在一个单色框架缓冲区中每像素包含的最小单色原件个数</td>
-</tr>
-<tr>
-<td>min-resolution</td>
-<td>定义设备的最小分辨率。</td>
-</tr>
-<tr>
-<td>min-width</td>
-<td>定义输出设备中的页面最小可见区域宽度。</td>
-</tr>
-<tr>
-<td>monochrome</td>
-<td>定义在一个单色框架缓冲区中每像素包含的单色原件个数。如果不是单色设备，则值等于0</td>
-</tr>
-<tr>
-<td>orientation</td>
-<td>定义输出设备中的页面可见区域高度是否大于或等于宽度。</td>
-</tr>
-<tr>
-<td>resolution</td>
-<td>定义设备的分辨率。如：96dpi, 300dpi, 118dpcm</td>
-</tr>
-<tr>
-<td>scan</td>
-<td>定义电视类设备的扫描工序。</td>
-</tr>
-<tr>
-<td>width</td>
-<td>定义输出设备中的页面可见区域宽度。</td>
-</tr>
-</tbody></table>
-<h3 id="4-3-媒体查询用法"><a href="#4-3-媒体查询用法" class="headerlink" title="4.3 媒体查询用法"></a>4.3 媒体查询用法</h3><h4 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h4><pre><code class="html">&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype&quot; href=&quot;mystylesheet.css&quot;&gt;
-&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype and (media feature)&quot; href=&quot;mystylesheet.css&quot;&gt;
+<p><strong>自动处理</strong></p>
+<pre><code>ceph osd reweight-by-utilization
+ceph osd reweight-by-pg 105 cephfs_data(pool_name)
 </code></pre>
-<h4 id="用法二"><a href="#用法二" class="headerlink" title="用法二"></a>用法二</h4><pre><code class="css">@import url(css文件) mediaType
+<p><strong>手动处理</strong></p>
+<pre><code>ceph osd reweight osd.20.8
 </code></pre>
-<h4 id="用法三"><a href="#用法三" class="headerlink" title="用法三"></a>用法三</h4><pre><code class="css">@media mediatype and (media feature) &#123;
-    CSS-Code;
-&#125;
+<p><strong>全局处理</strong></p>
+<pre><code>ceph mgr module ls
+ceph mgr module enable balancer
+ceph balancer on
+ceph balancer mode crush-compat
+ceph config-key set&quot;mgr/balancer/max_misplaced&quot;:&quot;0.01&quot;
+</code></pre>
+<h2 id="PG-故障状态"><a href="#PG-故障状态" class="headerlink" title="PG 故障状态"></a>PG 故障状态</h2><p><strong>PG状态概述 一个PG在它的生命周期的不同时刻可能会处于以下几种状态中:</strong></p>
+<ol>
+<li><p>Creating(创建中) 在创建POOL时,需要指定PG的数量,此时PG的状态便处于creating,意思是Ceph正在创建PG。</p>
+</li>
+<li><p>Peering(互联中) peering的作用主要是在PG及其副本所在的OSD之间建立互联,并使得OSD之间就这些PG中的object及其元数据达成一致。</p>
+</li>
+<li><p>Active(活跃的) 处于该状态意味着数据已经完好的保存到了主PG及副本PG中,并且Ceph已经完成了peering工作。</p>
+</li>
+<li><p>Clean(整洁的) 当某个PG处于clean状态时,则说明对应的主OSD及副本OSD已经成功互联,并且没有偏离的PG。也意味着Ceph已经将该PG中的对象按照规定的副本数进行了复制操作。</p>
+</li>
+<li><p>Degraded(降级的) 当某个PG的副本数未达到规定个数时,该PG便处于degraded状态,例如:</p>
+</li>
+<li><p>在客户端向主OSD写入object的过程,object的副本是由主OSD负责向副本OSD写入的,直到副本OSD在创建object副本完成,并向主OSD发出完成信息前,该PG的状态都会一直处于degraded状态。又或者是某个OSD的状态变成了down,那么该OSD上的所有PG都会被标记为degraded。当Ceph因为某些原因无法找到某个PG内的一个或多个object时,该PG也会被标记为degraded状态。此时客户端不能读写找不到的对象,但是仍然能访问位于该PG内的其他object。</p>
+</li>
+<li><p>Recovering(恢复中) 当某个OSD因为某些原因down了,该OSD内PG的object会落后于它所对应的PG副本。而在该OSD重新up之后,该OSD中的内容必须更新到当前状态,处于此过程中的PG状态便是recovering。</p>
+</li>
+<li><p>Backfilling(回填) 当有新的OSD加入集群时,CRUSH会把现有集群内的部分PG分配给它。这些被重新分配到新OSD的PG状态便处于backfilling。</p>
+</li>
+<li><p>Remapped(重映射) 当负责维护某个PG的acting set变更时,PG需要从原来的acting set迁移至新的acting set。这个过程需要一段时间,所以在此期间,相关PG的状态便会标记为remapped。</p>
+</li>
+<li><p>Stale(陈旧的) 默认情况下,OSD守护进程每半秒钟便会向Monitor报告其PG等相关状态,如果某个PG的主OSD所在acting set没能向Monitor发送报告,或者其他的Monitor已经报告该OSD为down时,该PG便会被标记为stale。</p>
+</li>
+</ol>
+<h2 id="OSD状态"><a href="#OSD状态" class="headerlink" title="OSD状态"></a>OSD状态</h2><p>单个OSD有两组状态需要关注,其中一组使用in/out标记该OSD是否在集群内,另一组使用up/down标记该OSD是否处于运行中状态。两组状态之间并不互斥,换句话说,当一个OSD处于“in”状态时,它仍然可以处于up或down的状态。</p>
+<ol>
+<li><p>OSD状态为in且up 这是一个OSD正常的状态,说明该OSD处于集群内,并且运行正常。</p>
+</li>
+<li><p>OSD状态为in且down 此时该OSD尚处于集群中,但是守护进程状态已经不正常,默认在300秒后会被踢出集群,状态进而变为out且down,之后处于该OSD上的PG会迁移至其它OSD。</p>
+</li>
+<li><p>OSD状态为out且up 这种状态一般会出现在新增OSD时,意味着该OSD守护进程正常,但是尚未加入集群。</p>
+</li>
+<li><p>OSD状态为out且down 在该状态下的OSD不在集群内,并且守护进程运行不正常,CRUSH不会再分配PG到该OSD上。</p>
+</li>
+</ol>
+<h2 id="集群监控管理"><a href="#集群监控管理" class="headerlink" title="集群监控管理"></a>集群监控管理</h2><p>集群整体运行状态</p>
+<pre><code># ceph -s 
+cluster:
+    id:8230a918-a0de-4784-9ab8-cd2a2b8671d0
+    health: HEALTH_WARN
+            application not enabled on 1 pool(s)
 
-@media (media feature) &#123;
-    CSS-Code;
-&#125;
+  services:
+    mon:3 daemons, quorum cephnode01,cephnode02,cephnode03 (age 27h)
+    mgr: cephnode01(active, since 53m), standbys: cephnode03, cephnode02
+    osd:4 osds:4 up (since 27h),4in(since 19h)
+    rgw:1 daemon active (cephnode01)
+
+  data:
+    pools:6 pools,96 pgs
+    objects:235 objects,3.6KiB
+    usage:4.0GiB used,56GiB/60GiB avail
+    pgs:96 active+clean
 </code></pre>
-<h3 id="4-4-媒体查询语法运算符"><a href="#4-4-媒体查询语法运算符" class="headerlink" title="4.4 媒体查询语法运算符"></a>4.4 媒体查询语法运算符</h3><ul>
-<li><code>and</code> 并且</li>
-<li><code>,</code> 或者</li>
-<li><code>not</code> 否定 一定要指定媒体类型，因为媒体类型默认all，not后永远返回假</li>
-<li><code>only</code> only + 媒体类型</li>
-</ul>
-<h2 id="5-断点设置"><a href="#5-断点设置" class="headerlink" title="5 断点设置"></a>5 断点设置</h2><h3 id="5-1-常用设置一"><a href="#5-1-常用设置一" class="headerlink" title="5.1 常用设置一"></a>5.1 常用设置一</h3><p>三个断点： 768px 992px 1200px</p>
-<ul>
-<li>手机 超小屏幕 &lt;= 768px</li>
-<li>平板 小屏幕 769px ~ 992px</li>
-<li>中等屏幕 993px ~ 1200px</li>
-<li>大屏幕 &gt; 1200px</li>
-</ul>
-<h3 id="5-2-常用设置二"><a href="#5-2-常用设置二" class="headerlink" title="5.2 常用设置二"></a>5.2 常用设置二</h3><p>四个断点： 576px 768px 992px 1200px</p>
-<ul>
-<li>超小屏幕 &lt;=576px</li>
-<li>小屏幕 577px ~ 768px</li>
-<li>中等屏幕 769px ~ 992px</li>
-<li>大屏幕 993px ~ 1200px</li>
-<li>超大屏幕 &gt;1200px</li>
-</ul>
-<h3 id="5-3-推荐设置三"><a href="#5-3-推荐设置三" class="headerlink" title="5.3 推荐设置三"></a>5.3 推荐设置三</h3><p>两个断点： 640px 1024px</p>
-<ul>
-<li>小屏幕 &lt;=640px</li>
-<li>中等屏幕 641px ~ 1024px</li>
-<li>大屏幕 &gt;1024px</li>
-</ul>
-<h2 id="6-响应式图片"><a href="#6-响应式图片" class="headerlink" title="6 响应式图片"></a>6 响应式图片</h2><ul>
-<li><p>设置图片宽度百分比</p>
-</li>
-<li><p>使用背景图片</p>
-<blockquote>
-<p>paddint-top</p>
-<p>background-size</p>
-</blockquote>
-</li>
-<li><p>使用H5 <code>&lt;picture&gt;</code> 标签</p>
-<pre><code class="html">&lt;picture&gt;
-    &lt;source srcset=&quot;./images/banner01-small.jpg&quot; media=&quot;(max-width:768px)&quot;&gt;
-    &lt;source srcset=&quot;./images/banner01_middle.jpg&quot; media=&quot;(max-width:992px)&quot;&gt;
-    &lt;source srcset=&quot;./images/banner01.jpg&quot;&gt;
-    &lt;img src=&quot;./images/banner01.jpg&quot; alt=&quot;&quot;&gt;
-&lt;/picture&gt;
+<pre><code>id：集群ID
+health：集群运行状态，这里有一个警告，说明是有问题，意思是pg数大于pgp数，通常此数值相等。
+mon：Monitors运行状态。
+osd：OSDs运行状态。
+mgr：Managers运行状态。
+mds：Metadatas运行状态。
+pools：存储池与PGs的数量。
+objects：存储对象的数量。
+usage：存储的理论用量。
+pgs：PGs的运行状态
 </code></pre>
-</li>
-<li><p>使用 picturefill 插件</p>
-<pre><code class="html">&lt;span data-picture data-alt=&quot;响应式图片&quot;&gt;
-    &lt;span data-src=&quot;./images/banner01-small.jpg&quot;&gt;&lt;/span&gt;
-    &lt;span data-src=&quot;./images/banner01_middle.jpg&quot; data-media=&quot;(min-width:768px)&quot;&gt;&lt;/span&gt;
-    &lt;span data-src=&quot;./images/banner01.jpg&quot; data-media=&quot;(min-width:992px)&quot;&gt;&lt;/span&gt;
-&lt;/span&gt;
+<pre><code>~]$ ceph -w
+~]$ ceph health detail
 </code></pre>
+<pre><code class="pg状态">~]$ ceph pg dump
+~]$ ceph pg stat
+
+pool状态
+~]$ ceph osd pool stats
+~]$ ceph osd pool stats 
+
+osd状态
+~]$ ceph osd stat
+~]$ ceph osd dump
+~]$ ceph osd tree
+~]$ ceph osd df
+
+Monitor状态和查看仲裁状态
+~]$ ceph mon stat
+~]$ ceph mon dump
+~]$ ceph quorum_status
+
+集群空间用量
+~]$ ceph df
+~]$ ceph df detail
+</code></pre>
+<h2 id="集群配置管理-临时和全局，服务平滑重启"><a href="#集群配置管理-临时和全局，服务平滑重启" class="headerlink" title="集群配置管理(临时和全局，服务平滑重启)"></a>集群配置管理(临时和全局，服务平滑重启)</h2><p>有时候需要更改服务的配置，但不想重启服务，或者是临时修改。这时候就可以使用tell和daemon子命令来完成此需求。</p>
+<pre><code>查看运行配置
+命令格式：
+# ceph daemon &#123;daemon-type&#125;.&#123;id&#125; config show 
+
+命令举例：
+# ceph daemon osd.0 config show
+</code></pre>
+<h2 id="tell子命令格式"><a href="#tell子命令格式" class="headerlink" title="tell子命令格式"></a>tell子命令格式</h2><p>使用 tell 的方式适合对整个集群进行设置，使用 * 号进行匹配，就可以对整个集群的角色进行设置。而出现节点异常无法设置时候，只会在命令行当中进行报错，不太便于查找。</p>
+<pre><code>命令格式：
+# ceph tell &#123;daemon-type&#125;.&#123;daemon id or *&#125; injectargs --&#123;name&#125;=&#123;value&#125; [--&#123;name&#125;=&#123;value&#125;]
+命令举例：
+# ceph tell osd.0 injectargs --debug-osd 20 --debug-ms 1
+</code></pre>
+<ul>
+<li><p>daemon-type：为要操作的对象类型如osd、mon、mds等。</p>
+</li>
+<li><p>daemon id：该对象的名称，osd通常为0、1等，mon为ceph -s显示的名称，这里可以输入*表示全部。</p>
+</li>
+<li><p>injectargs：表示参数注入，后面必须跟一个参数，也可以跟多个</p>
 </li>
 </ul>
+<h2 id="daemon子命令"><a href="#daemon子命令" class="headerlink" title="daemon子命令"></a>daemon子命令</h2><p>使用 daemon 进行设置的方式就是一个个的去设置，这样可以比较好的反馈，此方法是需要在设置的角色所在的主机上进行设置。</p>
+<pre><code>命令格式：
+# ceph daemon &#123;daemon-type&#125;.&#123;id&#125; config set &#123;name&#125;=&#123;value&#125;
+命令举例：
+# ceph daemon mon.ceph-monitor-1 config set mon_allow_pool_delete false
+</code></pre>
+<h2 id="集群操作"><a href="#集群操作" class="headerlink" title="集群操作"></a>集群操作</h2><pre><code>1、启动所有守护进程
+# systemctl start ceph.target
+2、按类型启动守护进程
+# systemctl start ceph-mgr.target
+# systemctl start ceph-osd@id
+# systemctl start ceph-mon.target
+# systemctl start ceph-mds.target
+# systemctl start ceph-radosgw.target
+</code></pre>
+<h2 id="添加和删除osd"><a href="#添加和删除osd" class="headerlink" title="添加和删除osd"></a>添加和删除osd</h2><pre><code>添加
+1、格式化磁盘
+ceph-volume lvm zap /dev/sd&lt;id&gt;
+2、进入到ceph-deploy执行目录/my-cluster，添加OSD
+# ceph-deploy osd create --data /dev/sd&lt;id&gt; $hostname
+
+删除
+1、调整osd的crush weight为0
+ceph osd crush reweight osd.&lt;ID&gt;0.0
+2、将osd进程stop
+systemctl stop ceph-osd@&lt;ID&gt;
+3、将osd设置out
+ceph osd out&lt;ID&gt;
+4、立即执行删除OSD中数据
+ceph osd purge osd.&lt;ID&gt;--yes-i-really-mean-it
+5、卸载磁盘
+umount /var/lib/ceph/osd/ceph-？
+</code></pre>
+<h2 id="扩容PG"><a href="#扩容PG" class="headerlink" title="扩容PG"></a>扩容PG</h2><pre><code>ceph osd pool set&#123;pool-name&#125; pg_num 128
+ceph osd pool set&#123;pool-name&#125; pgp_num 128 
+</code></pre>
+<p>注：</p>
+<ol>
+<li>扩容大小取跟它接近的2的N次方。</li>
+<li>在更改pool的PG数量时，需同时更改PGP的数量。PGP是为了管理placement而存在的专门的PG，它和PG的数量应该保持一致。如果你增加pool的pg_num，就需要同时增加pgp_num，保持它们大小一致，这样集群才能正常rebalancing。<h2 id="Pool操作"><a href="#Pool操作" class="headerlink" title="Pool操作"></a>Pool操作</h2>```<br>列出存储池<br>ceph osd lspools</li>
+</ol>
+<p>创建存储池<br>命令格式：</p>
+<h1 id="ceph-osd-pool-create-pool-name-pg-num-pgp-num"><a href="#ceph-osd-pool-create-pool-name-pg-num-pgp-num" class="headerlink" title="ceph osd pool create {pool-name} {pg-num} [{pgp-num}]"></a>ceph osd pool create {pool-name} {pg-num} [{pgp-num}]</h1><p>命令举例：</p>
+<h1 id="ceph-osd-pool-create-rbd-32-32"><a href="#ceph-osd-pool-create-rbd-32-32" class="headerlink" title="ceph osd pool create rbd  32 32"></a>ceph osd pool create rbd  32 32</h1><p>设置存储池配额<br>命令格式：</p>
+<h1 id="ceph-osd-pool-set-quota-pool-name-max-objects-obj-count-max-bytes-bytes"><a href="#ceph-osd-pool-set-quota-pool-name-max-objects-obj-count-max-bytes-bytes" class="headerlink" title="ceph osd pool set-quota {pool-name} [max_objects {obj-count}] [max_bytes {bytes}]"></a>ceph osd pool set-quota {pool-name} [max_objects {obj-count}] [max_bytes {bytes}]</h1><p>命令举例：</p>
+<h1 id="ceph-osd-pool-set-quota-rbd-max-objects-10000"><a href="#ceph-osd-pool-set-quota-rbd-max-objects-10000" class="headerlink" title="ceph osd pool set-quota rbd max_objects 10000"></a>ceph osd pool set-quota rbd max_objects 10000</h1><p>删除存储池<br>ceph osd pool delete{pool-name}[{pool-name}–yes-i-really-really-mean-it]</p>
+<p>重命名存储池<br>ceph osd pool rename {current-pool-name}{new-pool-name}</p>
+<p>查看存储池统计信息<br>rados df</p>
+<p>给存储池做快照<br>ceph osd pool mksnap {pool-name}{snap-name}</p>
+<p>删除存储池的快照<br>ceph osd pool rmsnap {pool-name}{snap-name}</p>
+<p>获取存储池选项值<br>ceph osd pool get{pool-name}{key}</p>
+<p>调整存储池选项值<br>ceph osd pool set{pool-name}{key}{value}<br>size：设置存储池中的对象副本数，详情参见设置对象副本数。仅适用于副本存储池。<br>min_size：设置 I/O 需要的最小副本数，详情参见设置对象副本数。仅适用于副本存储池。<br>pg_num：计算数据分布时的有效 PG 数。只能大于当前 PG 数。<br>pgp_num：计算数据分布时使用的有效 PGP 数量。小于等于存储池的 PG 数。<br>hashpspool：给指定存储池设置/取消 HASHPSPOOL 标志。<br>target_max_bytes：达到 max_bytes 阀值时会触发Ceph冲洗或驱逐对象。<br>target_max_objects：达到 max_objects 阀值时会触发Ceph冲洗或驱逐对象。<br>scrub_min_interval：在负载低时，洗刷存储池的最小间隔秒数。如果是0，就按照配置文件里的 osd_scrub_min_interval 。<br>scrub_max_interval：不管集群负载如何，都要洗刷存储池的最大间隔秒数。如果是0，就按照配置文件里的 osd_scrub_max_interval 。<br>deep_scrub_interval：“深度”洗刷存储池的间隔秒数。如果是0，就按照配置文件里的 osd_deep_scrub_interval 。</p>
+<p>获取对象副本数<br>ceph osd dump| grep ‘replicated size’</p>
+<pre><code>## 用户管理
+Ceph 把数据以对象的形式存于各存储池中。Ceph 用户必须具有访问存储池的权限才能够读写数据。另外，Ceph 用户必须具有执行权限才能够使用 Ceph 的管理命令。
+</code></pre>
+<p>查看用户信息<br>查看所有用户信息</p>
+<h1 id="ceph-auth-list"><a href="#ceph-auth-list" class="headerlink" title="ceph auth list"></a>ceph auth list</h1><p>获取所有用户的key与权限相关信息</p>
+<h1 id="ceph-auth-get-client-admin"><a href="#ceph-auth-get-client-admin" class="headerlink" title="ceph auth get client.admin"></a>ceph auth get client.admin</h1><p>如果只需要某个用户的key信息，可以使用pring-key子命令</p>
+<h1 id="ceph-auth-print-key-client-admin"><a href="#ceph-auth-print-key-client-admin" class="headerlink" title="ceph auth print-key client.admin"></a>ceph auth print-key client.admin</h1><p>添加用户</p>
+<h1 id="ceph-auth-add-client-john-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’"><a href="#ceph-auth-add-client-john-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’" class="headerlink" title="ceph auth add client.john mon ‘allow r’ osd ‘allow rw pool=liverpool’"></a>ceph auth add client.john mon ‘allow r’ osd ‘allow rw pool=liverpool’</h1><h1 id="ceph-auth-get-or-create-client-paul-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’"><a href="#ceph-auth-get-or-create-client-paul-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’" class="headerlink" title="ceph auth get-or-create client.paul mon ‘allow r’ osd ‘allow rw pool=liverpool’"></a>ceph auth get-or-create client.paul mon ‘allow r’ osd ‘allow rw pool=liverpool’</h1><h1 id="ceph-auth-get-or-create-client-george-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’-o-george-keyring"><a href="#ceph-auth-get-or-create-client-george-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’-o-george-keyring" class="headerlink" title="ceph auth get-or-create client.george mon ‘allow r’ osd ‘allow rw pool=liverpool’ -o george.keyring"></a>ceph auth get-or-create client.george mon ‘allow r’ osd ‘allow rw pool=liverpool’ -o george.keyring</h1><h1 id="ceph-auth-get-or-create-key-client-ringo-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’-o-ringo-key"><a href="#ceph-auth-get-or-create-key-client-ringo-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’-o-ringo-key" class="headerlink" title="ceph auth get-or-create-key client.ringo mon ‘allow r’ osd ‘allow rw pool=liverpool’ -o ringo.key"></a>ceph auth get-or-create-key client.ringo mon ‘allow r’ osd ‘allow rw pool=liverpool’ -o ringo.key</h1><p>修改用户权限</p>
+<h1 id="ceph-auth-caps-client-john-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’"><a href="#ceph-auth-caps-client-john-mon-‘allow-r’-osd-‘allow-rw-pool-liverpool’" class="headerlink" title="ceph auth caps client.john mon ‘allow r’ osd ‘allow rw pool=liverpool’"></a>ceph auth caps client.john mon ‘allow r’ osd ‘allow rw pool=liverpool’</h1><h1 id="ceph-auth-caps-client-paul-mon-‘allow-rw’-osd-‘allow-rwx-pool-liverpool’"><a href="#ceph-auth-caps-client-paul-mon-‘allow-rw’-osd-‘allow-rwx-pool-liverpool’" class="headerlink" title="ceph auth caps client.paul mon ‘allow rw’ osd ‘allow rwx pool=liverpool’"></a>ceph auth caps client.paul mon ‘allow rw’ osd ‘allow rwx pool=liverpool’</h1><h1 id="ceph-auth-caps-client-brian-manager-mon-‘allow-’-osd-‘allow-’"><a href="#ceph-auth-caps-client-brian-manager-mon-‘allow-’-osd-‘allow-’" class="headerlink" title="ceph auth caps client.brian-manager mon ‘allow *’ osd ‘allow *’"></a>ceph auth caps client.brian-manager mon ‘allow *’ osd ‘allow *’</h1><h1 id="ceph-auth-caps-client-ringo-mon-‘-‘-osd-‘-‘"><a href="#ceph-auth-caps-client-ringo-mon-‘-‘-osd-‘-‘" class="headerlink" title="ceph auth caps client.ringo mon ‘ ‘ osd ‘ ‘"></a>ceph auth caps client.ringo mon ‘ ‘ osd ‘ ‘</h1><p>删除用户</p>
+<h1 id="ceph-auth-del-TYPE-ID"><a href="#ceph-auth-del-TYPE-ID" class="headerlink" title="ceph auth del {TYPE}.{ID}"></a>ceph auth del {TYPE}.{ID}</h1><p>其中， {TYPE} 是 client，osd，mon 或 mds 的其中一种。{ID} 是用户的名字或守护进程的 ID 。</p>
+<pre><code>## 增加和删除Monitor
+一个集群可以只有一个 monitor，推荐生产环境至少部署 3 个。Ceph 使用 Paxos 算法的一个变种对各种 map 、以及其它对集群来说至关重要的信息达成共识。建议（但不是强制）部署奇数个 monitor 。Ceph 需要 mon 中的大多数在运行并能够互相通信，比如单个 mon，或 2 个中的 2 个，3 个中的 2 个，4 个中的 3 个等。初始部署时，建议部署 3 个 monitor。后续如果要增加，请一次增加 2 个。
+</code></pre>
+<p>新增一个monitor</p>
+<h1 id="ceph-deploy-mon-create-hostname"><a href="#ceph-deploy-mon-create-hostname" class="headerlink" title="ceph-deploy mon create $hostname"></a>ceph-deploy mon create $hostname</h1><p>注意：执行ceph-deploy之前要进入之前安装时候配置的目录。/my-cluster</p>
+<p>删除monitor</p>
+<h1 id="ceph-deploy-mon-destroy-hostname"><a href="#ceph-deploy-mon-destroy-hostname" class="headerlink" title="ceph-deploy mon destroy $hostname"></a>ceph-deploy mon destroy $hostname</h1><p>注意：确保你删除某个Mon后，其余Mon仍能达成一致。如果不可能，删除它之前可能需要先增加一个。<br>```</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>

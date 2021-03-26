@@ -6,20 +6,23 @@
   <meta name="keywords" content=" Ceph ">
   <meta name="description" content="Ceph运维手册 | QuYi-Stack">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="常见问题nearfull osd(s) or pool(s) nearfull 此时说明部分osd的存储已经超过阈值，mon会监控ceph集群中OSD空间使用情况。如果要消除WARN,可以修改这两个参数，提高阈值，但是通过实践发现并不能解决问题，可以通过观察osd的数据分布情况来分析原因。 配置文件设置阈值 &quot;mon_osd_full_ratio&quot;:&quot;0.95&amp;qu">
+<meta name="description" content="1. 缓存池工作原理Ceph 从 Firefly 版本开始就支持缓存分层特性，所谓的缓存分层其实就是在更快的磁盘（通常是 ssd 或者 NVME）上创建一个存储池，然后将这个存储池放置在 常规复制池或者纠删码存储池的前端去充当缓存，被充当缓存的这个存储池也叫做 Cache Pool，大概工作流程如下如所示：  这样设计以后大部分的客户端的 IO 操作都首先通过缓存池来处理，之后再有缓存池将数据回写">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ceph分布式存储日常运维管理">
-<meta property="og:url" content="https://quyi.io/2020/10/26110448.html">
+<meta property="og:title" content="8、配置 Ceph SSD 缓存池">
+<meta property="og:url" content="https://quyi.io/2020/11/04120150.html">
 <meta property="og:site_name" content="QuYi-Stack">
-<meta property="og:description" content="常见问题nearfull osd(s) or pool(s) nearfull 此时说明部分osd的存储已经超过阈值，mon会监控ceph集群中OSD空间使用情况。如果要消除WARN,可以修改这两个参数，提高阈值，但是通过实践发现并不能解决问题，可以通过观察osd的数据分布情况来分析原因。 配置文件设置阈值 &quot;mon_osd_full_ratio&quot;:&quot;0.95&amp;qu">
+<meta property="og:description" content="1. 缓存池工作原理Ceph 从 Firefly 版本开始就支持缓存分层特性，所谓的缓存分层其实就是在更快的磁盘（通常是 ssd 或者 NVME）上创建一个存储池，然后将这个存储池放置在 常规复制池或者纠删码存储池的前端去充当缓存，被充当缓存的这个存储池也叫做 Cache Pool，大概工作流程如下如所示：  这样设计以后大部分的客户端的 IO 操作都首先通过缓存池来处理，之后再有缓存池将数据回写">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326105607.png">
-<meta property="article:published_time" content="2020-10-26T03:04:48.000Z">
-<meta property="article:modified_time" content="2021-03-26T03:15:03.891Z">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115636.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115651.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115702.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115711.png">
+<meta property="article:published_time" content="2020-11-04T04:01:50.000Z">
+<meta property="article:modified_time" content="2021-03-26T05:52:00.952Z">
 <meta property="article:author" content="Qu Yi">
 <meta property="article:tag" content="Ceph">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326105607.png">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115636.png">
 
 
 <link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
@@ -129,7 +132,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(66)</small>
+                <small>(75)</small>
             
         </div>
     </li>
@@ -287,7 +290,7 @@
                         <i class="fold iconfont icon-right"></i>
                         
                         运维
-                        <small>(2)</small>
+                        <small>(11)</small>
                         
                     </div>
                     
@@ -298,7 +301,7 @@
                                         
                                         Ceph
                                         
-                                            <small>(2
+                                            <small>(10
                                                 )</small>
                                         
                                     </div>
@@ -364,7 +367,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="66">
+<input type="hidden" id="yelog_site_posts_number" value="75">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -425,6 +428,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DAS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>DOM</a>
             </li>
         
@@ -445,7 +452,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>NAS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SAN</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -458,6 +473,78 @@
 
     
     <nav id="title-list-nav">
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/04120150.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="8、配置 Ceph SSD 缓存池">8、配置 Ceph SSD 缓存池</span>
+            <span class="post-date" title="2020-11-04 12:01:50">2020/11/04</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/03120139.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="7、Ceph 运维常用指令">7、Ceph 运维常用指令</span>
+            <span class="post-date" title="2020-11-03 12:01:39">2020/11/03</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/02120131.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="6、Ceph 文件系统">6、Ceph 文件系统</span>
+            <span class="post-date" title="2020-11-02 12:01:31">2020/11/02</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/01120124.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="5、Ceph 块存储之 RBD">5、Ceph 块存储之 RBD</span>
+            <span class="post-date" title="2020-11-01 12:01:24">2020/11/01</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/31120118.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="4、Ceph 存储池">4、Ceph 存储池</span>
+            <span class="post-date" title="2020-10-31 12:01:18">2020/10/31</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/30120111.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="3、搭建 Ceph 存储集群">3、搭建 Ceph 存储集群</span>
+            <span class="post-date" title="2020-10-30 12:01:11">2020/10/30</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/29120103.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="2、Ceph IO流程及数据分布">2、Ceph IO流程及数据分布</span>
+            <span class="post-date" title="2020-10-29 12:01:03">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/28113653.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="1、Ceph 简介">1、Ceph 简介</span>
+            <span class="post-date" title="2020-10-28 11:36:53">2020/10/28</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2020/10/27113342.html"
+           data-tag="DAS,NAS,SAN"
+           data-author="" >
+            <span class="post-title" title="DAS,NAS,SAN 存储区别">DAS,NAS,SAN 存储区别</span>
+            <span class="post-date" title="2020-10-27 11:33:42">2020/10/27</span>
+        </a>
         
         <a  class="全部文章 运维 Ceph "
            href="/2020/10/26110448.html"
@@ -1034,7 +1121,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-03-26 11:08:39'>2020-10-26 10:47</time>
+            发布时间 : <time class="date" title='最后更新: 2021-03-26 11:38:17'>2020-10-26 10:47</time>
         
     </div>
     <div class="article-meta">
@@ -3107,8 +3194,7 @@ mon_pg_warn_max_per_osd = 1000
 <li>创建虚拟机正常。</li>
 </ol>
 <h1 id="第三部分：Ceph-进阶"><a href="#第三部分：Ceph-进阶" class="headerlink" title="第三部分：Ceph 进阶"></a>第三部分：Ceph 进阶</h1><p>这部分内容介绍了一些 Ceph 使用中的进阶技巧，主要面向二线运维人员。</p>
-<h2 id="1-PG-和-PGP-的区别"><a href="#1-PG-和-PGP-的区别" class="headerlink" title="1. PG 和 PGP 的区别"></a>1. PG 和 PGP 的区别</h2><hr>
-<p>本篇内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/10/19/Ceph%E4%B8%ADPG%E5%92%8CPGP%E7%9A%84%E5%8C%BA%E5%88%AB/">zphj1987 —— Ceph 中 PG 和 PGP 的区别</a></p>
+<h2 id="1-PG-和-PGP-的区别"><a href="#1-PG-和-PGP-的区别" class="headerlink" title="1. PG 和 PGP 的区别"></a>1. PG 和 PGP 的区别</h2><p>本篇内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/10/19/Ceph%E4%B8%ADPG%E5%92%8CPGP%E7%9A%84%E5%8C%BA%E5%88%AB/">zphj1987 —— Ceph 中 PG 和 PGP 的区别</a></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>首先来一段关于 PG 和 PGP 区别的英文解释：</p>
 <blockquote>
 <p>PG = Placement Group<br>PGP = Placement Group for Placement purpose<br>pg_num = number of placement groups mapped to an OSD<br>When pg_num is increased for any pool, every PG of this pool splits into half, but they all remain mapped to their parent OSD.<br>Until this time, Ceph does not start rebalancing. Now, when you increase the pgp_num value for the same pool, PGs start to migrate from the parent to some other OSD, and cluster rebalancing starts. This is how PGP plays an important role.<br>By Karan Singh</p>
@@ -3214,8 +3300,7 @@ dumped pgs in format plain
 <li>PG 的增加会引起 PG 内的数据进行分裂，分裂到相同的 OSD 上新生成的 PG 当中。</li>
 <li>PGP 的增加会引起部分 PG 的分布进行变化，但是不会引起 PG 内对象的变动。</li>
 </ul>
-<h2 id="2-Monitor-的备份和恢复"><a href="#2-Monitor-的备份和恢复" class="headerlink" title="2. Monitor 的备份和恢复"></a>2. Monitor 的备份和恢复</h2><hr>
-<p>本篇内容来自 <a target="_blank" rel="noopener" href="http://xuxiaopang.com/2016/10/26/exp-monitor-operation/">徐小胖’blog —— monitor 的增删改备</a> </p>
+<h2 id="2-Monitor-的备份和恢复"><a href="#2-Monitor-的备份和恢复" class="headerlink" title="2. Monitor 的备份和恢复"></a>2. Monitor 的备份和恢复</h2><p>本篇内容来自 <a target="_blank" rel="noopener" href="http://xuxiaopang.com/2016/10/26/exp-monitor-operation/">徐小胖’blog —— monitor 的增删改备</a> </p>
 <h3 id="Monitor-的备份"><a href="#Monitor-的备份" class="headerlink" title="Monitor 的备份"></a>Monitor 的备份</h3><p>每个 MON 的数据都是保存在数据库内的，这个数据库位于 <code>/var/lib/ceph/mon/$cluster-$hostname/store.db</code> ，这里的 <code>$cluster</code> 是集群的名字， <code>$hostname</code> 为主机名，MON 的所有数据即目录 <code>/var/lib/ceph/mon/$cluster-$hostname/</code> ，备份好这个目录之后，就可以在任一主机上恢复 MON 了。</p>
 <p>这里参考了下 <a target="_blank" rel="noopener" href="https://blog.widodh.nl/2014/03/safely-backing-up-your-ceph-monitors/">这篇文章</a> 里面的备份方法，简单讲基本思路就是，停止一个 MON，然后将这个 MON 的数据库压缩保存到其他路径，再开启 MON。文中提到了之所以要停止 MON 是要保证 levelDB 数据库的完整性。然后可以做个定时任务一天或者一周备份一次。</p>
 <p>另外最好把 <code>/etc/ceph/</code> 目录也备份一下。</p>
@@ -3289,8 +3374,7 @@ mon_host = 192.168.56.104
                     64 undersized+degraded+peered
 </code></pre>
 <p>好消息是，<code>ceph -s</code> 有了正确的输出，坏消息就是 <code>HEALTH_ERR</code> 了。不过不用担心，这时候将 <code>ceph-4</code> 的 <code>ceph.conf</code> 推送到其他所有节点上，再重启 OSD 集群就可以恢复正常了。</p>
-<h2 id="3-修改-Cinder-Glance-进程的最大可用-FD"><a href="#3-修改-Cinder-Glance-进程的最大可用-FD" class="headerlink" title="3. 修改 Cinder/Glance 进程的最大可用 FD"></a>3. 修改 Cinder/Glance 进程的最大可用 FD</h2><hr>
-<p>本篇内容是根据生产环境中遇到的实际问题进行的总结。</p>
+<h2 id="3-修改-Cinder-Glance-进程的最大可用-FD"><a href="#3-修改-Cinder-Glance-进程的最大可用-FD" class="headerlink" title="3. 修改 Cinder/Glance 进程的最大可用 FD"></a>3. 修改 Cinder/Glance 进程的最大可用 FD</h2><p>本篇内容是根据生产环境中遇到的实际问题进行的总结。</p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在生产环境中遇到这样一个问题：<br>下发删除卷消息无法成功删除卷，后通过 cinder 命令行命令 <code>cinder service-list</code> 查询cinder 服务状态，发现 <code>cinder-volume host : r2202002controller@rbd-sata</code> 服务状态为 <code>DOWN</code> 。</p>
 <pre><code>|  cinder-volume   |  r2202002controller@rbd-sata   | nova | enabled  |    down  |
 </code></pre>
@@ -3346,9 +3430,9 @@ Max open files       65535               65535               files
 </code></pre>
 <p>3、检查 cinder-volume 服务是否为 <code>UP</code> 状态。</p>
 <pre><code>root@R1controller1:~# cinder service-list
-+------------------+---------------------------+------+---------+-------+----------------------------+-----------------+
++--------+-------+------+---------+-------+--------+-------+
 |      Binary      |            Host           | Zone |  Status | State |         Updated_at         | Disabled Reason |
-+------------------+---------------------------+------+---------+-------+----------------------------+-----------------+
++--------+-------+------+---------+-------+--------+-------+
 |  cinder-backup   |      OPS-controller1      | nova | enabled |   up  | 2016-09-07T20:38:30.000000 |       None      |
 |  cinder-backup   |      OPS-controller2      | nova | enabled |   up  | 2016-09-07T20:38:26.000000 |       None      |
 | cinder-scheduler |      OPS-controller1      | nova | enabled |   up  | 2016-09-07T20:38:29.000000 |       None      |
@@ -3358,7 +3442,7 @@ Max open files       65535               65535               files
 |  cinder-volume   |  OPS-controller1@rbd-ssd  | nova | enabled |   up  | 2016-09-07T20:38:33.000000 |       None      |
 |  cinder-volume   |  OPS-controller2@rbd-sas  | nova | enabled |   up  | 2016-09-07T20:38:25.000000 |       None      |
 |  cinder-volume   |  OPS-controller2@rbd-ssd  | nova | enabled |   up  | 2016-09-07T20:38:27.000000 |       None      |
-+------------------+---------------------------+------+---------+-------+----------------------------+-----------------+
++--------+-------+------+---------+-------+--------+-------+
 </code></pre>
 <p>4、重新进行删除卷操作，卷可以被正常删除。</p>
 <p>5、因为 Glance 后端也对接的是 Ceph 集群，为防止 Glance 也出现该问题，建议也修改 Glance 进程的启动配置文件 <code>/etc/init/glance-api.conf</code> ，增加 <code>limit nofile 65535 65535</code> 配置行。</p>
@@ -3366,8 +3450,7 @@ Max open files       65535               65535               files
 <pre><code>service glance-api restart
 </code></pre>
 <p>7、重启完成后上传测试镜像，测试镜像可以正常上传和删除。</p>
-<h2 id="4-更换-OSD-Journal"><a href="#4-更换-OSD-Journal" class="headerlink" title="4. 更换 OSD Journal"></a>4. 更换 OSD Journal</h2><hr>
-<p>本篇中部分内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/07/26/%E5%A6%82%E4%BD%95%E6%9B%BF%E6%8D%A2Ceph%E7%9A%84Journal/">zphj1987 —— 如何替换 Ceph 的 Journal</a></p>
+<h2 id="4-更换-OSD-Journal"><a href="#4-更换-OSD-Journal" class="headerlink" title="4. 更换 OSD Journal"></a>4. 更换 OSD Journal</h2><p>本篇中部分内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/07/26/%E5%A6%82%E4%BD%95%E6%9B%BF%E6%8D%A2Ceph%E7%9A%84Journal/">zphj1987 —— 如何替换 Ceph 的 Journal</a></p>
 <p>Ceph 在一块单独的磁盘上部署 OSD 的时候，是默认把 journal 和 OSD 放在同一块磁盘的不同分区上。有时候，我们可能需要把 OSD 的 journal 分区从一个磁盘替换到另一个磁盘上去。那么应该怎样替换 Ceph 的 journal 分区呢？</p>
 <p>有两种方法来修改 Ceph 的 journal：</p>
 <ul>
@@ -3477,8 +3560,7 @@ root@lab8106 ~# parted -s /dev/sde print
 <p>6、去除 <code>noout</code> 的标记。</p>
 <pre><code>root@lab8106 ~# ceph osd unset noout
 </code></pre>
-<h2 id="5-清空-OSD-的分区表后如何恢复"><a href="#5-清空-OSD-的分区表后如何恢复" class="headerlink" title="5. 清空 OSD 的分区表后如何恢复"></a>5. 清空 OSD 的分区表后如何恢复</h2><hr>
-<p>本篇内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/09/24/%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%B8%85%E7%A9%BA%E4%BA%86Ceph%E7%9A%84OSD%E7%9A%84%E5%88%86%E5%8C%BA%E8%A1%A8%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D/">zphj1987 —— 不小心清空了 Ceph 的 OSD 的分区表如何恢复</a></p>
+<h2 id="5-清空-OSD-的分区表后如何恢复"><a href="#5-清空-OSD-的分区表后如何恢复" class="headerlink" title="5. 清空 OSD 的分区表后如何恢复"></a>5. 清空 OSD 的分区表后如何恢复</h2><p>本篇内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/09/24/%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%B8%85%E7%A9%BA%E4%BA%86Ceph%E7%9A%84OSD%E7%9A%84%E5%88%86%E5%8C%BA%E8%A1%A8%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D/">zphj1987 —— 不小心清空了 Ceph 的 OSD 的分区表如何恢复</a></p>
 <p>假设不小心对 Ceph OSD 执行了 <code>ceph-deploy disk zap</code> 这个操作，那么该 OSD 对应磁盘的分区表就丢失了。本文讲述了在这种情况下如何进行恢复。</p>
 <h3 id="破坏环境"><a href="#破坏环境" class="headerlink" title="破坏环境"></a>破坏环境</h3><p>我们现在有一个正常的集群，假设用的是默认的分区的方式，我们先来看看默认的分区方式是怎样的。</p>
 <p>1、查看默认的分区方式。</p>
@@ -3595,8 +3677,7 @@ lrwxrwxrwx 1 root root 10 Sep 24 00:33 /dev/disk/by-partuuid/03fc6039-ad80-4b8d-
 <pre><code>root@mon:~/ceph# start ceph-osd id=0
 </code></pre>
 <p>检查下，到这 osd.0 就成功地恢复了。</p>
-<h2 id="6-PG-卡在-active-remapped-状态"><a href="#6-PG-卡在-active-remapped-状态" class="headerlink" title="6. PG 卡在 active + remapped 状态"></a>6. PG 卡在 active + remapped 状态</h2><hr>
-<h3 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h3><p>有时，我们的 Ceph 集群可能会出现 PG 长时间卡在 <code>active + remapped</code> 的状态。</p>
+<h2 id="6-PG-卡在-active-remapped-状态"><a href="#6-PG-卡在-active-remapped-状态" class="headerlink" title="6. PG 卡在 active + remapped 状态"></a>6. PG 卡在 active + remapped 状态</h2><h3 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h3><p>有时，我们的 Ceph 集群可能会出现 PG 长时间卡在 <code>active + remapped</code> 的状态。</p>
 <pre><code>root@ceph1:~# ceph -s
     cluster 5ccdcb2d-961d-4dcb-a9ed-e8034c56cf71
       health HEALTH_WARN 88 pgs stuck unclean
@@ -3627,8 +3708,7 @@ lrwxrwxrwx 1 root root 10 Sep 24 00:33 /dev/disk/by-partuuid/03fc6039-ad80-4b8d-
 <p>或者，直接修改 <code>crush tunables</code> 的值为 <code>optimal</code> 。</p>
 <pre><code>ceph osd crush tunables optimal
 </code></pre>
-<h2 id="7-查看-RBD-镜像的位置"><a href="#7-查看-RBD-镜像的位置" class="headerlink" title="7. 查看 RBD 镜像的位置"></a>7. 查看 RBD 镜像的位置</h2><hr>
-<p>有时，我们需要查看某个 RBD 镜像的对象都存放在哪些 PG 中，这些 PG 又分布在哪些 OSD 上。可以利用下面的 shell 脚本来实现快速查看 RBD 镜像的位置。</p>
+<h2 id="7-查看-RBD-镜像的位置"><a href="#7-查看-RBD-镜像的位置" class="headerlink" title="7. 查看 RBD 镜像的位置"></a>7. 查看 RBD 镜像的位置</h2><p>有时，我们需要查看某个 RBD 镜像的对象都存放在哪些 PG 中，这些 PG 又分布在哪些 OSD 上。可以利用下面的 shell 脚本来实现快速查看 RBD 镜像的位置。</p>
 <pre><code>#!/bin/bash
 
 # USAGE:./rbd-loc &lt;pool&gt; &lt;image&gt;
@@ -3657,8 +3737,7 @@ osdmap e1078 pool &#39;images&#39; (9) object &#39;rbd_data.1349f035c101d9.00000
 osdmap e1078 pool &#39;images&#39; (9) object &#39;rbd_data.1349f035c101d9.0000000000000000&#39; -&gt; pg 9.ffc971ff (9.3f) -&gt; up ([0,2,1], p0) acting ([0,2,1], p0)
 </code></pre>
 <p>该测试环境只有 3 个 host， 每个 host 上 1 个 OSD ，3 副本设置。</p>
-<h2 id="8-查看-RBD-镜像的实际大小"><a href="#8-查看-RBD-镜像的实际大小" class="headerlink" title="8. 查看 RBD 镜像的实际大小"></a>8. 查看 RBD 镜像的实际大小</h2><hr>
-<p>本篇内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/09/08/%E5%A6%82%E4%BD%95%E7%BB%9F%E8%AE%A1Ceph%E7%9A%84RBD%E7%9C%9F%E5%AE%9E%E4%BD%BF%E7%94%A8%E5%AE%B9%E9%87%8F/">zphj1987 —— 如何统计 Ceph 的 RBD 真实使用容量</a></p>
+<h2 id="8-查看-RBD-镜像的实际大小"><a href="#8-查看-RBD-镜像的实际大小" class="headerlink" title="8. 查看 RBD 镜像的实际大小"></a>8. 查看 RBD 镜像的实际大小</h2><p>本篇内容来自 <a target="_blank" rel="noopener" href="http://www.zphj1987.com/2016/09/08/%E5%A6%82%E4%BD%95%E7%BB%9F%E8%AE%A1Ceph%E7%9A%84RBD%E7%9C%9F%E5%AE%9E%E4%BD%BF%E7%94%A8%E5%AE%B9%E9%87%8F/">zphj1987 —— 如何统计 Ceph 的 RBD 真实使用容量</a></p>
 <p>Ceph 的 rbd 一直有个问题就是无法清楚的知道这个分配的空间里面到底使用了多少，使用 <code>rbd info</code> 命令查询出来的容量是预分配的总容量而非实际使用容量。在 Jewel 版中提供了一个新的接口去查询，对于老版本来说可能同样有这个需求，本篇将详细介绍如何解决这个问题。</p>
 <p>目前已知的有三种查询方法：</p>
 <ol>
@@ -3737,8 +3816,7 @@ volume-e5376906-7a95-48bb-a1c6-bb694b4f4813.backup.base rbd_data.23a53c28fb938f
 Used: 96 MB
 </code></pre>
 <p>注意这里只统计了 image 里面的真实容量，如果是用了链接 clone 的，存在容量复用的问题，需要自己看是否需要统计那一部分的对象，方法同上。</p>
-<h2 id="9-统计-OSD-上-PG-的数量"><a href="#9-统计-OSD-上-PG-的数量" class="headerlink" title="9. 统计 OSD 上 PG 的数量"></a>9. 统计 OSD 上 PG 的数量</h2><hr>
-<p>我们可以通过一个 Python 脚本，统计出每个 OSD 上分布了多少个 PG ，以此判断集群的数据分布是否均衡。</p>
+<h2 id="9-统计-OSD-上-PG-的数量"><a href="#9-统计-OSD-上-PG-的数量" class="headerlink" title="9. 统计 OSD 上 PG 的数量"></a>9. 统计 OSD 上 PG 的数量</h2><p>我们可以通过一个 Python 脚本，统计出每个 OSD 上分布了多少个 PG ，以此判断集群的数据分布是否均衡。</p>
 <pre><code>#!/usr/bin/env  python
 import sys 
 import os
@@ -3797,7 +3875,7 @@ print MSG % msg
 <pre><code>root@OPS-ceph1:~# ./cal_pg_per_osd.py 
 dumped all in format plain
 pool  : 0      1      2      3      4      5      7      | SUM
---------------------------------------------------------------------
+--------
 osd.0   2      9      11     10     5      6      1      | 44    
 osd.1   1      7      8      10     8      9      3      | 46    
 osd.2   2      11     7      6      6      8      4      | 44    
@@ -3832,12 +3910,11 @@ osd.30  8      39     46     47     55     35     10     | 240
 osd.31  5      48     48     45     41     36     11     | 234   
 osd.32  5      46     48     53     42     48     7      | 249   
 
---------------------------------------------------------------------
+--------
 SUM   : 128    1024   1024   1024   1024   1024   256    |
 
 # 10. 查看使用 RBD 镜像的客户端
 </code></pre>
-<hr>
 <p>有时候删除 rbd image 会提示当前 rbd image 正在使用中，无法删除：</p>
 <pre><code>rbd rm foo
 2016-11-09 20:16:14.018332 7f81877a07c0 -1 librbd: image has watchers - not removing
@@ -3887,9 +3964,9 @@ watcher=10.202.0.21:0/1043073 client.1298745 cookie=140256077850496
 </code></pre>
 <p>该卷挂载在 ID 为 <code>96ee1aad-af27-4c9d-968f-291dbb2766a1</code> 的虚拟机上。通过 <code>nova show</code> 命令验证该虚拟机是否在物理机 10.202.0.21 ( computer21 )上：</p>
 <pre><code>root@controller:~# nova show 96ee1aad-af27-4c9d-968f-291dbb2766a1
-+--------------------------------------+---------------------------------------------------------------------------------+
++--------+-+
 | Property                             | Value                                                                           |
-+--------------------------------------+---------------------------------------------------------------------------------+
++--------+-+
 | OS-DCF:diskConfig                    | AUTO                                                                            |
 | OS-EXT-AZ:availability_zone          | az_ip                                                                           |
 | OS-EXT-SRV-ATTR:host                 | computer21                                                                      |
@@ -3930,7 +4007,7 @@ watcher=10.202.0.21:0/1043073 client.1298745 cookie=140256077850496
 | updated                              | 2016-11-09T08:19:41Z                                                            |
 | user_id                              | 142d8663efce464c89811c63e45bd82e                                                |
 | zq-test network                      | 192.168.6.6                                                                     |
-+--------------------------------------+---------------------------------------------------------------------------------+
++--------+-+
 </code></pre>
 
       

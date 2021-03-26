@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>4、Ceph 存储池 | QuYi-Stack</title>
+  <meta name="keywords" content=" Ceph ">
+  <meta name="description" content="4、Ceph 存储池 | QuYi-Stack">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="1. 缓存池工作原理Ceph 从 Firefly 版本开始就支持缓存分层特性，所谓的缓存分层其实就是在更快的磁盘（通常是 ssd 或者 NVME）上创建一个存储池，然后将这个存储池放置在 常规复制池或者纠删码存储池的前端去充当缓存，被充当缓存的这个存储池也叫做 Cache Pool，大概工作流程如下如所示：  这样设计以后大部分的客户端的 IO 操作都首先通过缓存池来处理，之后再有缓存池将数据回写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8、配置 Ceph SSD 缓存池">
+<meta property="og:url" content="https://quyi.io/2020/11/04120150.html">
+<meta property="og:site_name" content="QuYi-Stack">
+<meta property="og:description" content="1. 缓存池工作原理Ceph 从 Firefly 版本开始就支持缓存分层特性，所谓的缓存分层其实就是在更快的磁盘（通常是 ssd 或者 NVME）上创建一个存储池，然后将这个存储池放置在 常规复制池或者纠删码存储池的前端去充当缓存，被充当缓存的这个存储池也叫做 Cache Pool，大概工作流程如下如所示：  这样设计以后大部分的客户端的 IO 操作都首先通过缓存池来处理，之后再有缓存池将数据回写">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115636.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115651.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115702.png">
+<meta property="og:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115711.png">
+<meta property="article:published_time" content="2020-11-04T04:01:50.000Z">
+<meta property="article:modified_time" content="2021-03-26T05:52:00.952Z">
+<meta property="article:author" content="Qu Yi">
+<meta property="article:tag" content="Ceph">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tc-1257598847.cos.ap-nanjing.myqcloud.com/img/20210326115636.png">
+
+
+<link rel="icon" href="https://avatars.githubusercontent.com/u/80147732?s=460&u=23be5c16d10232c0df046f708c7da6a2c01b2913&v=4">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="https://avatars.githubusercontent.com/u/80147732?s=460&amp;u=23be5c16d10232c0df046f708c7da6a2c01b2913&amp;v=4"/>
+</a>
+<div class="author">
+    <span>Qu Yi</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/quyi-stack/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:Earon106@gmail.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=66773056&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(75)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="大前端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        大前端
+                        <small>(30)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BOM/DOM">
+                                        
+                                        BOM/DOM
+                                        
+                                            <small>(2
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->BootStrap">
+                                        
+                                        BootStrap
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->HTML5/CSS3">
+                                        
+                                        HTML5/CSS3
+                                        
+                                            <small>(6
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->JavaScript">
+                                        
+                                        JavaScript
+                                        
+                                            <small>(4
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->jQuery">
+                                        
+                                        jQuery
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="大前端<--->Vue">
+                                        
+                                        Vue
+                                        
+                                            <small>(5
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="后端">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        后端
+                        <small>(34)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="后端<--->JavaSE">
+                                        
+                                        JavaSE
+                                        
+                                            <small>(7
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Python基础">
+                                        
+                                        Python基础
+                                        
+                                            <small>(18
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                                <li>
+                                    <div data-rel="后端<--->Python面向对象">
+                                        
+                                        Python面向对象
+                                        
+                                            <small>(9
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="运维">
+                        <i class="fold iconfont icon-right"></i>
+                        
+                        运维
+                        <small>(11)</small>
+                        
+                    </div>
+                    
+                        <ul class="sub hide">
+                            
+                                <li>
+                                    <div data-rel="运维<--->Ceph">
+                                        
+                                        Ceph
+                                        
+                                            <small>(10
+                                                )</small>
+                                        
+                                    </div>
+                                    
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="75">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BootStrap</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ceph</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSS3</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DAS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DOM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HTML5</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>java</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>JavaScript</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>jQuery</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>NAS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Python</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SAN</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Vue</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/04120150.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="8、配置 Ceph SSD 缓存池">8、配置 Ceph SSD 缓存池</span>
+            <span class="post-date" title="2020-11-04 12:01:50">2020/11/04</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/03120139.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="7、Ceph 运维常用指令">7、Ceph 运维常用指令</span>
+            <span class="post-date" title="2020-11-03 12:01:39">2020/11/03</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/02120131.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="6、Ceph 文件系统">6、Ceph 文件系统</span>
+            <span class="post-date" title="2020-11-02 12:01:31">2020/11/02</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/11/01120124.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="5、Ceph 块存储之 RBD">5、Ceph 块存储之 RBD</span>
+            <span class="post-date" title="2020-11-01 12:01:24">2020/11/01</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/31120118.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="4、Ceph 存储池">4、Ceph 存储池</span>
+            <span class="post-date" title="2020-10-31 12:01:18">2020/10/31</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/30120111.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="3、搭建 Ceph 存储集群">3、搭建 Ceph 存储集群</span>
+            <span class="post-date" title="2020-10-30 12:01:11">2020/10/30</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/29120103.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="2、Ceph IO流程及数据分布">2、Ceph IO流程及数据分布</span>
+            <span class="post-date" title="2020-10-29 12:01:03">2020/10/29</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/28113653.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="1、Ceph 简介">1、Ceph 简介</span>
+            <span class="post-date" title="2020-10-28 11:36:53">2020/10/28</span>
+        </a>
+        
+        <a  class="全部文章 运维 "
+           href="/2020/10/27113342.html"
+           data-tag="DAS,NAS,SAN"
+           data-author="" >
+            <span class="post-title" title="DAS,NAS,SAN 存储区别">DAS,NAS,SAN 存储区别</span>
+            <span class="post-date" title="2020-10-27 11:33:42">2020/10/27</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/26110448.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="Ceph分布式存储日常运维管理">Ceph分布式存储日常运维管理</span>
+            <span class="post-date" title="2020-10-26 11:04:48">2020/10/26</span>
+        </a>
+        
+        <a  class="全部文章 运维 Ceph "
+           href="/2020/10/26104739.html"
+           data-tag="Ceph"
+           data-author="" >
+            <span class="post-title" title="Ceph运维手册">Ceph运维手册</span>
+            <span class="post-date" title="2020-10-26 10:47:39">2020/10/26</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/09153020.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="9、面向对象练习 - Python">9、面向对象练习 - Python</span>
+            <span class="post-date" title="2020-05-09 15:30:20">2020/05/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/08152812.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="8、元类 - Python">8、元类 - Python</span>
+            <span class="post-date" title="2020-05-08 15:28:12">2020/05/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/07152804.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="7、魔术方法 - Python">7、魔术方法 - Python</span>
+            <span class="post-date" title="2020-05-07 15:28:04">2020/05/07</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/06152757.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="6、反射 - Python">6、反射 - Python</span>
+            <span class="post-date" title="2020-05-06 15:27:57">2020/05/06</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/05152750.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="5、多态 - Python">5、多态 - Python</span>
+            <span class="post-date" title="2020-05-05 15:27:50">2020/05/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/04152741.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="4、继承 - Python">4、继承 - Python</span>
+            <span class="post-date" title="2020-05-04 15:27:41">2020/05/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/03152728.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="3、封装 - Python">3、封装 - Python</span>
+            <span class="post-date" title="2020-05-03 15:27:28">2020/05/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/02152720.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="2、类和对象 - Python">2、类和对象 - Python</span>
+            <span class="post-date" title="2020-05-02 15:27:20">2020/05/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python面向对象 "
+           href="/2020/05/01152712.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="1、面向对象编程 - Python">1、面向对象编程 - Python</span>
+            <span class="post-date" title="2020-05-01 15:27:12">2020/05/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/12113031.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="5、Vue过渡动画效果">5、Vue过渡动画效果</span>
+            <span class="post-date" title="2020-04-12 11:30:31">2020/04/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/11113026.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="4、Vue组件">4、Vue组件</span>
+            <span class="post-date" title="2020-04-11 11:30:26">2020/04/11</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/10113020.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="3、Vue视图">3、Vue视图</span>
+            <span class="post-date" title="2020-04-10 11:30:20">2020/04/10</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/09113015.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="2、Vue实例">2、Vue实例</span>
+            <span class="post-date" title="2020-04-09 11:30:15">2020/04/09</span>
+        </a>
+        
+        <a  class="全部文章 大前端 Vue "
+           href="/2020/04/08113005.html"
+           data-tag="Vue"
+           data-author="" >
+            <span class="post-title" title="1、Vue介绍">1、Vue介绍</span>
+            <span class="post-date" title="2020-04-08 11:30:05">2020/04/08</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/07111644.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="4、Bootstrap插件">4、Bootstrap插件</span>
+            <span class="post-date" title="2020-04-07 11:16:44">2020/04/07</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/06111639.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="3、Bootstrap组件">3、Bootstrap组件</span>
+            <span class="post-date" title="2020-04-06 11:16:39">2020/04/06</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/05111633.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="2、Bootstrap布局">2、Bootstrap布局</span>
+            <span class="post-date" title="2020-04-05 11:16:33">2020/04/05</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BootStrap "
+           href="/2020/04/04111627.html"
+           data-tag="BootStrap"
+           data-author="" >
+            <span class="post-title" title="1、BootStrap基础">1、BootStrap基础</span>
+            <span class="post-date" title="2020-04-04 11:16:27">2020/04/04</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/03095755.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="9、jQuery 插件 - jQuery">9、jQuery 插件 - jQuery</span>
+            <span class="post-date" title="2020-04-03 09:57:55">2020/04/03</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/02095746.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="8、工具和其他操作 - jQuery">8、工具和其他操作 - jQuery</span>
+            <span class="post-date" title="2020-04-02 09:57:46">2020/04/02</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/04/01095739.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="7、动画效果 - jQuery">7、动画效果 - jQuery</span>
+            <span class="post-date" title="2020-04-01 09:57:39">2020/04/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/28095730.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="6、jQuery事件机制 - jQuery">6、jQuery事件机制 - jQuery</span>
+            <span class="post-date" title="2020-03-28 09:57:30">2020/03/28</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/27095723.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="5、属性和样式操作 - jQuery">5、属性和样式操作 - jQuery</span>
+            <span class="post-date" title="2020-03-27 09:57:23">2020/03/27</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/26095715.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="4、DOM操作 - jQuery">4、DOM操作 - jQuery</span>
+            <span class="post-date" title="2020-03-26 09:57:15">2020/03/26</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/25095706.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="3、使用筛选器获取元素 - jQuery">3、使用筛选器获取元素 - jQuery</span>
+            <span class="post-date" title="2020-03-25 09:57:06">2020/03/25</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/24150557.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="7、异常机制 - JavaSE">7、异常机制 - JavaSE</span>
+            <span class="post-date" title="2020-03-24 15:05:57">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/24095659.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="2、选择器 - jQuery">2、选择器 - jQuery</span>
+            <span class="post-date" title="2020-03-24 09:56:59">2020/03/24</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/23170011.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="6、面向对象 - JavaSE">6、面向对象 - JavaSE</span>
+            <span class="post-date" title="2020-03-23 17:00:11">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 jQuery "
+           href="/2020/03/23095635.html"
+           data-tag="jQuery"
+           data-author="" >
+            <span class="post-title" title="1、jQuery基础 - jQuery">1、jQuery基础 - jQuery</span>
+            <span class="post-date" title="2020-03-23 09:56:35">2020/03/23</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/22094526.html"
+           data-tag="DOM"
+           data-author="" >
+            <span class="post-title" title="2、文档对象模型DOM">2、文档对象模型DOM</span>
+            <span class="post-date" title="2020-03-22 09:45:26">2020/03/22</span>
+        </a>
+        
+        <a  class="全部文章 大前端 BOM/DOM "
+           href="/2020/03/21094314.html"
+           data-tag="BOM"
+           data-author="" >
+            <span class="post-title" title="1、浏览器对象模型BOM">1、浏览器对象模型BOM</span>
+            <span class="post-date" title="2020-03-21 09:43:14">2020/03/21</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/20220918.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="4、事件机制 - JavaScript">4、事件机制 - JavaScript</span>
+            <span class="post-date" title="2020-03-20 22:09:18">2020/03/20</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/19220904.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="3、内置对象 - JavaScript">3、内置对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-19 22:09:04">2020/03/19</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/18220846.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="2、函数和对象 - JavaScript">2、函数和对象 - JavaScript</span>
+            <span class="post-date" title="2020-03-18 22:08:46">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/18143447.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="18、异常处理 - Python">18、异常处理 - Python</span>
+            <span class="post-date" title="2020-03-18 14:34:47">2020/03/18</span>
+        </a>
+        
+        <a  class="全部文章 大前端 JavaScript "
+           href="/2020/03/17220714.html"
+           data-tag="JavaScript"
+           data-author="" >
+            <span class="post-title" title="1、基础语法 - JavaScript">1、基础语法 - JavaScript</span>
+            <span class="post-date" title="2020-03-17 22:07:14">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17165118.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="5、数组 - JavaSE">5、数组 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 16:51:18">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/17143428.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="17、常用模块_其他 - Python">17、常用模块_其他 - Python</span>
+            <span class="post-date" title="2020-03-17 14:34:28">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17142852.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="4、方法 - JavaSE">4、方法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:28:52">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17140617.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="3、流程控制 - JavaSE">3、流程控制 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 14:06:17">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/17120138.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="2、基础语法 - JavaSE">2、基础语法 - JavaSE</span>
+            <span class="post-date" title="2020-03-17 12:01:38">2020/03/17</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/16220004.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="6、响应式网页设计 - HTML5_CSS3">6、响应式网页设计 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-16 22:00:04">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 JavaSE "
+           href="/2020/03/16160850.html"
+           data-tag="java"
+           data-author="" >
+            <span class="post-title" title="1、Java入门 - JavaSE">1、Java入门 - JavaSE</span>
+            <span class="post-date" title="2020-03-16 16:08:50">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/16143414.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="16、常用模块_正则表达式 - Python">16、常用模块_正则表达式 - Python</span>
+            <span class="post-date" title="2020-03-16 14:34:14">2020/03/16</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/15215802.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="5、新的页面布局方式 - HTML5_CSS3">5、新的页面布局方式 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-15 21:58:02">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/15143405.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="15、常用模块_序列化处理 - Python">15、常用模块_序列化处理 - Python</span>
+            <span class="post-date" title="2020-03-15 14:34:05">2020/03/15</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2020/03/14215340.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="4、CSS3新增功能 - HTML5_CSS3">4、CSS3新增功能 - HTML5_CSS3</span>
+            <span class="post-date" title="2020-03-14 21:53:40">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/14143354.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="14、常用模块_系统交互 - Python">14、常用模块_系统交互 - Python</span>
+            <span class="post-date" title="2020-03-14 14:33:54">2020/03/14</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/13143343.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="13、常用模块_随机和哈希 - Python">13、常用模块_随机和哈希 - Python</span>
+            <span class="post-date" title="2020-03-13 14:33:43">2020/03/13</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/12143326.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="12、常用模块 - Python">12、常用模块 - Python</span>
+            <span class="post-date" title="2020-03-12 14:33:26">2020/03/12</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/11143316.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="11、模块 - Python">11、模块 - Python</span>
+            <span class="post-date" title="2020-03-11 14:33:16">2020/03/11</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/10143304.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="10、高级特性 - Python">10、高级特性 - Python</span>
+            <span class="post-date" title="2020-03-10 14:33:04">2020/03/10</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/09143256.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="9、函数编程 - Python">9、函数编程 - Python</span>
+            <span class="post-date" title="2020-03-09 14:32:56">2020/03/09</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/08143250.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="8、文件处理 - Python">8、文件处理 - Python</span>
+            <span class="post-date" title="2020-03-08 14:32:50">2020/03/08</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/07143125.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="7、字符编码 - Python">7、字符编码 - Python</span>
+            <span class="post-date" title="2020-03-07 14:31:25">2020/03/07</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/06143116.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="6、数据操作 - Python">6、数据操作 - Python</span>
+            <span class="post-date" title="2020-03-06 14:31:16">2020/03/06</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/05143105.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="5、流程控制 - Python">5、流程控制 - Python</span>
+            <span class="post-date" title="2020-03-05 14:31:05">2020/03/05</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/04143058.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="4、数据类型 - Python">4、数据类型 - Python</span>
+            <span class="post-date" title="2020-03-04 14:30:58">2020/03/04</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/03143005.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="3、表达式和运算符 - Python">3、表达式和运算符 - Python</span>
+            <span class="post-date" title="2020-03-03 14:30:05">2020/03/03</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/02142955.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="2、基础语法、变量 - Python">2、基础语法、变量 - Python</span>
+            <span class="post-date" title="2020-03-02 14:29:55">2020/03/02</span>
+        </a>
+        
+        <a  class="全部文章 后端 Python基础 "
+           href="/2020/03/01142946.html"
+           data-tag="Python"
+           data-author="" >
+            <span class="post-title" title="1、概述 - Python">1、概述 - Python</span>
+            <span class="post-date" title="2020-03-01 14:29:46">2020/03/01</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/13214947.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="3、页面布局 - HTML5_CSS3">3、页面布局 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-13 21:49:47">2019/03/13</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/12172510.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="2、页面组件 - HTML5_CSS3">2、页面组件 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-12 17:25:10">2019/03/12</span>
+        </a>
+        
+        <a  class="全部文章 大前端 HTML5/CSS3 "
+           href="/2019/03/11170116.html"
+           data-tag="HTML5,CSS3"
+           data-author="" >
+            <span class="post-title" title="1、基础 - HTML5_CSS3">1、基础 - HTML5_CSS3</span>
+            <span class="post-date" title="2019-03-11 17:01:16">2019/03/11</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-4、Ceph-存储池" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">4、Ceph 存储池</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="运维">运维</a> > 
+            
+            <a  data-rel="运维&lt;---&gt;Ceph">Ceph</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color5">Ceph</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2021-03-26 13:50:07'>2020-10-31 12:01</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%B1%A0%E4%BB%8B%E7%BB%8D"><span class="toc-text">存储池介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E8%AF%B4%E6%98%8E"><span class="toc-text">环境说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%89%AF%E6%9C%AC%E5%AD%98%E5%82%A8%E6%B1%A0"><span class="toc-text">多副本存储池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%98%E5%82%A8%E6%B1%A0%E5%88%97%E8%A1%A8"><span class="toc-text">查看存储池列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%B1%A0"><span class="toc-text">创建存储池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AD%98%E5%82%A8%E6%B1%A0%E9%85%8D%E9%A2%9D"><span class="toc-text">设置存储池配额</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96-%E8%AE%BE%E7%BD%AE-pool-%E5%89%AF%E6%9C%AC%E6%95%B0"><span class="toc-text">获取&#x2F;设置 pool 副本数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E5%AD%98%E5%82%A8%E6%B1%A0%E9%80%89%E9%A1%B9%E5%80%BC"><span class="toc-text">调整存储池选项值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%AD%98%E5%82%A8%E6%B1%A0"><span class="toc-text">删除存储池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%91%BD%E5%90%8D%E5%AD%98%E5%82%A8%E6%B1%A0"><span class="toc-text">重命名存储池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%AD%98%E5%82%A8%E6%B1%A0%E7%BB%9F%E8%AE%A1%E4%BF%A1%E6%81%AF"><span class="toc-text">查看存储池统计信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-%E5%88%A0%E9%99%A4%E5%AD%98%E5%82%A8%E6%B1%A0%E5%BF%AB%E7%85%A7"><span class="toc-text">创建&#x2F;删除存储池快照</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A0%E5%88%A0%E7%A0%81%E5%AD%98%E5%82%A8%E6%B1%A0"><span class="toc-text">纠删码存储池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%B1%A0-1"><span class="toc-text">创建存储池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A0%E5%88%A0%E7%A0%81%E9%85%8D%E7%BD%AE"><span class="toc-text">纠删码配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A0%E5%88%A0%E7%A0%81%E5%AD%98%E5%82%A8%E6%B1%A0%E4%B8%8E%E7%BC%93%E5%AD%98%E5%88%86%E7%BA%A7"><span class="toc-text">纠删码存储池与缓存分级</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-5 i,
+    .toc-level-5 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="存储池介绍"><a href="#存储池介绍" class="headerlink" title="存储池介绍"></a>存储池介绍</h2><p>Ceph 对集群中所有存储资源进行池化管理，pool 是一个逻辑上的概念，其表达的是一组数据存储和查找的约束条件。</p>
+<p>Ceph 集群刚刚搭建成功之后会有系统内会默认创建一个 <code>RBD</code> 存储池（然而本人测试的 Luminous 版本却发现并没有默认的 <code>RBD</code>）。</p>
+<p>Ceph 提供两种类型的存储池，<strong>多副本存储池（Replicated Pool）</strong> 和 **纠删码存储池(Erasure Code Pool)**。</p>
+<p>存储池提供以下功能：</p>
+<ul>
+<li><strong>自恢复力：</strong> 你可以设置在不丢数据的前提下允许多少 OSD 失效，对多副本存储池来说，此值是一对象应达到的副本数。 典型配置存储一个对象和它的一个副本（即 size = 2 ）, 但你可以更改副本数； 对纠删编码的存储池来说，此值是编码块数（即纠删码配置里的 m=2 ）。</li>
+<li><strong>归置组：</strong> 你可以设置一个存储池的归置组数量。典型配置给每个 OSD 分配大约 100 个归置组， 这样，不用过多计算资源就能得到较优的均衡。配置了多个存储池时，要考虑到这些存储池和整个集群的归置组数量要合理。</li>
+<li><strong>CRUSH 规则：</strong> 当你在存储池里存数据的时候，与此存储池相关联的 CRUSH 规则集可控制 CRUSH 算法， 并以此操纵集群内对象及其副本的复制（或纠删码编码的存储池里的数据块）。你可以自定义存储池的 CRUSH 规则。</li>
+<li><strong>快照：</strong> 用 ceph osd pool mksnap 创建快照的时候，实际上创建了某一特定存储池的快照。</li>
+<li><strong>设置所有者：</strong> 你可以设置一个用户 ID 为一个存储池的所有者。</li>
+</ul>
+<p>要把数据组织到存储池里，你可以列出、创建、删除存储池，也可以查看每个存储池的利用率。</p>
+<h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><blockquote>
+<ul>
+<li>操作系统: Ubuntu 18.04 LTS</li>
+<li>Ceph 版本: 12.2.12 Luminous (stable)</li>
+<li>节点架构: 1 mon, 1 mgr, 3 osd</li>
+</ul>
+</blockquote>
+<h2 id="多副本存储池"><a href="#多副本存储池" class="headerlink" title="多副本存储池"></a>多副本存储池</h2><p>所谓多副本存储池，就是把所有的对象都存多个副本，Ceph 默认的副本配置是 size = 3, 也就是说数据存三份，2 个副本。但是一般典型的配置 都会把 size 重置为 2，节省空间。</p>
+<h3 id="查看存储池列表"><a href="#查看存储池列表" class="headerlink" title="查看存储池列表"></a>查看存储池列表</h3><pre><code class="bash">root@ceph1:~# ceph osd lspools
+1 rbd,2 cephfs_data,3 cephfs_metadata,
+
+root@ceph1:~# rados lspools
+rbd
+cephfs_data
+cephfs_metadata 
+</code></pre>
+<p>查看详细的存储池信息：</p>
+<pre><code class="bash">ceph osd pool ls detail 
+</code></pre>
+<p>在新安装好的集群上，只有一个 rbd 存储池。</p>
+<h3 id="创建存储池"><a href="#创建存储池" class="headerlink" title="创建存储池"></a>创建存储池</h3><p>创建存储池前先看看 <a target="_blank" rel="noopener" href="http://docs.ceph.org.cn/rados/configuration/pool-pg-config-ref">存储池、归置组和 CRUSH 配置参考</a>。 你最好在配置文件里重置默认归置组数量，因为默认值并不理想。关于归置组数量请参考 <a target="_blank" rel="noopener" href="http://docs.ceph.org.cn/rados/operations/placement-groups#set-the-number-of-placement-groups">设置归置组数量</a>。</p>
+<p>修改默认归置组数量，只需要在 <code>ceph.conf</code> 文件的 [osd] 配置段修改就好了。</p>
+<p>例如：</p>
+<pre><code class="bash">osd pool default pg num = 100
+osd pool default pgp num = 100
+</code></pre>
+<p>命令形式：</p>
+<blockquote>
+<p>ceph osd pool create {pool_name} {pg_num} [{pgp_num}] [replicated] [crush_ruleset_name] [expected_num_objects]</p>
+</blockquote>
+<p>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">类型</th>
+<th align="left">是否必需</th>
+<th align="left">参数说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pool_name</td>
+<td align="left">string</td>
+<td align="left">Yes</td>
+<td align="left">存储池名称，必须唯一</td>
+</tr>
+<tr>
+<td align="left">pg_num</td>
+<td align="left">int</td>
+<td align="left">Yes</td>
+<td align="left">存储池的归置组总数，默认值为 8</td>
+</tr>
+<tr>
+<td align="left">pgp_num</td>
+<td align="left">int</td>
+<td align="left">No</td>
+<td align="left">用于归置的归置组总数。此值应该等于归置组总数</td>
+</tr>
+<tr>
+<td align="left">replicated</td>
+<td align="left">string</td>
+<td align="left">No</td>
+<td align="left">replicated 表示创建的为多副本存储池</td>
+</tr>
+<tr>
+<td align="left">crush_ruleset_name</td>
+<td align="left">string</td>
+<td align="left">No</td>
+<td align="left">此存储池所用的 CRUSH 规则集名字。指定的规则集必须存在。</td>
+</tr>
+<tr>
+<td align="left">expected_num_objects</td>
+<td align="left">int</td>
+<td align="left">No</td>
+<td align="left">为这个存储池预估的对象数。 设置此值（要同时把 filestore merge threshold 设置为负数）后， 在创建存储池时就会拆分 PG 文件夹， 以免运行时拆分文件夹导致延时增大。</td>
+</tr>
+</tbody></table>
+<p>例如：</p>
+<pre><code class="bash">ceph osd pool create mytestpool 256 256 
+</code></pre>
+<h3 id="设置存储池配额"><a href="#设置存储池配额" class="headerlink" title="设置存储池配额"></a>设置存储池配额</h3><p>存储池配额可设置最大字节数、以及每个存储池最大对象数。</p>
+<p>命令形式：</p>
+<blockquote>
+<p>ceph osd pool set-quota {pool_name} [max_objects {obj_count}] [max_bytes {bytes}]</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="bash">ceph osd pool set-quota mytestpool max_objects 10000
+</code></pre>
+<p>查看存储池配额</p>
+<pre><code class="bash">root@ceph1:~#  ceph osd pool get-quota mytestpool
+quotas for pool &#39;rbd&#39;:
+  max objects: 10000
+  max bytes  : N/A
+</code></pre>
+<h3 id="获取-设置-pool-副本数"><a href="#获取-设置-pool-副本数" class="headerlink" title="获取/设置 pool 副本数"></a>获取/设置 pool 副本数</h3><p>获取存储池副本：</p>
+<blockquote>
+<p>ceph osd pool get {pool_name} size</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="bash">ceph osd pool get mytestpool size
+</code></pre>
+<p>设置存储池副本：</p>
+<blockquote>
+<p>ceph osd pool set {pool_name} size {size}</p>
+</blockquote>
+<p>例如:</p>
+<pre><code class="bash">ceph osd pool set mytestpool size 2
+</code></pre>
+<h3 id="调整存储池选项值"><a href="#调整存储池选项值" class="headerlink" title="调整存储池选项值"></a>调整存储池选项值</h3><p>命令形式：</p>
+<blockquote>
+<p>ceph osd pool set {pool_name} {key} {value}</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="bash"># 获取 pg_num / pgp_num
+ceph osd pool get mytestpool pg_num
+ceph osd pool get mytestpool pgp_num
+# 设置 pg_num
+ceph osd pool set mytestpool pg_num 512
+ceph osd pool set mytestpool pgp_num 512
+</code></pre>
+<p>具体有哪些属性可以调整，以及有效范围说明，请参考 <a target="_blank" rel="noopener" href="http://docs.ceph.org.cn/rados/operations/pools/#setpoolvalues">调整存储池选项值</a></p>
+<p>警告： Pool 的 pg_num 只能增大，不能减小。并且如果修改了 pg_num 最好同时修改 pgp_num，保持 pg_num = pgp_num。</p>
+<p>减少 pg_num 会报错，例如：</p>
+<pre><code class="bash">root@ceph1:~# ceph osd pool get rbd pg_num
+pg_num: 64
+root@ceph1:~# ceph osd pool set rbd pg_num 60
+Error EEXIST: specified pg_num 60 &lt;= current 64
+</code></pre>
+<h3 id="删除存储池"><a href="#删除存储池" class="headerlink" title="删除存储池"></a>删除存储池</h3><p>删除存储是非常危险测操作，会销毁存储池中的全部数据，所以如果要删除存储池，你首先要在配置文档 <code>ceph.conf</code> 加入一条配置， 设置允许删除存储池，然后重启 MON 服务生效。</p>
+<pre><code class="bash">mon_allow_pool_delete = true
+</code></pre>
+<p>其次为了防止删错，你需要连续输入两次 <code>&#123;pool_name&#125;</code>， 并且命令后面跟上 <code>--yes-i-really-really-mean-it</code> 参数。</p>
+<p>命令形式：</p>
+<blockquote>
+<p>ceph osd pool rm {pool_name} [{pool_name} –yes-i-really-really-mean-it]</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="bash">root@ceph1:~# ceph osd pool rm mytestpool mytestpool --yes-i-really-really-mean-it
+pool &#39;mytestpool&#39; removed
+</code></pre>
+<p>提示：如果你给自建的存储池创建了定制的规则集，你不需要存储池时最好删除它。 如果你曾严格地创建了用户及其权限给一个存储池，但存储池已不存在，最好也删除那些用户。</p>
+<h3 id="重命名存储池"><a href="#重命名存储池" class="headerlink" title="重命名存储池"></a>重命名存储池</h3><blockquote>
+<p>ceph osd pool rename {current_pool_name} {new_pool_name}</p>
+</blockquote>
+<p>例如：</p>
+<pre><code class="bash">root@ceph1:~# ceph osd pool rename mytestpool new-pool-name
+pool &#39;mytestpool&#39; renamed to &#39;new-pool-name&#39;
+</code></pre>
+<h3 id="查看存储池统计信息"><a href="#查看存储池统计信息" class="headerlink" title="查看存储池统计信息"></a>查看存储池统计信息</h3><pre><code class="bash">root@ceph1:~# rados df
+POOL_NAME       USED    OBJECTS CLONES COPIES MISSING_ON_PRIMARY UNFOUND DEGRADED RD_OPS RD      WR_OPS WR      
+cephfs_data     1.00GiB     258      0    516                  0       0        0      2    2KiB    290 1.00GiB 
+cephfs_metadata  214KiB      22      0     44                  0       0        0     75  479KiB    213  338KiB 
+new-pool-name        0B       0      0      0                  0       0        0      0      0B      0      0B 
+rbd             1.07GiB     294      5    588                  0       0        0   1943 14.6MiB    709 1.07GiB 
+
+total_objects    574
+total_used       11.2GiB
+total_avail      24.1GiB
+total_space      35.3GiB
+</code></pre>
+<h3 id="创建-删除存储池快照"><a href="#创建-删除存储池快照" class="headerlink" title="创建/删除存储池快照"></a>创建/删除存储池快照</h3><p>创建存储池快照</p>
+<pre><code class="bash">ceph osd pool mksnap &#123;pool_name&#125; &#123;snap_name&#125;
+</code></pre>
+<p>删除存储池快照</p>
+<pre><code class="bash">ceph osd pool rmsnap &#123;pool_name&#125; &#123;snap_name&#125;
+</code></pre>
+<h2 id="纠删码存储池"><a href="#纠删码存储池" class="headerlink" title="纠删码存储池"></a>纠删码存储池</h2><p>Ceph 在没有特别指定参数的情况下，默认创建的是多副本存储池。纠删码存储池可以在提供与副本相同的冗余水平的同时节省空间。</p>
+<p>最简单的纠删码存储池等效于RAID5，它相当于 <code>size = 2</code> 的副本池，却能节省 25% 的磁盘空间。</p>
+<h2 id="创建存储池-1"><a href="#创建存储池-1" class="headerlink" title="创建存储池"></a>创建存储池</h2><p>命令形式：</p>
+<blockquote>
+<p>ceph osd pool create {pool_name} {pg_num} {pgp_num} erasure [erasure_code_profile] [crush_ruleset_name] [expected_num_objects]</p>
+</blockquote>
+<p>下面命令创建一个最简单的纠删码存储池：</p>
+<pre><code class="bash">root@ceph1:~# ceph osd pool create ecpool 12 12 erasure
+pool &#39;ecpool&#39; created
+root@ceph1:~# echo ABCDEFGHI | rados --pool ecpool put NYAN -
+root@ceph1:~# rados --pool ecpool get NYAN -
+ABCDEFGHI
+</code></pre>
+<h2 id="纠删码配置"><a href="#纠删码配置" class="headerlink" title="纠删码配置"></a>纠删码配置</h2><p>默认的纠删码配置只能允许损坏一个 OSD。它等效于 size=2 的 多副本存储池，但是需要 1.5TB 而不是 2TB 的数据来存储 1TB 的数据。</p>
+<p>一个默认的纠删码配置是这样的：</p>
+<pre><code class="bash">root@ceph1:~# ceph osd erasure-code-profile get default
+k=2
+m=1
+plugin=jerasure
+technique=reed_sol_van
+</code></pre>
+<p>在此配置中 k=2 和 m=1 ，其含义为数据分布于 3 个 OSD （ k+m==3 ）且允许一个失效。</p>
+<p>选择正确的配置文件很重要，因为在创建池之后无法对其进行修改：需要创建一个具有不同配置文件的新池，并将先前池中的所有对象移至新池。</p>
+<p>为了在不增加原始存储空间需求的前提下提升冗余性，你可以新建配置。 例如，一个 k=10 且 m=4 的配置可容忍 4 个 OSD 失效，它会把一对象分布到 14 个（ k+m=14 ） OSD 上。 此对象先被分割为 10 块（若对象为 10MB ，那每块就是 1MB ）、并计算出 4 个用于恢复的编码块（各编码块尺寸等于数据块，即 1MB ）； 这样，原始空间仅多占用 10% 就可容忍 4 个 OSD 同时失效、且不丢失数据。</p>
+<p>可以通过下面命令创建纠删码配置：</p>
+<pre><code class="bash">root@ceph1:~# ceph osd erasure-code-profile set myprofile k=10 m=4 ruleset-failure-domain=rack
+root@ceph1:~# ceph osd pool create ecpool 12 12 erasure myprofile
+pool &#39;ecpool&#39; created
+</code></pre>
+<h2 id="纠删码存储池与缓存分级"><a href="#纠删码存储池与缓存分级" class="headerlink" title="纠删码存储池与缓存分级"></a>纠删码存储池与缓存分级</h2><p>纠删码存储池比复制池需要更多的资源，并且缺少某些功能，例如部分写入。为了弥补这些缺陷，建议在纠删码存储池前面设置一个缓存层。</p>
+<p>比如，如果 <code>hot-storage</code> 是由快速存储组成，我们可以使用下面的方式设置缓存层：</p>
+<pre><code class="bash">ceph osd tier add ecpool hot-storage
+ceph osd tier cache-mode hot-storage writeback
+ceph osd tier set-overlay ecpool hot-storage
+</code></pre>
+<p>此时会将 <code>hot-storage</code> 池作为 <code>ecpool</code> 池的回写模式，这样一来 <code>ecpool</code> 的每次写入和读取实际上都在使用 <code>hot-storage</code> 缓存池，并从其灵活性和速度中受益。</p>
+<p>此外由于它需要部分写入，因此无法在纠删码池上创建 RBD 镜像。但是，当复制池层设置了缓存层时，可以在擦除编码池上创建RBD映像， 但是，当复制池层设置了缓存层时，可以在纠删码池上创建 RBD 镜像。</p>
+<pre><code class="bash">rbd create --size 10G ecpool/myvolume
+</code></pre>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 文章仅用于学习笔记使用，禁止转载！ </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2021 Copyright QuYi-Stack
+</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 552px;
+    }
+    .nav.fullscreen {
+        margin-left: -552px;
+    }
+    .nav-left {
+        width: 130px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
